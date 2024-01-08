@@ -21,18 +21,38 @@
             position: relative;
         }
 
-        .header-title {
-            font-size: 24px;
-            margin: 0;
-            text-align: center;
-            padding-bottom: 10px; /* Space for the menu */
-        }
+.header-title {
+    font-size: 4.5vw; /* Responsive font size */
+    margin: 5;
+    text-align: center;
+    padding-bottom: 10px; /* Space for the menu */
+}
 
-        .header-description {
-            font-size: 16px;
-            margin: 5px 0;
-            text-align: center;
-        }
+.header-description {
+    font-size: 2vw; /* Responsive font size */
+    margin: 0;
+    text-align: center;
+}
+
+/* Minimum font size for smaller devices */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 24px; /* Fixed minimum font size for smaller screens */
+    }
+    .header-description {
+        font-size: 16px; /* Fixed minimum font size for smaller screens */
+    }
+}
+
+/* Maximum font size for larger devices */
+@media (min-width: 1200px) {
+    .header-title {
+        font-size: 35px; /* Fixed maximum font size for larger screens */
+    }
+    .header-description {
+        font-size: 18px; /* Fixed maximum font size for larger screens */
+    }
+}
         
         .content {
             margin: 20px; /* Margin from the boundary */
