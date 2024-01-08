@@ -141,41 +141,82 @@
 </head>
 <body>
 
-    <header>
-        <div class="menu-controls">
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <div class="bar top"></div>
-                <div class="bar middle"></div>
-                <div class="bar bottom"></div>
-            </div>
-            <div class="lang-switch" id="lang-switch">
-                中/Eng
-            </div>
+<header>
+    <div class="menu-controls">
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <div class="bar top"></div>
+            <div class="bar middle"></div>
+            <div class="bar bottom"></div>
         </div>
-        <h1 class="header-title">City of Hong Kong Pipe Band</h1>
-        <p class="header-description">香港城市風笛隊</p>
-        <nav class="menu" id="menu">
-            <a href="#the-band">The Band</a>
-            <a href="#about-us">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
+            中/Eng
+        </div>
+    </div>
+    <h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
+    <p class="header-description" id="header-description">香港城市風笛隊</p>
+    <nav class="menu" id="menu">
+        <a href="#the-band" id="nav-the-band">The Band</a>
+        <a href="#about-us" id="nav-about-us">About Us</a>
+        <a href="#services" id="nav-services">Services</a>
+        <a href="#gallery" id="nav-gallery">Gallery</a>
+        <a href="#contact" id="nav-contact">Contact</a>
+    </nav>
+</header>
 
     <div class="content" id="the-band">
         <h2>The Band</h2>
         <p>Experience the stirring sounds of our traditional pipe band, bringing the spirit of Scotland to Hong Kong.</p>
     </div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.toggle("active");
-            var hamburger = document.getElementById("hamburger");
-            hamburger.classList.toggle("change");
+<script>
+    // Function to toggle the mobile menu
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        var hamburger = document.getElementById("hamburger");
+        menu.classList.toggle("active");
+        hamburger.classList.toggle("change");
+    }
+
+    // Object containing language text for content sections
+    var languageTexts = {
+        'en': {
+            'the-band': {
+                'heading': 'The Band',
+                'description': 'Experience the stirring sounds of our traditional pipe band, bringing the spirit of Scotland to Hong Kong.'
+            }
+            // ... other content sections in English
+        },
+        'zh': {
+            'the-band': {
+                'heading': '樂隊',
+                'description': '體驗我們傳統風笛樂隊的震撼聲音，將蘇格蘭的精神帶到香港。'
+            }
+            // ... other content sections in Chinese
         }
-    </script>
+    };
+
+    // Function to toggle the language of content sections
+    function toggleLanguage() {
+        var currentLang = document.documentElement.lang;
+        var newLang = currentLang === 'en' ? 'zh' : 'en';
+        document.documentElement.lang = newLang;
+
+        // Update the text content of content sections based on the new language
+        for (var sectionId in languageTexts[newLang]) {
+            if (languageTexts[newLang].hasOwnProperty(sectionId)) {
+                var section = document.getElementById(sectionId);
+                if (section) {
+                    section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
+                    section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
+                }
+            }
+        }
+
+        // Update the language switch button text
+        var langSwitch = document.getElementById('lang-switch');
+        langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
+    }
+</script>
 
 </body>
 </html>
