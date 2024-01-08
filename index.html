@@ -16,14 +16,16 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background-color: #9b1c31; /* Royal red background */
-            color: white; /* White text */
+            background-color: #9b1c31;
+            color: white;
+            position: relative;
         }
 
         .header-title {
             font-size: 24px;
             margin: 0;
             text-align: center;
+            padding-bottom: 10px; /* Space for the menu */
         }
 
         .header-description {
@@ -31,29 +33,30 @@
             margin: 5px 0;
             text-align: center;
         }
-
+        
         .content {
             margin: 20px; /* Margin from the boundary */
         }
 
-        .nav-bar {
+        .menu-controls {
             display: flex;
-            align-items: center;
             justify-content: space-between;
             width: 100%;
+            padding: 0 20px; /* Padding on sides */
         }
 
         .hamburger {
             cursor: pointer;
-            display: none; /* Hidden by default */
+            display: block;
         }
 
         .hamburger .bar {
             display: block;
             width: 25px;
             height: 3px;
-            margin: 5px auto;
-            background-color: white; /* White bars for hamburger */
+            margin: 5px 0;
+            background-color: white;
+            transition: 0.4s;
         }
 
         .change .bar.top {
@@ -69,56 +72,49 @@
         }
 
         .menu {
-            display: flex;
+            display: none;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
         }
 
         .menu a {
             text-decoration: none;
-            color: white; /* White text for menu */
+            color: black;
             padding: 10px 15px;
             display: block;
         }
 
         .menu a:hover {
-            background-color: #7a1c28; /* Slightly darker red for hover */
+            background-color: #7a1c28;
+            color: white;
         }
 
         .menu.active {
-            background-color: #cccccc; /* Grey background */
-            color: black; /* Black text */
+            display: block;
         }
 
-        .menu.active a {
-            color: black; /* Black text for active menu links */
-        }
-
-        .language-switcher a {
-            color: black; /* Black text for language switcher */
-            text-decoration: none;
-            margin-left: 10px;
+        .lang-switch {
+            cursor: pointer;
+            display: block;
         }
 
         @media (max-width: 768px) {
             .header-description {
-                text-align: left; /* Align the description to the left on smaller screens */
+                text-align: center;
             }
 
-            .hamburger {
+            .hamburger,
+            .lang-switch {
                 display: block;
             }
 
             .menu {
-                flex-direction: column;
                 display: none;
-                width: 100%;
-            }
-
-            .menu a {
-                text-align: center;
-            }
-
-            .menu.active {
-                display: flex;
             }
         }
     </style>
@@ -126,25 +122,25 @@
 <body>
 
     <header>
-        <h1 class="header-title">City of Hong Kong Pipe Band</h1>
-        <p class="header-description">香港城市風笛隊</p>
-        <div class="nav-bar">
+        <div class="menu-controls">
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <div class="bar top"></div>
                 <div class="bar middle"></div>
                 <div class="bar bottom"></div>
             </div>
-            <nav class="menu" id="menu">
-                <a href="#the-band">The Band</a>
-                <a href="#about-us">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <div class="language-switcher">
-                <a href="#" onclick="switchLanguage()">中</a> / <a href="#" onclick="switchLanguage()">Eng</a>
+            <div class="lang-switch" id="lang-switch">
+                中/Eng
             </div>
         </div>
+        <h1 class="header-title">City of Hong Kong Pipe Band</h1>
+        <p class="header-description">香港城市風笛隊</p>
+        <nav class="menu" id="menu">
+            <a href="#the-band">The Band</a>
+            <a href="#about-us">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
     <div class="content" id="the-band">
@@ -158,11 +154,6 @@
             menu.classList.toggle("active");
             var hamburger = document.getElementById("hamburger");
             hamburger.classList.toggle("change");
-        }
-
-        function switchLanguage() {
-            // Placeholder for language switch functionality
-            alert("Languageswitch button clicked.");
         }
     </script>
 
