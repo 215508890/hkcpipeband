@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Hong Kong Pipe Band</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #9b1c31; /* Royal red background */
+            color: white; /* White text */
+        }
+
+        .header-title {
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .header-description {
+            font-size: 16px;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px; /* Margin from the boundary */
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white; /* White bars for hamburger */
+        }
+
+        .change .bar.top {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .change .bar.middle {
+            opacity: 0;
+        }
+
+        .change .bar.bottom {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white; /* White text for menu */
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .menu a:hover {
+            background-color: #7a1c28; /* Slightly darker red for hover */
+        }
+
+        .menu.active {
+            background-color: #cccccc; /* Grey background */
+            color: black; /* Black text */
+        }
+
+        .menu.active a {
+            color: black; /* Black text for active menu links */
+        }
+
+        .language-switcher a {
+            color: black; /* Black text for language switcher */
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-description {
+                text-align: left; /* Align the description to the left on smaller screens */
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .menu {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+            }
+
+            .menu a {
+                text-align: center;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="header-title">City of Hong Kong Pipe Band</h1>
+        <p class="header-description">香港城市風笛隊</p>
+        <div class="nav-bar">
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <div class="bar top"></div>
+                <div class="bar middle"></div>
+                <div class="bar bottom"></div>
+            </div>
+            <nav class="menu" id="menu">
+                <a href="#the-band">The Band</a>
+                <a href="#about-us">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="language-switcher">
+                <a href="#" onclick="switchLanguage()">中</a> / <a href="#" onclick="switchLanguage()">Eng</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="content" id="the-band">
+        <h2>The Band</h2>
+        <p>Experience the stirring sounds of our traditional pipe band, bringing the spirit of Scotland to Hong Kong.</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+            var hamburger = document.getElementById("hamburger");
+            hamburger.classList.toggle("change");
+        }
+
+        function switchLanguage() {
+            // Placeholder for language switch functionality
+            alert("Languageswitch button clicked.");
+        }
+    </script>
+
+</body>
+</html>
