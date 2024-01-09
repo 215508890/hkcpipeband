@@ -143,32 +143,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Default padding for small devices */
+    padding-left: 20px; /* Left padding for small devices */
+    padding-right: 20px; /* Right padding for small devices */
 }
 
 #lightbox-image {
-    max-width: calc(100% - 40px); /* Subtract the default padding from the width */
+    max-width: 100%;
     max-height: 80%;
+    box-sizing: border-box; /* Include padding and border in the width and height */
 }
 
 .lightbox-close {
-    position: absolute;
+    position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
     top: 20px;
     right: 20px;
     font-size: 30px;
     font-weight: bold;
     color: white;
     cursor: pointer;
+    z-index: 1001; /* Ensure it's above the lightbox image */
 }
 
 /* Big devices with a minimum width of 768px */
 @media (min-width: 768px) {
     #lightbox {
-        padding: 100px; /* Increased padding for big devices */
+        padding-left: 100px; /* Increased left padding for big devices */
+        padding-right: 100px; /* Increased right padding for big devices */
     }
-    #lightbox-image {
-        max-width: calc(100% - 200px); /* Subtract the increased padding from the width */
-    }
+    /* No need to change max-width here, as the padding takes care of the margin */
 }
 
 .photo-description {
