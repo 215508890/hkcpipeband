@@ -59,11 +59,18 @@
         }
 
         .menu-controls {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 20px; /* Padding on sides */
-        }
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically */
+  width: 100%;
+  padding: 0 20px; /* Padding on sides */
+}
+
+.header-logo {
+  max-height: 50px; /* Adjust the size as needed */
+  max-width: 100%; /* Ensures the image is responsive */
+  margin: 0 10px; /* Optional margin for spacing */
+}
 
         .hamburger {
             cursor: pointer;
@@ -222,6 +229,7 @@
             <div class="bar middle"></div>
             <div class="bar bottom"></div>
         </div>
+        <img src="Images/citypipeband.icon.png" alt="City Pipe Band" class="header-logo" />
         <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
             中/Eng
         </div>
