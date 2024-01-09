@@ -86,34 +86,43 @@
 }
 }
 
-/* At the end of your existing CSS */
 @media (min-width: 768px) {
     .content-wrapper {
-        display: block flex;
+        display: flex; /* Corrected this line */
         align-items: center;
-        justify-content: left; /* Center the content */
+        justify-content: flex-start; /* Align content to the left */
         gap: 20px; /* Add space between image and text */
     }
 
-    .content-image{
-        margin: 10px ; /* Margin for top and bottom */
-    },
+    .content-image {
+        flex: 0 0 auto; /* Do not grow, do not shrink, and based on the width property */
+        width: 200px; /* Adjust this to your desired image width */
+        margin: 10px;
+    }
+
     .content-text {
-        margin: 10px ; /* Margin for top and bottom */
+        flex-grow: 1; /* Allow text container to grow */
+        margin: 10px;
     }
 }
 
 @media (max-width: 767px) {
+    .content-wrapper {
+        display: block; /* Stack the image and text on smaller screens */
+    }
+
     .content-image,
     .content-text {
         margin: 10px; /* Margin on all sides for smaller devices */
     }
 }
-        
-        .content {
-            margin: 20px; /* Margin from the boundary */
-        }
 
+.content {
+    margin: 20px; /* Margin from the boundary */
+}
+
+
+      
         .menu-controls {
   display: flex;
   justify-content: space-between;
