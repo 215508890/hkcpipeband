@@ -86,23 +86,26 @@
 }
 }
 
+      
 @media (min-width: 768px) {
     .content-wrapper {
-        display: flex; /* Corrected this line */
+        display: flex;
         align-items: center;
         justify-content: flex-start; /* Align content to the left */
         gap: 20px; /* Add space between image and text */
     }
 
     .content-image {
-        flex: 0 0 auto; /* Do not grow, do not shrink, and based on the width property */
-        width: 200px; /* Adjust this to your desired image width */
-        margin: 10px;
+        flex: 0 0 auto; /* Do not grow, do not shrink, based on the width property */
+        width: 300px; /* Adjust this to your desired image width */
+        margin: 20px; /* Increased margin for the image */
     }
 
     .content-text {
         flex-grow: 1; /* Allow text container to grow */
-        margin: 10px;
+        margin: 20px; /* Increased margin for the text */
+        /* Optional: Control the max-width to prevent the text container from becoming too wide */
+        max-width: 600px;
     }
 }
 
@@ -113,14 +116,13 @@
 
     .content-image,
     .content-text {
-        margin: 10px; /* Margin on all sides for smaller devices */
+        margin: 20px; /* Increased margin on all sides for smaller devices */
     }
 }
 
 .content {
     margin: 20px; /* Margin from the boundary */
 }
-
 
       
         .menu-controls {
