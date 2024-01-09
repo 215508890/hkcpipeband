@@ -143,14 +143,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 20px; /* Left padding for small devices */
-    padding-right: 20px; /* Right padding for small devices */
 }
 
 #lightbox-image {
-    max-width: 100%;
+    max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
     max-height: 80%;
-    box-sizing: border-box; /* Include padding and border in the width and height */
+    margin: auto; /* This will center the image in the lightbox */
 }
 
 .lightbox-close {
@@ -166,11 +164,9 @@
 
 /* Big devices with a minimum width of 768px */
 @media (min-width: 768px) {
-    #lightbox {
-        padding-left: 100px; /* Increased left padding for big devices */
-        padding-right: 100px; /* Increased right padding for big devices */
+    #lightbox-image {
+        max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
     }
-    /* No need to change max-width here, as the padding takes care of the margin */
 }
 
 .photo-description {
