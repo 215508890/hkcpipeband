@@ -143,7 +143,6 @@
 .site-footer {
   background-color: #333;
   color: white;
-  text-align: center;
   padding: 20px 0;
   margin-top: 40px;
 }
@@ -157,37 +156,56 @@
   text-decoration: underline;
 }
 
-/* Add Flexbox to the footer content and sections */
+/* Flexbox layout for the footer content */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .footer-section {
   margin: 10px;
-  flex: 1; /* Each section will grow to fill available space */
+  flex: 1;
   min-width: 150px; /* Minimum width before wrapping */
+  text-align: left; /* Align text to the left */
+}
+
+/* Shared styles for Quick Links and Follow Us lists */
+.footer-links,
+.social-links {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.footer-links li a,
+.social-links li a {
+  color: #6DF;
+  text-decoration: none;
+  display: block; /* Make the links full-width within the section */
+}
+
+.footer-links li a:hover,
+.social-links li a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive design adjustments */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align items to the left on smaller screens */
   }
 
   .footer-section {
     /* Full width on smaller screens */
     flex-basis: 100%;
-    text-align: center;
   }
 }
 
-/* Existing styles for the footer bottom */
+/* Styles for the footer bottom */
 .footer-bottom {
-  text-align: center;
+  text-align: center; /* Keep copyright notice centered */
   margin-top: 20px;
   border-top: 1px solid #474747;
   padding-top: 20px;
@@ -255,9 +273,6 @@
       <div class="social-links">
         <!-- Replace '#' with your actual social media links -->
         <a href="#" target="_blank">Facebook</a>
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">Twitter</a>
-        <a href="#" target="_blank">YouTube</a>
       </div>
     </div>
   </div>
