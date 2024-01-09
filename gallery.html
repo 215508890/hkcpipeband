@@ -143,21 +143,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px; /* Default padding for small devices */
 }
 
 #lightbox-image {
-    max-width: 80%;
+    max-width: calc(100% - 40px); /* Subtract the default padding from the width */
     max-height: 80%;
 }
 
 .lightbox-close {
     position: absolute;
     top: 20px;
-    right: 40px;
+    right: 20px;
     font-size: 30px;
     font-weight: bold;
     color: white;
     cursor: pointer;
+}
+
+/* Big devices with a minimum width of 768px */
+@media (min-width: 768px) {
+    #lightbox {
+        padding: 100px; /* Increased padding for big devices */
+    }
+    #lightbox-image {
+        max-width: calc(100% - 200px); /* Subtract the increased padding from the width */
+    }
 }
 
 .photo-description {
