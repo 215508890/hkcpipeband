@@ -90,22 +90,21 @@
 @media (min-width: 768px) {
     .content-wrapper {
         display: flex;
-        align-items: center;
-        justify-content: flex-start; /* Align content to the left */
-        gap: 20px; /* Add space between image and text */
+        align-items: center; /* Vertically center the content */
+        justify-content: space-between; /* Put maximum space between text and image */
     }
 
     .content-image {
-        flex: 0 0 auto; /* Do not grow, do not shrink, based on the width property */
-        width: 300px; /* Adjust this to your desired image width */
-        margin: 20px; /* Increased margin for the image */
+        flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
+        width: 400px; /* Desired width for the image */
+        margin-left: 20px; /* Margin to the left of the image */
+        /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
     }
 
     .content-text {
-        flex-grow: 1; /* Allow text container to grow */
-        margin: 20px; /* Increased margin for the text */
-        /* Optional: Control the max-width to prevent the text container from becoming too wide */
-        max-width: 600px;
+        flex-grow: 1; /* Allow text container to grow, but it will not push the image */
+        padding-right: 20px; /* Padding to ensure text doesn't touch the image */
+        text-align: justify; /* Justify text for tidy alignment */
     }
 }
 
@@ -114,16 +113,22 @@
         display: block; /* Stack the image and text on smaller screens */
     }
 
-    .content-image,
+    .content-image {
+        width: 80%; /* Responsive width for the image */
+        margin: 20px ; /* Center the image with automatic horizontal margins */
+        display: block; /* Ensures the image is treated as a block-level element */
+        /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
+    }
+
     .content-text {
-        margin: 20px; /* Increased margin on all sides for smaller devices */
+        margin: 20px; /* Consistent margin for the text */
+        text-align: justify; /* Justify text for tidy alignment */
     }
 }
 
 .content {
     margin: 20px; /* Margin from the boundary */
 }
-
       
         .menu-controls {
   display: flex;
