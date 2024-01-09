@@ -42,6 +42,10 @@
     .header-description {
         font-size: 24px; /* Fixed minimum font size for smaller screens */
     }
+}
+
+    /* Minimum font size for smaller devices */
+@media (max-width: 1200px) {
     .header-logo {
   max-height: 70px; /* Adjust the size as needed */
 }
@@ -55,6 +59,14 @@
     .header-description {
         font-size: 43px; /* Fixed maximum font size for larger screens */
     }
+    .header-logo {
+  max-height: 130px; /* Adjust the size as needed */
+}
+}
+
+/* Maximum font size for larger devices */
+@media (min-width: 1200px) {
+
     .header-logo {
   max-height: 130px; /* Adjust the size as needed */
 }
