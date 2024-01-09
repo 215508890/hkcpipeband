@@ -86,17 +86,17 @@
 }
 }
 
-/* Base styles */
-.gallery {
+.gallery-page {
     display: flex;
     flex-wrap: wrap;
-    margin: -20px; /* Set negative margin for small devices */
+    justify-content: space-between; /* This can be adjusted to 'center' or 'flex-start' as per design */
+    display: none; /* Initiate with all pages hidden */
 }
 
 .gallery-item {
-    padding: 20px; /* Margin for top and bottom for all devices */
-    flex: 1 0 calc(33.333% - 40px); /* Adjust size for 3 items per row, including 20px padding on each side for small devices */
     box-sizing: border-box;
+    margin: 10px; /* Adjust the margin as needed */
+    width: calc(50% - 20px); /* Adjust size for 2 items per row with margin */
 }
 
 .gallery-item img {
@@ -105,20 +105,15 @@
     display: block; /* Remove default inline behavior */
 }
 
-.caption {
-    text-align: center;
-    margin-top: 5px;
+@media (min-width: 768px) {
+    .gallery-item {
+        width: calc(33.333% - 20px); /* Adjust width for 3 items per row with margin */
+    }
 }
 
-/* Styles for larger devices */
-@media (min-width: 768px) { /* Adjust this breakpoint as needed */
-    .gallery {
-        margin: -20px -100px; /* Set negative margin to align gallery edges with container */
-    }
-    .gallery-item {
-        padding: 20px 100px; /* Set horizontal padding to 100px for larger devices */
-        flex: 1 0 calc(33.333% - 240px); /* Adjust width for the 100px padding on each side */
-    }
+/* Make sure the first page is visible when the page loads */
+#page-1 {
+    display: flex;
 }
 
       
@@ -310,31 +305,38 @@
 
 
 <div class="gallery">
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A tranquil beach scene">
-        <div class="caption">A tranquil beach scene</div>
+    <!-- Page 1 -->
+    <div class="gallery-page" id="page-1">
+        <!-- Photo 1 -->
+        <div class="gallery-item"><img src="path-to-photo-1.jpg" alt="Description of Photo 1"></div>
+        <!-- Photo 2 -->
+        <div class="gallery-item"><img src="path-to-photo-2.jpg" alt="Description of Photo 2"></div>
+        <!-- Photo 3 -->
+        <div class="gallery-item"><img src="path-to-photo-3.jpg" alt="Description of Photo 3"></div>
+        <!-- Photo 4 -->
+        <div class="gallery-item"><img src="path-to-photo-4.jpg" alt="Description of Photo 4"></div>
+        <!-- Photo 5 -->
+        <div class="gallery-item"><img src="path-to-photo-5.jpg" alt="Description of Photo 5"></div>
     </div>
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A bustling cityscape">
-        <div class="caption">A bustling cityscape</div>
+
+    <!-- Page 2 -->
+    <div class="gallery-page" id="page-2" style="display: none;">
+        <!-- Photo 6 -->
+        <div class="gallery-item"><img src="path-to-photo-6.jpg" alt="Description of Photo 6"></div>
+        <!-- Photo 7 -->
+        <div class="gallery-item"><img src="path-to-photo-7.jpg" alt="Description of Photo 7"></div>
+        <!-- Photo 8 -->
+        <div class="gallery-item"><img src="path-to-photo-8.jpg" alt="Description of Photo 8"></div>
+        <!-- Photo 9 -->
+        <div class="gallery-item"><img src="path-to-photo-9.jpg" alt="Description of Photo 9"></div>
+        <!-- Photo 10 -->
+        <div class="gallery-item"><img src="path-to-photo-10.jpg" alt="Description of Photo 10"></div>
     </div>
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A serene mountain landscape">
-        <div class="caption">A serene mountain landscape</div>
-    </div>
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A night sky full of stars">
-        <div class="caption">A night sky full of stars</div>
-    </div>
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A close-up of autumn leaves">
-        <div class="caption">A close-up of autumn leaves</div>
-    </div>
-    <div class="gallery-item">
-        <img src="https://via.placeholder.com/1280x720" alt="A vibrant coral reef under water">
-        <div class="caption">A vibrant coral reef under water</div>
-    </div>
-    <!-- Add more gallery-item divs as needed -->
+</div>
+
+<div class="pagination">
+    <span class="page-item"><a class="page-link" href="#" onclick="showPage(1);">1</a></span>
+    <span class="page-item"><a class="page-link" href="#" onclick="showPage(2);">2</a></span>
 </div>
   
 <br>
@@ -431,6 +433,26 @@
         var langSwitch = document.getElementById('lang-switch');
         langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
     }
+
+function showPage(pageNumber) {
+  // Hide all gallery pages
+  var pages = document.getElementsByClassName('gallery-page');
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].style.display = 'none';
+  }
+
+  // Show the selected page
+  var selectedPage = document.getElementById('page-' + pageNumber);
+  if (selectedPage) {
+    selectedPage.style.display = 'flex'; // Assuming you're using flexbox
+  }
+}
+
+// Optional: Initialize the gallery by showing the first page
+window.onload = function() {
+  showPage(1);
+};
+  
 </script>
 
 </body>
