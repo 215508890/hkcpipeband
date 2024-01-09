@@ -85,6 +85,30 @@
   max-height: 130px; /* Adjust the size as needed */
 }
 }
+
+/* At the end of your existing CSS */
+@media (min-width: 768px) {
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the content */
+        gap: 20px; /* Add space between image and text */
+    }
+
+    .content-image{
+        margin: 10px 0; /* Margin for top and bottom */
+    },
+    .content-text {
+        margin: 10px 0; /* Margin for top and bottom */
+    }
+}
+
+@media (max-width: 767px) {
+    .content-image,
+    .content-text {
+        margin: 10px; /* Margin on all sides for smaller devices */
+    }
+}
         
         .content {
             margin: 20px; /* Margin from the boundary */
@@ -272,10 +296,18 @@
     </nav>
 </header>
 
-    <div class="content" id="the-band">
+    <div class="content-wrapper" id="the-band">
+    <!-- Image on the left -->
+    <div class="content-image">
+        <img src="path-to-your-image.jpg" alt="Image description" style="max-width: 100%;">
+    </div>
+
+    <!-- Text on the right -->
+    <div class="content-text">
         <h2>The Band</h2>
         <p>Experience the stirring sounds of our traditional pipe band, bringing the spirit of Scotland to Hong Kong.</p>
     </div>
+</div>
 
 <footer>
 <footer class="site-footer">
