@@ -116,6 +116,50 @@
     display: flex;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-link {
+    margin: 0 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    text-decoration: underline;
+}
+
+#lightbox {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-image {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
       
       .menu-controls {
   display: flex;
@@ -304,39 +348,56 @@
 </header>
 
 
+
 <div class="gallery">
     <!-- Page 1 -->
     <div class="gallery-page" id="page-1">
         <!-- Photo 1 -->
-        <div class="gallery-item"><img src="path-to-photo-1.jpg" alt="Description of Photo 1"></div>
+        <div class="gallery-item"><img src="path-to-photo-1.jpg" alt="Description of Photo 1" onclick="openLightbox(this.src);"></div>
         <!-- Photo 2 -->
-        <div class="gallery-item"><img src="path-to-photo-2.jpg" alt="Description of Photo 2"></div>
+        <div class="gallery-item"><img src="path-to-photo-2.jpg" alt="Description of Photo 2" onclick="openLightbox(this.src);"></div>
         <!-- Photo 3 -->
-        <div class="gallery-item"><img src="path-to-photo-3.jpg" alt="Description of Photo 3"></div>
+        <div class="gallery-item"><img src="path-to-photo-3.jpg" alt="Description of Photo 3" onclick="openLightbox(this.src);"></div>
         <!-- Photo 4 -->
-        <div class="gallery-item"><img src="path-to-photo-4.jpg" alt="Description of Photo 4"></div>
+        <div class="gallery-item"><img src="path-to-photo-4.jpg" alt="Description of Photo 4" onclick="openLightbox(this.src);"></div>
         <!-- Photo 5 -->
-        <div class="gallery-item"><img src="path-to-photo-5.jpg" alt="Description of Photo 5"></div>
+        <div class="gallery-item"><img src="path-to-photo-5.jpg" alt="Description of Photo 5" onclick="openLightbox(this.src);"></div>
+        <!-- Photo 6 -->
+        <div class="gallery-item"><img src="path-to-photo-6.jpg" alt="Description of Photo 6" onclick="openLightbox(this.src);"></div>
     </div>
 
     <!-- Page 2 -->
     <div class="gallery-page" id="page-2" style="display: none;">
-        <!-- Photo 6 -->
-        <div class="gallery-item"><img src="path-to-photo-6.jpg" alt="Description of Photo 6"></div>
         <!-- Photo 7 -->
-        <div class="gallery-item"><img src="path-to-photo-7.jpg" alt="Description of Photo 7"></div>
+        <div class="gallery-item"><img src="path-to-photo-7.jpg" alt="Description of Photo 7" onclick="openLightbox(this.src);"></div>
         <!-- Photo 8 -->
-        <div class="gallery-item"><img src="path-to-photo-8.jpg" alt="Description of Photo 8"></div>
+        <div class="gallery-item"><img src="path-to-photo-8.jpg" alt="Description of Photo 8" onclick="openLightbox(this.src);"></div>
         <!-- Photo 9 -->
-        <div class="gallery-item"><img src="path-to-photo-9.jpg" alt="Description of Photo 9"></div>
+        <div class="gallery-item"><img src="path-to-photo-9.jpg" alt="Description of Photo 9" onclick="openLightbox(this.src);"></div>
         <!-- Photo 10 -->
-        <div class="gallery-item"><img src="path-to-photo-10.jpg" alt="Description of Photo 10"></div>
+        <div class="gallery-item"><img src="path-to-photo-10.jpg" alt="Description of Photo 10" onclick="openLightbox(this.src);"></div>
+        <!-- Photo 11 -->
+        <div class="gallery-item"><img src="path-to-photo-11.jpg" alt="Description of Photo 11" onclick="openLightbox(this.src);"></div>
+        <!-- Photo 12 (assuming this was intended to be a different photo than the one on page 1) -->
+        <div class="gallery-item"><img src="path-to-photo-12.jpg" alt="Description of Photo 12" onclick="openLightbox(this.src);"></div>
     </div>
 </div>
 
-<div class="pagination">
-    <span class="page-item"><a class="page-link" href="#" onclick="showPage(1);">1</a></span>
-    <span class="page-item"><a class="page-link" href="#" onclick="showPage(2);">2</a></span>
+
+
+<!-- Pagination -->
+<div class="pagination" style="text-align: center;">
+    <a class="page-link" href="#" onclick="changePage(-1);">Previous</a>
+    <a class="page-link" href="#" onclick="showPage(1);">1</a>
+    <a class="page-link" href="#" onclick="showPage(2);">2</a>
+    <!-- ... more page links as needed -->
+    <a class="page-link" href="#" onclick="changePage(1);">Next</a>
+</div>
+
+<!-- Lightbox Container -->
+<div id="lightbox" onclick="closeLightbox();" style="display:none;">
+    <img id="lightbox-image" />
+    <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
 </div>
   
 <br>
@@ -434,23 +495,38 @@
         langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
     }
 
-function showPage(pageNumber) {
-  // Hide all gallery pages
-  var pages = document.getElementsByClassName('gallery-page');
-  for (var i = 0; i < pages.length; i++) {
-    pages[i].style.display = 'none';
-  }
+var currentPage = 1;
+var totalPages = 2; // Set to the actual number of pages you have
 
-  // Show the selected page
-  var selectedPage = document.getElementById('page-' + pageNumber);
-  if (selectedPage) {
-    selectedPage.style.display = 'flex'; // Assuming you're using flexbox
-  }
+function showPage(pageNumber) {
+    if (pageNumber < 1 || pageNumber > totalPages) {
+        return; // Out of range
+    }
+    currentPage = pageNumber;
+    var pages = document.getElementsByClassName('gallery-page');
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = 'none'; // Hide all pages
+    }
+    document.getElementById('page-' + pageNumber).style.display = 'flex'; // Show the selected page
 }
 
-// Optional: Initialize the gallery by showing the first page
+function changePage(step) {
+    showPage(currentPage + step);
+}
+
+function openLightbox(imageSrc) {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImage = document.getElementById('lightbox-image');
+    lightboxImage.src = imageSrc;
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+}
+
 window.onload = function() {
-  showPage(1);
+    showPage(currentPage);
 };
   
 </script>
