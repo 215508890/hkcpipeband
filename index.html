@@ -410,39 +410,49 @@
     };
 
     // Function to toggle the language of content sections
-
 function toggleLanguage() {
-    var currentLang = localStorage.getItem('preferredLang') || 'en'; // Set default to 'en'
+    // Get the current language from the document or default to English
+    var currentLang = document.documentElement.lang || 'en';
+    // Determine the new language based on the current language
     var newLang = currentLang === 'en' ? 'zh' : 'en';
-
-    // Store the new preference in localStorage
-    localStorage.setItem('preferredLang', newLang);
 
     // Update the page's language attribute
     document.documentElement.lang = newLang;
 
+    // Store the new preference in localStorage
+    localStorage.setItem('preferredLang', newLang);
+
     // Update the text content of content sections based on the new language
-    for (var sectionId in languageTexts[newLang]) {
-        if (languageTexts[newLang].hasOwnProperty(sectionId)) {
+    updateContentToLanguage(newLang);
+
+    // Update the language switch button text to indicate the language that will be switched to if clicked
+    updateLanguageSwitchButton(newLang);
+}
+
+function updateContentToLanguage(lang) {
+    for (var sectionId in languageTexts[lang]) {
+        if (languageTexts[lang].hasOwnProperty(sectionId)) {
             var section = document.getElementById(sectionId);
             if (section) {
-                section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
-                section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
+                section.querySelector('h2').textContent = languageTexts[lang][sectionId].heading;
+                section.querySelector('p').textContent = languageTexts[lang][sectionId].description;
             }
         }
     }
+}
 
-    // Update the language switch button text
+function updateLanguageSwitchButton(lang) {
     var langSwitch = document.getElementById('lang-switch');
-    langSwitch.textContent = newLang === 'zh' ? '中/Eng' : 'Eng/中';
+    langSwitch.textContent = lang === 'en' ? 'Eng/中' : '中/Eng';
 }
 
 function applyPreferredLanguage() {
     var preferredLang = localStorage.getItem('preferredLang') || 'en'; // Set default to 'en'
-    // Set the initial language without toggling if it's already English
-    if (preferredLang !== 'en') {
-        toggleLanguage();
-    }
+    document.documentElement.lang = preferredLang; // Set the language of the document
+
+    // Update the text content and button label to match the preferred language
+    updateContentToLanguage(preferredLang);
+    updateLanguageSwitchButton(preferredLang);
 }
 
 // Event listener for the language switch button
@@ -450,6 +460,7 @@ document.getElementById('lang-switch').addEventListener('click', toggleLanguage)
 
 // Initialize the language on page load
 document.addEventListener('DOMContentLoaded', applyPreferredLanguage);
+
 
 </script>
 
