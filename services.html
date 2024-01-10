@@ -409,7 +409,7 @@
   <div class="service-offerings">
        <section id="service-offerings">
   <h2>Service Offerings</h2>
-  <p>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event:</p>
+  <p1>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event:</p1>
   <ul>
     <li><strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.</li>
     <li><strong>Galas:</strong> Add a touch of sophistication to your evening events with our elegant pipe tunes.</li>
@@ -419,7 +419,7 @@
     <li><strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.</li>
     <li><strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.</li>
   </ul>
-  <p>For those seeking a tailored experience or specific event format, we are more than happy to accommodate custom requests. Our team is prepared to work closely with you to ensure your event's musical needs are met with precision and grace. Please <a href="contact.html">contact us</a> to discuss how we can customize our services to create an unforgettable atmosphere for your event.</p>
+  <p>For those seeking a tailored experience or specific event format, we are more than happy to accommodate custom requests. Our team is prepared to work closely with you to ensure your event's musical needs are met with precision and grace. Please contact us to discuss how we can customize our services to create an unforgettable atmosphere for your event.</p>
 </section>
             
             
@@ -541,38 +541,79 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
 
     // Object containing language text for content sections
     var languageTexts = {
-        'en': {
-            'the-band': {
-                'heading': 'The Band',
-                'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
-            }
-            // ... other content sections in English
-        },
-        'zh': {
-            'the-band': {
-                'heading': '笛勢山河',
-                'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
-            }
-            // ... other content sections in Chinese
-        }
-    };
+  'en': {
+    'service-offerings': {
+      'heading': 'Service Offerings',
+      'introduction': 'Elevate your occasion with the City of Hong Kong Pipe Band\'s array of services, each designed to add a special note to your event:',
+      'list': [
+        '<strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.',
+        '<strong>Galas:</strong> Add a touch of sophistication to your evening events with our elegant pipe tunes.',
+        '<strong>Anniversaries:</strong> Celebrate milestones with the timeless sound of our music, marking each year with tradition.',
+        '<strong>Festivals:</strong> Bring joy and festivity to your celebrations with our upbeat and lively performances.',
+        '<strong>Business Promotions:</strong> Make your brand stand out with the unique backdrop of our bagpipe melodies.',
+        '<strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.',
+        '<strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.'
+      ],
+      'closing': 'For those seeking a tailored experience or specific event format, we are more than happy to accommodate custom requests. Our team is prepared to work closely with you to ensure your event\'s musical needs are met with precision and grace. Please contact us to discuss how we can customize our services to create an unforgettable atmosphere for your event.'
+    }
+    // ... other content sections in English
+  },
+  'zh': {
+  'service-offerings': {
+    'heading': '服務範疇',
+    'introduction': '預訂香港城市風笛隊的多元服務，讓您的活動更添特色：',
+    'list': [
+      '<strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶。',
+      '<strong>晚宴：</strong>我們優雅的風笛曲調為您的晚宴活動添上一抹高雅。',
+      '<strong>週年紀念：</strong>以我們永恆的音樂聲慶祝里程碑，用傳統標記每一年。',
+      '<strong>典慶：</strong>我們活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛。',
+      '<strong>商業推廣：</strong>用我們獨特的風笛旋律讓您的品牌脫穎而出。',
+      '<strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美的基調。',
+      '<strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。'
+    ],
+    'closing': '對於尋求量身定制體驗或特定活動形式的客戶，我們非常樂意滿足客製化的要求。我們的團隊準備與您緊密合作，確保您的活動需求能夠精準地得到滿足。請聯繫我們，定制我們的服務，為您的活動創造難忘的氛圍。'
+  }
+  // ... 其他中文內容部分
+}
+};
 
     // Function to toggle the language of content sections
-    function toggleLanguage() {
-        var currentLang = document.documentElement.lang;
-        var newLang = currentLang === 'zh' ? 'en' : 'zh';
-        document.documentElement.lang = newLang;
+function toggleLanguage() {
+    var currentLang = document.documentElement.lang;
+    var newLang = currentLang === 'zh' ? 'en' : 'zh';
+    document.documentElement.lang = newLang;
 
-        // Update the text content of content sections based on the new language
-        for (var sectionId in languageTexts[newLang]) {
-            if (languageTexts[newLang].hasOwnProperty(sectionId)) {
-                var section = document.getElementById(sectionId);
-                if (section) {
-                    section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
-                    section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
+    // Update the text content of content sections based on the new language
+    for (var sectionId in languageTexts[newLang]) {
+        if (languageTexts[newLang].hasOwnProperty(sectionId)) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                // Update the heading
+                section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
+
+                // Update the introduction paragraph
+                var introParagraph = section.querySelector('p1');
+                introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction; // Use innerHTML to allow HTML within the text
+
+                // Update the list, if present
+                var list = section.querySelector('ul');
+                if (list) {
+                    list.innerHTML = ''; // Clear existing list items
+                    languageTexts[newLang][sectionId].list.forEach(function (itemHtml) {
+                        var listItem = document.createElement('li');
+                        listItem.innerHTML = itemHtml; // Use innerHTML to allow HTML within the list items
+                        list.appendChild(listItem);
+                    });
+                }
+
+                // Update the closing paragraph, if present
+                var closingParagraph = section.querySelectorAll('p')[1]; // Assuming it's the second paragraph
+                if (closingParagraph) {
+                    closingParagraph.innerHTML = languageTexts[newLang][sectionId].closing;
                 }
             }
         }
+    }
 
         // Update the language switch button text
         var langSwitch = document.getElementById('lang-switch');
