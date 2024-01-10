@@ -388,19 +388,19 @@
   <div class="contact-item" id= "email">
     <h2 style="text-align: left;">Email Us</h2>
     <p>For booking, hiring, or general inquiries, email us directly and we'll get back to you promptly.</p>
-    <a href="mailto:your-email@example.com">Send Email</a>
+    <a href="mailto:your-email@example.com" class="call-to-action">Send Email</a>
   </div>
   
   <div class="contact-item" id= "social-media">
     <h2 style="text-align: left;">Connect on Facebook</h2>
     <p>Join our community and stay up to date with our latest news on our Facebook page.</p>
-    <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Visit Facebook Page</a>
+    <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank" class="call-to-action">Visit Facebook Page</a>
   </div>
   
   <div class="contact-item" id= "messenger">
     <h2 style="text-align: left;">Message Us on Facebook Messenger</h2>
     <p>For quick queries, send us a message on Facebook Messenger.</p>
-    <a href="https://m.me/citypipeband" target="_blank">Send a Message</a>
+    <a href="https://m.me/citypipeband" target="_blank" class="call-to-action">Send a Message</a>
   </div>
 
 <br>
@@ -519,6 +519,9 @@ var languageTexts = {
                     section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
                     section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
                 }
+                if(section.querySelector('.call-to-action')) { // Assuming '.call-to-action' is the class of your CTA element
+    section.querySelector('.call-to-action').textContent = languageTexts[newLang][sectionId]['call-to-action'];
+}
             }
         }
 
