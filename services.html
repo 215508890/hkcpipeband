@@ -25,7 +25,7 @@
             background: #f4f4f4;
             color: #333;
             margin: 0;
-            padding: 20px; /* margin for small devices */
+            padding: 0px; /* margin for small devices */
         }
 
         header {
@@ -91,53 +91,6 @@
 }
 
    
-@media (min-width: 768px) {
-    .content-wrapper {
-        display: flex;
-        align-items: center; /* Vertically center the content */
-        justify-content: space-between; /* Put maximum space between text and image */
-    }
-
-    .content-image {
-        flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
-        width: 400px; /* Desired width for the image */
-      margin-top: 20px;
-      margin-right: 20px;
-      margin-bottom: 20px;
-      margin-left: 100px; /* Margin to the left of the image */
-        /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
-    }
-
-    .content-text {
-        flex-grow: 1; /* Allow text container to grow, but it will not push the image */
-      margin-right: 100px;  
-      padding-right: 20px; /* Padding to ensure text doesn't touch the image */
-        text-align: justify; /* Justify text for tidy alignment */
-    }
-}
-
-@media (max-width: 767px) {
-    .content-wrapper {
-        display: block; /* Stack the image and text on smaller screens */
-    }
-
-    .content-image {
-        width: 80%; /* Responsive width for the image */
-        margin: 20px ; /* Center the image with automatic horizontal margins */
-        display: block; /* Ensures the image is treated as a block-level element */
-        /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
-    }
-
-    .content-text {
-        margin: 20px; /* Consistent margin for the text */
-        text-align: justify; /* Justify text for tidy alignment */
-    }
-}
-
-.content {
-    margin: 20px; /* Margin from the boundary */
-}
-
       
         .menu-controls {
   display: flex;
