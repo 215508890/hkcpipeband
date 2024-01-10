@@ -298,7 +298,8 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
+            margin: 20px;
+            width: 80%; /* Responsive width for the image */
         }
         
         .plan h2 {
@@ -332,7 +333,12 @@
             
             .plan img {
                 flex-basis: 40%; /* image takes up 40% of the card */
-                margin: 0 20px; /* add some space between image and text */
+                flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
+                width: 400px; /* Desired width for the image */
+                margin-top: 20px;
+                margin-right: 20px;
+                margin-bottom: 20px;
+                margin-left: 100px;
             }
             
             .plan p {
