@@ -297,18 +297,13 @@
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 20px auto;
+    margin: 0 auto;
     width: auto;
 }
 
 .plan h2 {
     color: #333;
-    margin: 0 0 20px;
-    /* Ensure the title doesn't exceed a specific width to keep text short */
-    max-width: 60%; /* Adjust this value as needed to control the title width */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin: 0 0 20px; /* Gap between title and description */
 }
 
 /* Styles for large devices */
@@ -316,7 +311,8 @@
     .service-plans h1,
     .service-plans p {
         text-align: left;
-        margin: 0 100px;
+        margin-left: 100px; /* Align with the title */
+        margin-right: 100px;
     }
 
     .plan {
@@ -325,7 +321,7 @@
         justify-content: flex-start;
         padding: 20px;
         margin: 20px 100px;
-        border: 1px solid #ddd; 
+        border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -333,21 +329,20 @@
     .plan img {
         max-width: 100%;
         height: auto;
-        width: 200px;
-        margin: 0 20px 0 0;
+        width: 400px; /* Fixed width for consistency */
+        margin-right: 20px; /* Gap between image and description */
     }
     
     .plan h2 {
-        /* Reset properties for large screens */
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
+        /* Set a fixed width to maintain consistency across all titles */
+        width: 25%; /* Adjust this percentage based on your layout/design */
+        margin-right: 20px; /* Gap between title and description */
     }
     
     .plan p {
         flex: 1;
         margin: 0;
-        padding-right: 20px;
+        padding: 0 20px; /* Add padding if needed */
     }
 }
 
