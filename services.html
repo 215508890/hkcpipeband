@@ -22,10 +22,10 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background: #f4f4f4;
             color: #333;
+            margin: 0;
+            padding: 20px; /* margin for small devices */
         }
 
         header {
@@ -303,17 +303,18 @@
         .service-plans {
             max-width: 1200px;
             margin: auto;
-            padding: 20px;
+            padding: 0;
         }
         
         .service-plans h1,
         .service-plans p {
             text-align: center;
+            margin: 0 0 20px;
         }
         
         .plan {
             background: #fff;
-            margin: 20px 0;
+            margin-bottom: 20px;
             border: 1px solid #ddd;
             padding: 20px;
         }
@@ -327,14 +328,40 @@
         
         .plan h2 {
             color: #333;
-            margin-top: 0;
+            margin: 0 0 10px;
         }
 
-        @media (min-width: 600px) {
+        /* Styles for large devices */
+        @media (min-width: 768px) {
+            body {
+                padding: 0 100px; /* margin for large devices */
+            }
+            
+            .service-plans h1,
+            .service-plans p {
+                text-align: left;
+                margin-left: 100px; /* extra margin for title and description */
+                margin-right: 100px;
+            }
+
             .plan {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                padding: 20px;
+            }
+            
+            .plan img {
+                flex-basis: 40%; /* image takes up 40% of the card */
+                margin: 0 20px; /* add some space between image and text */
+            }
+            
+            .plan p {
+                flex-basis: 60%; /* text takes up 60% of the card */
+                padding-right: 20px;
+            }
+        }
+        
   
     </style>
 </head>
