@@ -269,7 +269,7 @@
 
 
         
-        .service-plans {
+    .service-plans {
     max-width: 1200px;
     margin: auto;
     padding: 0;
@@ -297,13 +297,18 @@
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 20px auto; /* Center image */
-    width: auto; /* Let the image be responsive */
+    margin: 20px auto;
+    width: auto;
 }
 
 .plan h2 {
     color: #333;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
+    /* Ensure the title doesn't exceed a specific width to keep text short */
+    max-width: 60%; /* Adjust this value as needed to control the title width */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Styles for large devices */
@@ -311,32 +316,38 @@
     .service-plans h1,
     .service-plans p {
         text-align: left;
-        margin: 0 100px; /* extra margin for title and description */
+        margin: 0 100px;
     }
 
     .plan {
         display: flex;
         align-items: center;
-        justify-content: center; /* Center the items in flex container */
+        justify-content: flex-start;
         padding: 20px;
-        margin: 20px 100px; /* Consistent horizontal margin */
+        margin: 20px 100px;
         border: 1px solid #ddd; 
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: justify;
     }
     
     .plan img {
         max-width: 100%;
-        max-height: auto; /* Ensure the image is not too tall */
-        width: 200px; /* Max width for the image */
-        margin: 20px; /* Adjust margin as needed */
+        height: auto;
+        width: 200px;
+        margin: 0 20px 0 0;
+    }
+    
+    .plan h2 {
+        /* Reset properties for large screens */
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
     }
     
     .plan p {
-        flex: 1; /* Allows the text to fill the remaining space */
-        margin-right: 20px; /* Spacing between text and image */
-        padding-right: 20px; /* Padding for the text */
+        flex: 1;
+        margin: 0;
+        padding-right: 20px;
     }
 }
 
