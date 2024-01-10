@@ -89,25 +89,36 @@
 .gallery-page {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* This can be adjusted to 'center' or 'flex-start' as per design */
+    justify-content: space-between; /* Adjust based on design */
     display: none; /* Initiate with all pages hidden */
 }
 
 .gallery-item {
     box-sizing: border-box;
     margin: 10px; /* Adjust the margin as needed */
-    width: calc(50% - 20px); /* Adjust size for 2 items per row with margin */
+    width: calc(50% - 40px); /* Subtracts total margin (20px left + 20px right) from width */
 }
 
 .gallery-item img {
     width: 100%;
     height: auto;
-    display: block; /* Remove default inline behavior */
+    display: block;
 }
 
+/* Small devices */
+@media (max-width: 767px) {
+    .gallery-item {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* Big devices */
 @media (min-width: 768px) {
     .gallery-item {
-        width: calc(33.333% - 20px); /* Adjust width for 3 items per row with margin */
+        width: calc(33.333% - 200px); /* Adjust width for 3 items per row with margin */
+        margin-left: 100px;
+        margin-right: 100px;
     }
 }
 
@@ -115,6 +126,7 @@
 #page-1 {
     display: flex;
 }
+
 
 .pagination {
     display: flex;
