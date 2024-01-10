@@ -380,24 +380,24 @@
 </header>
 
     <div class="container1">
-  <div class="contact-item">
-    <h1 style="text-align: left;">Contact Us</h1>
+  <div class="contact-item" id= "contact-us">
+    <h2 style="text-align: left;">Contact Us</h2>
     <p>Whether you're looking to book us, hire us for a special event, or inquire about joining the band, we're excited to hear from you. Choose the method below that works best for you.</p>
   </div>
   
-  <div class="contact-item">
+  <div class="contact-item" id= "email">
     <h2 style="text-align: left;">Email Us</h2>
     <p>For booking, hiring, or general inquiries, email us directly and we'll get back to you promptly.</p>
     <a href="mailto:your-email@example.com">Send Email</a>
   </div>
   
-  <div class="contact-item">
+  <div class="contact-item" id= "social-media">
     <h2 style="text-align: left;">Connect on Facebook</h2>
     <p>Join our community and stay up to date with our latest news on our Facebook page.</p>
     <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Visit Facebook Page</a>
   </div>
   
-  <div class="contact-item">
+  <div class="contact-item" id= "messenger">
     <h2 style="text-align: left;">Message Us on Facebook Messenger</h2>
     <p>For quick queries, send us a message on Facebook Messenger.</p>
     <a href="https://m.me/citypipeband" target="_blank">Send a Message</a>
@@ -458,22 +458,52 @@
     }
 
     // Object containing language text for content sections
-    var languageTexts = {
-        'en': {
-            'the-band': {
-                'heading': 'The Band',
-                'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
-            }
-            // ... other content sections in English
+var languageTexts = {
+    'en': {
+        "contact-us": {
+            "heading": "Get in Touch",
+            "description": "We'd love to hear from you! Whether you have a question about our music, are interested in booking us for an event, or just want to say hello, feel free to drop us a line. Our team is ready to provide you with all the information you need to bring the stirring sound of the City of Hong Kong Pipe Band to your special occasion."
         },
-        'zh': {
-            'the-band': {
-                'heading': '笛勢山河',
-                'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
-            }
-            // ... other content sections in Chinese
+        "email": {
+            "heading": "Email Us",
+            "description": "For inquiries and booking details, reach out to us at citypipeband@yahoo.com",
+            "call-to-action": "Send Email"
+        },
+        "social-media": {
+            "heading": "Connect on Social Media",
+            "description": "Stay updated with our latest news and events by following us on Facebook. Share your moments with us and join our growing community.",
+            "call-to-action": "Visit Facebook Page"
+        },
+        "messenger": {
+            "heading": "Message Us on Facebook Messenger",
+            "description": "For quick queries, send us a message on Facebook Messenger.",
+            "call-to-action": "Send a Message"
         }
-    };
+        // ... other content sections in English
+    },
+    'zh': {
+        "contact-us": {
+            "heading": "聯繫我們",
+            "description": "我們很樂意聽到您的聲音！無論您對我們的音樂有何問題，有興趣預訂我們的演出，還是只是想打個招呼，隨時給我們留言。我們的團隊隨時準備提供您所需的資訊，將香港城市風笛樂隊那激動人心的聲音帶到您的特殊場合。"
+        },
+        "email": {
+            "heading": "給我們發電子郵件",
+            "description": "有關查詢和預訂詳情，請通過citypipeband@yahoo.com與我們聯繫",
+            "call-to-action": "發送電子郵件"
+        },
+        "social-media": {
+            "heading": "在社交媒體上聯繫",
+            "description": "通過在Facebook上關注我們來獲取我們的最新新聞和活動信息。與我們分享您的時刻，加入我們不斷壯大的社區。",
+            "call-to-action": "訪問Facebook頁面"
+        },
+        "messenger": {
+            "heading": "通過Facebook Messenger給我們發消息",
+            "description": "快速查詢，請通過Facebook Messenger給我們發送消息。",
+            "call-to-action": "發送消息"
+        }
+        // ... other content sections in Chinese
+    }
+};
 
     // Function to toggle the language of content sections
     function toggleLanguage() {
