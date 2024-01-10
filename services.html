@@ -360,14 +360,19 @@
 }
 
 #facebook-video {
-  margin: auto; /* Centering the video */
+  position: relative; /* Establishes containing block for positioning inner iframe */
   overflow: hidden; /* Ensuring no scrollbars appear */
+  padding-top: 56.25%; /* Aspect ratio padding for 16:9 (100%/16*9) */
+  margin: auto; /* Centering the video */
   border-radius: 8px; /* Rounded corners for the iframe */
-  line-height: 0; /* Removes extra space below the iframe */
 }
 
 #facebook-video iframe {
-  max-width: 100%; /* Ensures the video is responsive and does not overflow its container */
+  position: absolute; /* Absolute positioning inside the relative container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Responsive width */
+  height: 100%; /* Responsive height */
   border: none; /* Removes the border from the iframe */
 }
         
