@@ -333,6 +333,36 @@
             }
         }
         
+        #service-demo-container {
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Space inside the container */
+  margin: 20px auto; /* Centering the container */
+  max-width: 600px; /* Maximum width of the container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #fff; /* White background */
+  text-align: center; /* Centering the text */
+}
+
+.service-demo-title {
+  margin-bottom: 20px; /* Space below the title */
+  color: #333; /* Dark text color for readability */
+  font-family: Arial, sans-serif; /* Font family */
+  font-size: 24px; /* Size of the title text */
+}
+
+#facebook-video {
+  margin: auto; /* Centering the video */
+  overflow: hidden; /* Ensuring no scrollbars appear */
+  border-radius: 8px; /* Rounded corners for the iframe */
+  line-height: 0; /* Removes extra space below the iframe */
+}
+
+#facebook-video iframe {
+  max-width: 100%; /* Ensures the video is responsive and does not overflow its container */
+  border: none; /* Removes the border from the iframe */
+}
+        
   
     </style>
 </head>
@@ -383,7 +413,14 @@
         <section id="service-plans">
   <h2>Explore Our Service Plans</h2>
   <p>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p>
-  
+
+<div id="service-demo-container">
+  <h2 class="service-demo-title">Service Demonstration</h2>
+  <div id="facebook-video">
+    <iframe src="https://www.facebook.com/plugins/video.php?height=316&href=https%3A%2F%2Fwww.facebook.com%2Fcitypipeband%2Fvideos%2F2807165972673128%2F&show_text=true&width=560&t=0" width="560" height="431" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+  </div>
+</div>
+
   <!-- Here you would place the details of each service plan -->
   
 </section>
