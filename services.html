@@ -270,81 +270,76 @@
 
         
         .service-plans {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0;
-        }
-        
-        .service-plans h1,
-        .service-plans p {
-            text-align: center;
-            margin: 0 0 20px;
-        }
-        
-        .plan {
-            background: #fff;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            border: 1px solid #ddd; 
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: justify;
-        }
-        
-        .plan img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px;
-            width: 80%; /* Responsive width for the image */
-        }
-        
-        .plan h2 {
-            color: #333;
-            margin: 0 0 10px;
-        }
+    max-width: 1200px;
+    margin: auto;
+    padding: 0;
+}
 
-        /* Styles for large devices */
-        @media (min-width: 768px) {
-            
-            
-            .service-plans h1,
-            .service-plans p {
-                text-align: left;
-                margin-left: 100px; /* extra margin for title and description */
-                margin-right: 100px;
-            }
+.service-plans h1,
+.service-plans p {
+    text-align: center;
+    margin: 0 0 20px;
+}
 
-            .plan {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 20px;
-                margin-left: 100px;
-                margin-right: 100px;
-                border: 1px solid #ddd; 
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                text-align: justify;
-            }
-            
-            .plan img {
-                flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
-                width: 400px; /* Desired width for the image */
-                margin-top: 20px;
-                margin-right: 20px;
-                margin-bottom: 20px;
-                margin-left: 100px;
-            }
-            
-            .plan p {
-                flex-basis: 60%; /* text takes up 60% of the card */
-                padding-right: 20px;
-            }
-        }
+.plan {
+    background: #fff;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+.plan img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Center image */
+    width: auto; /* Let the image be responsive */
+}
+
+.plan h2 {
+    color: #333;
+    margin: 0 0 10px;
+}
+
+/* Styles for large devices */
+@media (min-width: 768px) {
+    .service-plans h1,
+    .service-plans p {
+        text-align: left;
+        margin: 0 100px; /* extra margin for title and description */
+    }
+
+    .plan {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the items in flex container */
+        padding: 20px;
+        margin: 20px 100px; /* Consistent horizontal margin */
+        border: 1px solid #ddd; 
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: justify;
+    }
+    
+    .plan img {
+        max-width: 100%;
+        max-height: auto; /* Ensure the image is not too tall */
+        width: 400px; /* Max width for the image */
+        margin: 20px; /* Adjust margin as needed */
+    }
+    
+    .plan p {
+        flex: 1; /* Allows the text to fill the remaining space */
+        margin-right: 20px; /* Spacing between text and image */
+        padding-right: 20px; /* Padding for the text */
+    }
+}
+
         
         #service-demo-container {
   border: 1px solid #ddd; /* Light grey border */
