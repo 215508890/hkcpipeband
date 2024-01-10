@@ -20,8 +20,12 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
         }
 
         header {
@@ -293,6 +297,44 @@
   border-top: 1px solid #474747;
   padding-top: 20px;
 }
+
+
+        
+        .service-plans {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        .service-plans h1,
+        .service-plans p {
+            text-align: center;
+        }
+        
+        .plan {
+            background: #fff;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+        
+        .plan img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .plan h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        @media (min-width: 600px) {
+            .plan {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
   
     </style>
 </head>
@@ -323,18 +365,41 @@
     </nav>
 </header>
 
-    <div class="content-wrapper" id="the-band">
-    <!-- Image on the left -->
-    <div class="content-image">
-        <img src="Images/index.p1.jpg" alt="Image description" style="max-width: 100%;">
-    </div>
+            
+        <!-- Duo of Pipers -->
+        <div class="plan" id="duo-pipers">
+            <h2>Duo of Pipers</h2>
+            <p>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p>
+            <!-- Replace with your image path -->
+            <img src="path-to-duo-pipers-image.jpg" alt="2 Pipers Image">
+        </div>
+        
+        <!-- Quartet of Pipers -->
+        <div class="plan" id="quartet-pipers">
+            <h2>Quartet of Pipers</h2>
+            <p>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p>
+            <!-- Replace with your image path -->
+            <img src="path-to-quartet-pipers-image.jpg" alt="4 Pipers Image">
+        </div>
+        
+        <!-- Mini Band -->
+        <div class="plan" id="mini-band">
+            <h2>Mini Band</h2>
+            <p>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p>
+            <!-- Replace with your image path -->
+            <img src="path-to-mini-band-image.jpg" alt="Mini Band Image">
+        </div>
+        
+        <!-- Full Band -->
+        <div class="plan" id="full-band">
+            <h2>Full Band</h2>
+            <p>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p>
+            <!-- Replace with your image path -->
+            <img src="path-to-full-band-image.jpg" alt="Full Band Image">
+        </div>
 
-    <!-- Text on the right -->
-    <div class="content-text">
-        <h2>The Band</h2>
-        <p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
-    </div>
-</div>
+        <p>For more details on each plan and to discuss the specific requirements for your event, please <a href="#">contact us</a>. We're excited to work with you to craft a memorable musical experience that perfectly suits your celebration.</p>
+    </section>
 
 <br>
 <br>
