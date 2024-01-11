@@ -426,7 +426,7 @@
     <li><strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.</li>
     <li><strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.</li>
   </ul>
-  <p>For those seeking a tailored experience or specific event format, we are more than happy to accommodate custom requests. Our team is prepared to work closely with you to ensure your event's musical needs are met with precision and grace. Please contact us to discuss how we can customize our services to create an unforgettable atmosphere for your event.</p>
+
 </section>
             
             
@@ -561,8 +561,7 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
         '<strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.',
         '<strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.'
       ],
-      'closing': 'For those seeking a tailored experience or specific event format, we are more than happy to accommodate custom requests. Our team is prepared to work closely with you to ensure your event\'s musical needs are met with precision and grace. Please contact us to discuss how we can customize our services to create an unforgettable atmosphere for your event.'
-    }
+         }
     // ... other content sections in English
   },
   'zh': {
@@ -578,7 +577,6 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
       '<strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美的基調。',
       '<strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。'
     ],
-    'closing': '對於尋求量身定制體驗或特定活動形式的客戶，我們非常樂意滿足客製化的要求。我們的團隊準備與您緊密合作，確保您的活動需求能夠精準地得到滿足。請聯繫我們，定制我們的服務，為您的活動創造難忘的氛圍。'
   }
   // ... 其他中文內容部分
 }
@@ -613,11 +611,7 @@ function toggleLanguage() {
                     });
                 }
 
-                // Update the closing paragraph, if present
-                var closingParagraph = section.querySelectorAll('p')[1]; // Assuming it's the second paragraph
-                if (closingParagraph) {
-                    closingParagraph.innerHTML = languageTexts[newLang][sectionId].closing;
-                }
+               
             }
         }
     }
