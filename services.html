@@ -585,7 +585,6 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
 };
 
     // Function to toggle the language of content sections
-// Function to toggle the language of content sections
 function toggleLanguage() {
     var currentLang = document.documentElement.lang;
     var newLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -601,10 +600,7 @@ function toggleLanguage() {
 
                 // Update the introduction paragraph
                 var introParagraph = section.querySelector('p1');
-                // Ensure the introduction paragraph is correctly targeted and updated
-                if (introParagraph && introParagraph.tagName.toLowerCase() === 'p') {
-                    introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction; // Use innerHTML to allow HTML within the text
-                }
+                introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction; // Use innerHTML to allow HTML within the text
 
                 // Update the list, if present
                 var list = section.querySelector('ul');
@@ -618,14 +614,13 @@ function toggleLanguage() {
                 }
 
                 // Update the closing paragraph, if present
-                var closingParagraph = section.querySelectorAll('p')[0]; // Assuming it's the first paragraph after the list
+                var closingParagraph = section.querySelectorAll('p')[1]; // Assuming it's the second paragraph
                 if (closingParagraph) {
                     closingParagraph.innerHTML = languageTexts[newLang][sectionId].closing;
                 }
             }
         }
     }
-}
 
         // Update the language switch button text
         var langSwitch = document.getElementById('lang-switch');
