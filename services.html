@@ -432,7 +432,7 @@
             
         <section id="service-plans">
   <h2>Explore Our Service Plans</h2>
-  <p>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p>
+  <p1>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p1>
 
 <div id="service-demo-container">
   <h2 class="service-demo-title">Service Demonstration</h2>
@@ -547,7 +547,7 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
     }
 
     // Object containing language text for content sections
-    var languageTexts = {
+  var languageTexts = {
   'en': {
     'service-offerings': {
       'heading': 'Service Offerings',
@@ -561,26 +561,34 @@ A lone piper stands, the echo of solitude in every note. A single melody weaves 
         '<strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.',
         '<strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.'
       ],
-         }
+    },
+    'service-plans': {
+      'heading':'Explore Our Service Plans',
+      'introduction':'Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.'
+    }
     // ... other content sections in English
   },
   'zh': {
-  'service-offerings': {
-    'heading': '服務範疇',
-    'introduction': '預訂香港城市風笛隊的多元服務，讓您的活動更添特色：',
-    'list': [
-      '<strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶。',
-      '<strong>晚宴：</strong>我們優雅的風笛曲調為您的晚宴活動添上一抹高雅。',
-      '<strong>週年紀念：</strong>以我們永恆的音樂聲慶祝里程碑，用傳統標記每一年。',
-      '<strong>典慶：</strong>我們活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛。',
-      '<strong>商業推廣：</strong>用我們獨特的風笛旋律讓您的品牌脫穎而出。',
-      '<strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美的基調。',
-      '<strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。'
-    ],
+    'service-offerings': {
+      'heading': '服務範疇',
+      'introduction': '預訂香港城市風笛隊的多元服務，讓您的活動更添特色：',
+      'list': [
+        '<strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶。',
+        '<strong>晚宴：</strong>我們優雅的風笛曲調為您的晚宴活動添上一抹高雅。',
+        '<strong>週年紀念：</strong>以我們永恆的音樂聲慶祝里程碑，用傳統標記每一年。',
+        '<strong>典慶：</strong>我們活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛。',
+        '<strong>商業推廣：</strong>用我們獨特的風笛旋律讓您的品牌脫穎而出。',
+        '<strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美的基調。',
+        '<strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。'
+      ],
+    },
+    'service-plans': {
+      'heading':'探索我們的服務計劃',
+      'introduction':'讓香港城市風笛隊為您的活動打造完美的配樂。從我們提供的服務計劃中選擇，找到符合您所需規模和氛圍的方案。每個計劃都附有一個視覺預覽，讓您能夠預想到我們能提供的氛圍。'
+    }
+    // ... 其他中文內容部分
   }
-  // ... 其他中文內容部分
-}
-};
+}; // 确保在整个对象结尾处有一个分号
 
     // Function to toggle the language of content sections
 function toggleLanguage() {
