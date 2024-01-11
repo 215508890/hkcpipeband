@@ -416,7 +416,7 @@
   <div class="service-offerings">
        <section id="service-offerings">
   <h2>Service Offerings</h2>
-  <p1>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event:</p1>
+  <p>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event:</p>
   <ul>
     <li><strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.</li>
     <li><strong>Galas:</strong> Add a touch of sophistication to your evening events with our elegant pipe tunes.</li>
@@ -432,7 +432,7 @@
             
         <section id="service-plans">
   <h2>Explore Our Service Plans</h2>
-  <p1>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p1>
+  <p>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p>
 
 <div id="service-demo-container">
   <h2 class="service-demo-title">Service Demonstration</h2>
@@ -449,7 +449,7 @@
         <!-- Solo Piper -->
         <div class="plan" id="solo-piper">
             <h2>Solo Piper</h2>
-            <p1>A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.</p1>
+            <p>A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.</p>
             <!-- Replace with your image path -->
             <img src="Images/s1.jpg" alt="1 Pipers Image">
         </div>
@@ -457,7 +457,7 @@
         <!-- Duo of Pipers -->
         <div class="plan" id="duo-pipers">
             <h2>Duo of Pipers</h2>
-            <p1>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p1>
+            <p>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p>
             <!-- Replace with your image path -->
             <img src="Images/s2.jpg" alt="2 Pipers Image">
         </div>
@@ -465,7 +465,7 @@
         <!-- Quartet of Pipers -->
         <div class="plan" id="quartet-pipers">
             <h2>Quartet of Pipers</h2>
-            <p1>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p1>
+            <p>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p>
             <!-- Replace with your image path -->
             <img src="Images/s3.jpg" alt="4 Pipers Image">
         </div>
@@ -473,7 +473,7 @@
         <!-- Mini Band -->
         <div class="plan" id="mini-band">
             <h2>Mini Band</h2>
-            <p1>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p1>
+            <p>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p>
             <!-- Replace with your image path -->
             <img src="Images/s4.jpg" alt="Mini Band Image">
         </div>
@@ -481,7 +481,7 @@
         <!-- Full Band -->
         <div class="plan" id="full-band">
             <h2>Full Band</h2>
-            <p1>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p1>
+            <p>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p>
             <!-- Replace with your image path -->
             <img src="Images/s5.jpg" alt="Full Band Image">
         </div>
@@ -643,37 +643,33 @@ function toggleLanguage() {
     document.documentElement.lang = newLang;
 
     // Update the text content of content sections based on the new language
-    for (var sectionId in languageTexts[newLang]) {
-        if (languageTexts[newLang].hasOwnProperty(sectionId)) {
-            var section = document.getElementById(sectionId);
-            if (section) {
-                // Update the heading
-                section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
+    Object.keys(languageTexts[newLang]).forEach(function (sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section) {
+            // Update the heading
+            var heading = section.querySelector('h2');
+            if (heading) heading.textContent = languageTexts[newLang][sectionId].heading;
 
-                // Update the introduction paragraph
-                var introParagraph = section.querySelector('p1');
-                introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction; // Use innerHTML to allow HTML within the text
+            // Update the introduction paragraph
+            var introParagraph = section.querySelector('p');
+            if (introParagraph) introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction;
 
-                // Update the list, if present
-                var list = section.querySelector('ul');
-                if (list) {
-                    list.innerHTML = ''; // Clear existing list items
-                    languageTexts[newLang][sectionId].list.forEach(function (itemHtml) {
-                        var listItem = document.createElement('li');
-                        listItem.innerHTML = itemHtml; // Use innerHTML to allow HTML within the list items
-                        list.appendChild(listItem);
-                    });
-                }
-
-               
+            // Update the list, if present
+            var list = section.querySelector('ul');
+            if (list && languageTexts[newLang][sectionId].list) {
+                list.innerHTML = languageTexts[newLang][sectionId].list.map(function (itemHtml) {
+                    return '<li>' + itemHtml + '</li>';
+                }).join('');
             }
         }
-    }
+    });
 
-        // Update the language switch button text
-        var langSwitch = document.getElementById('lang-switch');
-        langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
-    }
+    // Update the language switch button text
+    var langSwitch = document.getElementById('lang-switch');
+    if (langSwitch) langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
+}
+
+
 </script>
 
 </body>
