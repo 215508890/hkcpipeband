@@ -30,10 +30,12 @@
             <div class="form-group">
                 <label for="servicePlanSelect">Service Plan</label>
                 <select class="form-control" id="servicePlanSelect">
-                    <option value="">Select a plan</option>
-                    <option value="solo">Solo Plan</option>
-                    <option value="duo">Duo Plan</option>
-                    <option value="team">Team Plan</option>
+                    <option value="">Select a plan 選擇計劃</option>
+                    <option value="solo">Solo Piper 獨奏風笛手</option>
+                    <option value="duo">Duo of Pipers 風笛二重奏</option>
+                    <option value="quartet">Quartet of Pipers 風笛四重奏</option>
+                    <option value="mini">Mini Band 小型樂隊</option>
+                    <option value="full">Full Band 大型樂隊</option>
                 </select>
             </div>
         </form>
@@ -57,13 +59,15 @@ document.getElementById('downloadButton').addEventListener('click', function() {
     var selectedValue = servicePlanSelect.value;
 
     if (selectedValue === "") {
-        alert('Please select a service plan first.');
+        alert('Please select a service plan first. 請先選擇一個服務計劃。');
     } else {
         // Replace the following URL with the actual path to your PDF files
         var quotationUrls = {
             'solo': 'path/to/solo-quotation.pdf',
             'duo': 'path/to/duo-quotation.pdf',
-            'team': 'path/to/team-quotation.pdf'
+            'quartet': 'path/to/team-quotation.pdf'
+            'mini': 'path/to/team-quotation.pdf'
+            'full': 'path/to/team-quotation.pdf'
         };
 
         window.open(quotationUrls[selectedValue], '_blank');
