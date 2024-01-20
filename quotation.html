@@ -1,3 +1,70 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Plan Quotation Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+/* Button specific style */
+.get-quotation-btn {
+  display: block; /* make the button a block element to allow margin auto to work */
+  text-decoration: none;
+  color: white; /* text color is white */
+  background-color: #0077cc; /* background color is #0077cc */
+  border: 2px solid #0077cc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin: 20px auto; /* auto margins for horizontal centering */
+  text-align: center;
+  width: fit-content; /* fit the button width to its content */
+}
+
+.get-quotation-btn:hover {
+  background-color: #005fa3; /* a darker blue on hover */
+  color: white;
+}
+
+/* Ensure the button is always centered in the viewport, regardless of the screen width */
+@media (max-width: 767px) {
+  .get-quotation-btn {
+    margin: 20px auto; /* centered with automatic horizontal margins */
+  }
+}
+
+@media (min-width: 768px) {
+  .get-quotation-btn {
+    margin: 20px auto; /* centered with automatic horizontal margins */
+  }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- Trigger button for the user to open the modal -->
+<button type="button" class="get-quotation-btn" data-toggle="modal" data-target="#quotationModal">
+  Get Quotation<br>獲取報價
+</button>
+
+<!-- Modal -->
+<div class="modal" id="quotationModal" tabindex="-1" role="dialog" aria-labelledby="quotationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quotationModalLabel">Choose Your Service Plan <br>選擇您的服務計劃</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Service plan options go here -->
+        <form>
+            <div class="form-group">
                 <label for="servicePlanSelect">Service Plan 服務計劃</label>
                 <select class="form-control" id="servicePlanSelect">
                     <option value="">Select a plan 選擇計劃</option>
