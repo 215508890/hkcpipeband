@@ -389,8 +389,8 @@
 .get-quotation-btn {
   display: block; /* make the button a block element to allow margin auto to work */
   text-decoration: none;
-  color: white; /* text color is white */
-  background-color: #0077cc; /* background color is #0077cc */
+  color: #0077cc; /* text color is white */
+  background-color: white; 
   border: 2px solid #0077cc;
   padding: 10px 20px;
   border-radius: 5px;
@@ -405,19 +405,23 @@
   color: white;
 }
 
-/* Ensure the button is always centered in the viewport, regardless of the screen width */
+/* Media query for smaller devices, if needed */
 @media (max-width: 767px) {
   .get-quotation-btn {
-    margin: 20px auto; /* centered with automatic horizontal margins */
+    /* Styles for smaller devices */
   }
 }
 
+/* Enlarge button for larger devices */
 @media (min-width: 768px) {
   .get-quotation-btn {
-    margin: 20px auto; /* centered with automatic horizontal margins */
+    padding: 15px 30px; /* Larger padding for a bigger button */
+    font-size: 18px; /* Larger font size for better readability on larger devices */
+    border-radius: 8px; /* Slightly more rounded corners for aesthetic */
+    /* Margin, text-align, and width can remain the same unless you want to change those as well */
   }
 }
-
+      
 /* Floating Action Button Style */
 .freezer-btn {
   position: fixed;
