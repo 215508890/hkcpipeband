@@ -358,6 +358,42 @@
     }
 }
 
+      #lightbox {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-image {
+    max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
+    max-height: 80%;
+    margin: auto; /* This will center the image in the lightbox */
+}
+
+.lightbox-close {
+    position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the lightbox image */
+}
+
+/* Big devices with a minimum width of 768px */
+@media (min-width: 768px) {
+    #lightbox-image {
+        max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
+    }
+}
         
         #service-demo-container {
   border: 1px solid #ddd; /* Light grey border */
@@ -528,7 +564,7 @@
             <h2>Solo Piper</h2>
             <p>A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.</p>
             <!-- Replace with your image path -->
-            <img src="Images/s1.jpg" alt="1 Pipers Image">
+            <img src="Images/s1.jpg" alt="1 Pipers Image" onclick="openLightbox(this.src, this.alt);">
         </div>
   
         <!-- Duo of Pipers -->
@@ -536,7 +572,7 @@
             <h2>Duo of Pipers</h2>
             <p>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p>
             <!-- Replace with your image path -->
-            <img src="Images/s2.jpg" alt="2 Pipers Image">
+            <img src="Images/s2.jpg" alt="2 Pipers Image" onclick="openLightbox(this.src, this.alt);">
         </div>
         
         <!-- Quartet of Pipers -->
@@ -544,7 +580,7 @@
             <h2>Quartet of Pipers</h2>
             <p>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p>
             <!-- Replace with your image path -->
-            <img src="Images/s3.jpg" alt="4 Pipers Image">
+            <img src="Images/s3.jpg" alt="4 Pipers Image" onclick="openLightbox(this.src, this.alt);">
         </div>
         
         <!-- Mini Band -->
@@ -552,7 +588,7 @@
             <h2>Mini Band</h2>
             <p>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p>
             <!-- Replace with your image path -->
-            <img src="Images/s4.jpg" alt="Mini Band Image">
+            <img src="Images/s4.jpg" alt="Mini Band Image" onclick="openLightbox(this.src, this.alt);">
         </div>
         
         <!-- Full Band -->
@@ -560,7 +596,7 @@
             <h2>Full Band</h2>
             <p>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p>
             <!-- Replace with your image path -->
-            <img src="Images/s5.jpg" alt="Full Band Image">
+            <img src="Images/s5.jpg" alt="Full Band Image" onclick="openLightbox(this.src, this.alt);">
         </div>
 </section>
   
@@ -617,6 +653,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- Lightbox Container -->
+<div id="lightbox" onclick="closeLightbox();" style="display:none;">
+    <img id="lightbox-image" />
+    <p id="lightbox-description"></p> <!-- Description paragraph -->
+    <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+</div>
+  
 <br>
 <br>
 <br>
@@ -823,6 +866,21 @@ document.getElementById('downloadButton').addEventListener('click', function() {
     }
 });
 
+function openLightbox(imageSrc, imageAlt) {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImage = document.getElementById('lightbox-image');
+    var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
+
+    lightboxImage.src = imageSrc;
+    lightboxDescription.textContent = imageAlt; // Set the alt text as the description
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    var lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
+  
 </script>
 
 </body>
