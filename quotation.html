@@ -43,33 +43,33 @@
 
 /* Floating Action Button Style */
 .freezer-btn {
-  position: fixed; /* Fixed position on all devices */
+  position: fixed;
   text-decoration: none;
-  color: white; /* Icon or text color */
-  background-color: #0077cc; /* Button color */
-  padding: 10px 15px;
-  border-radius: 50%; /* Circular shape */
+  color: white;
+  background-color: transparent; /* Using an image now */
+  background-image: url('images/price-icon.png'); /* Path to your image */
+  background-size: cover; /* Cover the area of the button */
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 15px; /* Adjust padding to change the size */
+  border-radius: 50%;
   transition: all 0.3s ease;
-  z-index: 1000; /* Make sure the button is above other content */
-  font-size: 16px; /* Font size for the icon */
+  z-index: 1000;
+  font-size: 16px;
+  right: 10%; /* Adjusted for the right side */
+  bottom: 10%; /* Adjusted for the bottom */
 }
 
-/* Position for small devices */
-@media (max-width: 767px) {
-  .freezer-btn {
-    right: 10%; /* 10% from the right side of the screen */
-    bottom: 10%; /* 10% from the bottom of the screen */
-  }
-}
-
-/* Position for larger devices */
+/* Size adjustments for larger devices */
 @media (min-width: 768px) {
   .freezer-btn {
+    padding: 20px; /* Larger padding for a bigger button */
+    font-size: 20px; /* Optional: Adjust the font size if needed */
     right: 20px; /* Consistent margin from the right */
     bottom: 20px; /* Consistent margin from the bottom */
   }
 }
-
+    
 </style>
 
 </head>
@@ -82,7 +82,7 @@
 
 <!-- Floating Action Button for Get Quotation -->
 <button type="button" class="freezer-btn" data-toggle="modal" data-target="#quotationModal">
-  <i class="fas fa-quote-left"></i>
+  <!-- Removed icon text -->
 </button>
 
 <!-- Modal -->
