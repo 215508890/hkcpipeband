@@ -852,16 +852,19 @@ document.getElementById('downloadButton').addEventListener('click', function() {
 
     if (selectedValue === "") {
         alert('Please select a service plan first. \n請先選擇一個服務計劃。');
+    } else if (selectedValue === "mini" || selectedValue === "full") {
+        // Alert for 'mini' and 'full' plan
+        alert("Please contact us for the 'Mini Band' and 'Full Band' service plans. \n請聯繫我們以獲取'小型樂隊'和'大型樂隊'服務計劃的詳情。");
     } else {
         // Replace the following URL with the actual path to your PDF files
         var quotationUrls = {
             'solo': 'path/to/solo-quotation.pdf',
             'duo': 'path/to/duo-quotation.pdf',
-            'quartet': 'path/to/team-quotation.pdf',
-            'mini': 'path/to/team-quotation.pdf',
-            'full': 'path/to/team-quotation.pdf'
+            'quartet': 'path/to/quartet-quotation.pdf'
+            // 'mini' and 'full' are not listed here as they require contact
         };
 
+        // Open the PDF in a new tab
         window.open(quotationUrls[selectedValue], '_blank');
     }
 });
