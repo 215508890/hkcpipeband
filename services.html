@@ -18,6 +18,8 @@
   <link rel="apple-touch-icon" href="Images/citypb.icon.png">
 
   <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -383,7 +385,68 @@
   border: none; /* Removes the border from the iframe */
 }
         
-  
+/* Button specific style */
+.get-quotation-btn {
+  display: block; /* make the button a block element to allow margin auto to work */
+  text-decoration: none;
+  color: white; /* text color is white */
+  background-color: #0077cc; /* background color is #0077cc */
+  border: 2px solid #0077cc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin: 20px auto; /* auto margins for horizontal centering */
+  text-align: center;
+  width: fit-content; /* fit the button width to its content */
+}
+
+.get-quotation-btn:hover {
+  background-color: #005fa3; /* a darker blue on hover */
+  color: white;
+}
+
+/* Ensure the button is always centered in the viewport, regardless of the screen width */
+@media (max-width: 767px) {
+  .get-quotation-btn {
+    margin: 20px auto; /* centered with automatic horizontal margins */
+  }
+}
+
+@media (min-width: 768px) {
+  .get-quotation-btn {
+    margin: 20px auto; /* centered with automatic horizontal margins */
+  }
+}
+
+/* Floating Action Button Style */
+.freezer-btn {
+  position: fixed;
+  text-decoration: none;
+  color: white;
+  background-color: transparent; /* Using an image now */
+  background-image: url('images/price-icon.png'); /* Path to your image */
+  background-size: cover; /* Cover the area of the button */
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 15px; /* Adjust padding to change the size */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  font-size: 16px;
+  right: 10%; /* Adjusted for the right side */
+  bottom: 10%; /* Adjusted for the bottom */
+}
+
+/* Size adjustments for larger devices */
+@media (min-width: 768px) {
+  .freezer-btn {
+    padding: 20px; /* Larger padding for a bigger button */
+    font-size: 20px; /* Optional: Adjust the font size if needed */
+    right: 20px; /* Consistent margin from the right */
+    bottom: 20px; /* Consistent margin from the bottom */
+  }
+}
+
     </style>
 </head>
 <body>
@@ -490,6 +553,53 @@
   <div class="service-offerings" id="more-details">
             <p>For more details on each plan and to discuss the specific requirements for your event, please contact us. We are excited to work with you to craft a memorable musical experience that perfectly suits your celebration.</p>
   </div>
+
+<button type="button" class="get-quotation-btn" data-toggle="modal" data-target="#quotationModal">
+  Get Quotation<br>獲取報價
+</button>
+
+<!-- Floating Action Button for Get Quotation -->
+<button type="button" class="freezer-btn" data-toggle="modal" data-target="#quotationModal">
+  <!-- Removed icon text -->
+</button>
+
+<!-- Modal -->
+<div class="modal" id="quotationModal" tabindex="-1" role="dialog" aria-labelledby="quotationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quotationModalLabel">Choose Your Service Plan <br>選擇您的服務計劃</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Service plan options go here -->
+        <form>
+            <div class="form-group">
+                <label for="servicePlanSelect">Service Plan 服務計劃</label>
+                <select class="form-control" id="servicePlanSelect">
+                    <option value="">Select a plan 選擇計劃</option>
+                    <option value="solo">Solo Piper 獨奏風笛手</option>
+                    <option value="duo">Duo of Pipers 風笛二重奏</option>
+                    <option value="quartet">Quartet of Pipers 風笛四重奏</option>
+                    <option value="mini">Mini Band 小型樂隊</option>
+                    <option value="full">Full Band 大型樂隊</option>
+                </select>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="downloadButton">Download Quotation<br>下載報價單</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <br>
 <br>
@@ -676,6 +786,26 @@ function toggleLanguage() {
     if (langSwitch) langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
 }
 
+// JavaScript function to check if a service plan has been selected and download the quotation based on selection
+document.getElementById('downloadButton').addEventListener('click', function() {
+    var servicePlanSelect = document.getElementById('servicePlanSelect');
+    var selectedValue = servicePlanSelect.value;
+
+    if (selectedValue === "") {
+        alert('Please select a service plan first. \n請先選擇一個服務計劃。');
+    } else {
+        // Replace the following URL with the actual path to your PDF files
+        var quotationUrls = {
+            'solo': 'path/to/solo-quotation.pdf',
+            'duo': 'path/to/duo-quotation.pdf',
+            'quartet': 'path/to/team-quotation.pdf',
+            'mini': 'path/to/team-quotation.pdf',
+            'full': 'path/to/team-quotation.pdf'
+        };
+
+        window.open(quotationUrls[selectedValue], '_blank');
+    }
+});
 
 </script>
 
