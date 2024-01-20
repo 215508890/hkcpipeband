@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,6 +41,35 @@
   }
 }
 
+/* Floating Action Button Style */
+.freezer-btn {
+  position: fixed; /* Fixed position on all devices */
+  text-decoration: none;
+  color: white; /* Icon or text color */
+  background-color: #0077cc; /* Button color */
+  padding: 10px 15px;
+  border-radius: 50%; /* Circular shape */
+  transition: all 0.3s ease;
+  z-index: 1000; /* Make sure the button is above other content */
+  font-size: 16px; /* Font size for the icon */
+}
+
+/* Position for small devices */
+@media (max-width: 767px) {
+  .freezer-btn {
+    right: 10%; /* 10% from the right side of the screen */
+    bottom: 10%; /* 10% from the bottom of the screen */
+  }
+}
+
+/* Position for larger devices */
+@media (min-width: 768px) {
+  .freezer-btn {
+    right: 20px; /* Consistent margin from the right */
+    bottom: 20px; /* Consistent margin from the bottom */
+  }
+}
+
 </style>
 
 </head>
@@ -49,6 +78,11 @@
 <!-- Trigger button for the user to open the modal -->
 <button type="button" class="get-quotation-btn" data-toggle="modal" data-target="#quotationModal">
   Get Quotation<br>獲取報價
+</button>
+
+<!-- Floating Action Button for Get Quotation -->
+<button type="button" class="freezer-btn" data-toggle="modal" data-target="#quotationModal">
+  <i class="fas fa-quote-left"></i>
 </button>
 
 <!-- Modal -->
