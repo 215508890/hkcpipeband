@@ -86,11 +86,11 @@
 			.content-image {
 			flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
 			width: 400px; /* Desired width for the image */
+			height: auto; /* Maintain aspect ratio */
 			margin-top: 20px;
 			margin-right: 20px;
 			margin-bottom: 20px;
 			margin-left: 100px; /* Margin to the left of the image */
-			/* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
 			}
 			.content-text {
 			flex-grow: 1; /* Allow text container to grow, but it will not push the image */
@@ -105,14 +105,17 @@
 			}
 			.content-image {
 			width: 80%; /* Responsive width for the image */
+			height: auto; /* Maintain aspect ratio */
 			margin: 20px auto; /* Center the image with automatic horizontal margins */
 			display: block; /* Ensures the image is treated as a block-level element */
-			/* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
 			}
 			.content-text {
 			margin: 20px; /* Consistent margin for the text */
 			text-align: justify; /* Justify text for tidy alignment */
 			}
+			}
+			.content {
+			margin: 20px; /* Margin from the boundary */
 			}
 			.content {
 			margin: 20px; /* Margin from the boundary */
