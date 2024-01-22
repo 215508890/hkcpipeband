@@ -1,469 +1,473 @@
 <!DOCTYPE html>
 <html lang="zh-HK">
-   <head>
-      <meta charset="UTF-8">
-      <title>首頁 香港城市風笛隊-City of Hong Kong Pipe Band</title>
-      <meta name="description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-      <meta name="keywords" content="演出,慶典,晚宴,商業推廣,文娛節目,演奏,喪禮,婚禮,蘇格蘭風笛,蘇格蘭風笛演出,風笛,風笛演出,">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="canonical" href="https://cityhkpipeband.com/">
-      <meta property="og:title" content="首頁 - 香港城市風笛隊">
-      <meta property="og:type" content="website">
-      <meta property="og:url" content="https://cityhkpipeband.com/">
-      <meta property="og:description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-      <meta property="og:site_name" content="香港城市風笛隊">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta property="og:image" content="Images/citypb.icon.png">
-      <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
-      <link rel="apple-touch-icon" href="Images/citypb.icon.png">
-      <link rel="profile" href="http://gmpg.org/xfn/11">
-      <style>
-         body {
-         margin: 0;
-         font-family: Arial, sans-serif;
-         }
-         header {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         padding: 20px;
-         background-color: #9b1c31;
-         color: white;
-         position: relative;
-         }
-         .header-title {
-         font-size: 5vw; /* Responsive font size */
-         margin: 5px 0;
-         text-align: center;
-         padding-bottom: 10px; /* Space for the menu */
-         }
-         .header-description {
-         font-size: 3vw; /* Responsive font size */
-         margin: 0;
-         text-align: center;
-         }
-         /* Minimum font size for smaller devices */
-         @media (max-width: 768px) {
-         .header-title {
-         font-size: 26px; /* Fixed minimum font size for smaller screens */
-         }
-         .header-description {
-         font-size: 24px; /* Fixed minimum font size for smaller screens */
-         }
-         }
-         /* Minimum font size for smaller devices */
-         @media (max-width: 1200px) {
-         .header-logo {
-         max-height: 70px; /* Adjust the size as needed */
-         }
-         }
-         /* Maximum font size for larger devices */
-         @media (min-width: 1200px) {
-         .header-title {
-         font-size: 45px; /* Fixed maximum font size for larger screens */
-         }
-         .header-description {
-         font-size: 43px; /* Fixed maximum font size for larger screens */
-         }
-         .header-logo {
-         max-height: 130px; /* Adjust the size as needed */
-         }
-         }
-         /* Maximum font size for larger devices */
-         @media (min-width: 1200px) {
-         .header-logo {
-         max-height: 130px; /* Adjust the size as needed */
-         }
-         }
-         @media (min-width: 768px) {
-         .content-wrapper {
-         display: flex;
-         align-items: center; /* Vertically center the content */
-         justify-content: space-between; /* Put maximum space between text and image */
-         }
-         .content-image {
-         flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
-         width: 400px; /* Desired width for the image */
-         margin-top: 20px;
-         margin-right: 20px;
-         margin-bottom: 20px;
-         margin-left: 100px; /* Margin to the left of the image */
-         /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
-         }
-         .content-text {
-         flex-grow: 1; /* Allow text container to grow, but it will not push the image */
-         margin-right: 100px;  
-         padding-right: 20px; /* Padding to ensure text doesn't touch the image */
-         text-align: justify; /* Justify text for tidy alignment */
-         }
-         }
-         @media (max-width: 767px) {
-         .content-wrapper {
-         display: block; /* Stack the image and text on smaller screens */
-         }
-         .content-image {
-         width: 80%; /* Responsive width for the image */
-         margin: 20px ; /* Center the image with automatic horizontal margins */
-         display: block; /* Ensures the image is treated as a block-level element */
-         /* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
-         }
-         .content-text {
-         margin: 20px; /* Consistent margin for the text */
-         text-align: justify; /* Justify text for tidy alignment */
-         }
-         }
-         .content {
-         margin: 20px; /* Margin from the boundary */
-         }
-         .menu-controls {
-         display: flex;
-         justify-content: space-between;
-         align-items: center; /* Align items vertically */
-         width: 100%;
-         padding: 0 20px; /* Padding on sides */
-         }
-         #lightbox {
-         position: fixed;
-         z-index: 1000;
-         left: 0;
-         top: 0;
-         width: 100%;
-         height: 100%;
-         background-color: rgba(0,0,0,0.8);
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         }
-         #lightbox-image {
-         max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
-         max-height: 80%;
-         margin: auto; /* This will center the image in the lightbox */
-         }
-         .lightbox-close {
-         position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
-         top: 20px;
-         right: 20px;
-         font-size: 30px;
-         font-weight: bold;
-         color: white;
-         cursor: pointer;
-         z-index: 1001; /* Ensure it's above the lightbox image */
-         }
-         /* Big devices with a minimum width of 768px */
-         @media (min-width: 768px) {
-         #lightbox-image {
-         max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
-         }
-         }
-         .hamburger {
-         cursor: pointer;
-         display: block;
-         }
-         .hamburger .bar {
-         display: block;
-         width: 25px;
-         height: 3px;
-         margin: 5px 0;
-         background-color: white;
-         transition: 0.4s;
-         }
-         .change .bar.top {
-         transform: translateY(8px) rotate(45deg);
-         }
-         .change .bar.middle {
-         opacity: 0;
-         }
-         .change .bar.bottom {
-         transform: translateY(-8px) rotate(-45deg);
-         }
-         .menu {
-         display: none;
-         width: 100%;
-         background-color: white;
-         position: absolute;
-         top: 100%;
-         left: 0;
-         z-index: 10;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
-         }
-         .menu a {
-         text-decoration: none;
-         color: black;
-         padding: 10px 15px;
-         display: block;
-         }
-         .menu a:hover {
-         background-color: #7a1c28;
-         color: white;
-         }
-         .menu.active {
-         display: block;
-         }
-         .lang-switch {
-         cursor: pointer;
-         display: block;
-         }
-         @media (max-width: 768px) {
-         .header-description {
-         text-align: center;
-         }
-         .hamburger,
-         .lang-switch {
-         display: block;
-         }
-         .menu {
-         display: none;
-         }
-         }
-         /* Existing base styles for your site footer */
-         .site-footer {
-         background-color: #333;
-         color: white;
-         padding: 20px 0;
-         margin-top: 40px;
-         }
-         .site-footer a {
-         color: #6DF;
-         text-decoration: none;
-         }
-         .site-footer a:hover {
-         text-decoration: underline;
-         }
-         /* Flexbox layout for the footer content */
-         .footer-content {
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-between;
-         }
-         .footer-section {
-         margin-top: 10px;
-         margin-bottom: 10px;
-         margin-left: 100px;
-         margin-right: 100px;
-         flex: 1;
-         min-width: 150px; /* Minimum width before wrapping */
-         text-align: left; /* Align text to the left */
-         }
-         /* Shared styles for Quick Links and Follow Us lists */
-         .footer-links,
-         .social-links {
-         list-style: none; /* Remove bullet points */
-         padding: 0;
-         margin: 0; /* Remove default margin */
-         }
-         .footer-links li a,
-         .social-links li a {
-         color: #6DF;
-         text-decoration: none;
-         display: block; /* Make the links full-width within the section */
-         }
-         .footer-links li a:hover,
-         .social-links li a:hover {
-         text-decoration: underline;
-         }
-         /* Responsive design adjustments */
-         @media (max-width: 768px) {
-         .footer-content {
-         flex-direction: column;
-         align-items: flex-start; /* Align items to the left on smaller screens */
-         }
-         .footer-section {
-         /* Full width on smaller screens */
-         flex-basis: 100%;
-         margin: 20px;
-         }
-         }
-         /* Styles for the footer bottom */
-         .footer-bottom {
-         text-align: center; /* Keep copyright notice centered */
-         margin-top: 20px;
-         border-top: 1px solid #474747;
-         padding-top: 20px;
-         }
-         #loading-spinner {
-         position: fixed; /* Full screen */
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background: white; /* Or any color that matches your brand */
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         z-index: 9999; /* High z-index to make sure it's on top */
-         }
-         .spinner {
-         border: 5px solid #f3f3f3; /* Light grey background */
-         border-top: 5px solid #9b1c31; /* Main color */
-         border-radius: 50%;
-         width: 50px;
-         height: 50px;
-         animation: spin 1s linear infinite;
-         }
-         @keyframes spin {
-         0% { transform: rotate(0deg); }
-         100% { transform: rotate(360deg); }
-         }
-         /* Hide the spinner by default and only show it when the .loading class is present */
-         body:not(.loading) #loading-spinner {
-         display: none;
-         }
-      </style>
-   </head>
-   <body>
-      <header>
-         <div class="menu-controls">
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-               <div class="bar top"></div>
-               <div class="bar middle"></div>
-               <div class="bar bottom"></div>
-            </div>
-            <a href="index.html">
-            <img src="Images/citypb.icon.png" alt="City Pipe Band" class="header-logo" />
-            </a>
-            <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
-               中/Eng
-            </div>
-         </div>
-         <h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
-         <p class="header-description" id="header-description">香港城市風笛隊</p>
-         <nav class="menu" id="menu">
-            <a href="index.html" id="nav-the-band">The Band</a>
-            <a href="aboutus.html" id="nav-about-us">About Us</a>
-            <a href="services.html" id="nav-services">Services</a>
-            <a href="gallery.html" id="nav-gallery">Gallery</a>
-            <a href="contact.html" id="nav-contact">Contact</a>
-         </nav>
-      </header>
-      <body class="loading">
-         <div id="loading-spinner">
-            <div class="spinner"></div>
-         </div>
-         <div class="content-wrapper" id="the-band">
-            <!-- Image on the left -->
-            <div class="content-image">
-               <img src="Images/index.p1.jpg" alt="Team photo" style="max-width: 100%;" onclick="openLightbox(this.src);">
-            </div>
-            <!-- Text on the right -->
-            <div class="content-text">
-               <h2>The Band</h2>
-               <p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
-               <p><a href="aboutus.html" style="text-decoration: underline;">For more/了解更多</a></p>
-            </div>
-         </div>
-         <!-- Lightbox Container -->
-         <div id="lightbox" onclick="closeLightbox();" style="display:none;">
-            <img id="lightbox-image" />
-            <p id="lightbox-description"></p>
-            <!-- Description paragraph -->
-            <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
-         </div>
-         <br>
-         <br>
-         <br>
-         <br>
-         <footer>
-         <footer class="site-footer">
-            <div class="footer-content">
-               <!-- Quick Links Section -->
-               <div class="footer-section">
-                  <h3>Quick Links</h3>
-                  <ul class="footer-links">
-                     <li><a href="index.html">The Band</a></li>
-                     <li><a href="aboutus.html">About Us</a></li>
-                     <li><a href="services.html">Services</a></li>
-                     <li><a href="gallery.html">Gallery</a></li>
-                     <li><a href="contact.html">Contact</a></li>
-                  </ul>
-               </div>
-               <!-- Contact Information -->
-               <div class="footer-section">
-                  <h3>Contact Information</h3>
-                  <p>Email: <a href="mailto:cityofhongkongpipeband@gmail.com">cityofhongkongpipeband@gmail.com</a></p>
-               </div>
-               <!-- Social Media Links -->
-               <div class="footer-section">
-                  <h3>Follow Us</h3>
-                  <div class="social-links">
-                     <!-- Replace '#' with your actual social media links -->
-                     <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Facebook</a>
-                  </div>
-               </div>
-            </div>
-            <!-- Copyright Notice -->
-            <div class="footer-bottom">
-               <p>&copy; 2024 City of Hong Kong Pipe Band. All rights reserved.</p>
-            </div>
-         </footer>
-         <script>
-            // Function to toggle the mobile menu
-            function toggleMenu() {
-                var menu = document.getElementById("menu");
-                var hamburger = document.getElementById("hamburger");
-                menu.classList.toggle("active");
-                hamburger.classList.toggle("change");
-            }
-            
-            // Object containing language text for content sections
-            var languageTexts = {
-                'en': {
-                    'the-band': {
-                        'heading': 'The Band',
-                        'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
-                    }
-                    // ... other content sections in English
-                },
-                'zh': {
-                    'the-band': {
-                        'heading': '笛勢山河',
-                        'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
-                    }
-                    // ... other content sections in Chinese
-                }
-            };
-            
-            // Function to toggle the language of content sections
-            function toggleLanguage() {
-                var currentLang = document.documentElement.lang;
-                var newLang = currentLang === 'zh' ? 'en' : 'zh';
-                document.documentElement.lang = newLang;
-            
-                // Update the text content of content sections based on the new language
-                for (var sectionId in languageTexts[newLang]) {
-                    if (languageTexts[newLang].hasOwnProperty(sectionId)) {
-                        var section = document.getElementById(sectionId);
-                        if (section) {
-                            section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
-                            section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
-                        }
-                    }
-                }
-            
-                // Update the language switch button text
-                var langSwitch = document.getElementById('lang-switch');
-                langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
-            }
-            
-            function openLightbox(imageSrc, imageAlt) {
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImage = document.getElementById('lightbox-image');
-            var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
-            
-            lightboxImage.src = imageSrc;
-            lightboxDescription.textContent = imageAlt; // Set the alt text as the description
-            lightbox.style.display = 'flex';
-            }
-            
-            function closeLightbox() {
-            var lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            }
-            
-            window.addEventListener('load', function() {
-                document.body.classList.remove('loading');
-            });
-            
-         </script>
-   </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>首頁 香港城市風笛隊-City of Hong Kong Pipe Band</title>
+		<meta name="description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
+		<meta name="keywords" content="演出,慶典,晚宴,商業推廣,文娛節目,演奏,喪禮,婚禮,蘇格蘭風笛,蘇格蘭風笛演出,風笛,風笛演出,">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="canonical" href="https://cityhkpipeband.com/">
+		<meta property="og:title" content="首頁 - 香港城市風笛隊">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://cityhkpipeband.com/">
+		<meta property="og:description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
+		<meta property="og:site_name" content="香港城市風笛隊">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta property="og:image" content="Images/citypb.icon.png">
+		<link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+		<link rel="apple-touch-icon" href="Images/citypb.icon.png">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<style>
+			body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			}
+			header {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			background-color: #9b1c31;
+			color: white;
+			position: relative;
+			}
+			.header-title {
+			font-size: 5vw; /* Responsive font size */
+			margin: 5px 0;
+			text-align: center;
+			padding-bottom: 10px; /* Space for the menu */
+			}
+			.header-description {
+			font-size: 3vw; /* Responsive font size */
+			margin: 0;
+			text-align: center;
+			}
+			/* Minimum font size for smaller devices */
+			@media (max-width: 768px) {
+			.header-title {
+			font-size: 26px; /* Fixed minimum font size for smaller screens */
+			}
+			.header-description {
+			font-size: 24px; /* Fixed minimum font size for smaller screens */
+			}
+			}
+			/* Minimum font size for smaller devices */
+			@media (max-width: 1200px) {
+			.header-logo {
+			max-height: 70px; /* Adjust the size as needed */
+			}
+			}
+			/* Maximum font size for larger devices */
+			@media (min-width: 1200px) {
+			.header-title {
+			font-size: 45px; /* Fixed maximum font size for larger screens */
+			}
+			.header-description {
+			font-size: 43px; /* Fixed maximum font size for larger screens */
+			}
+			.header-logo {
+			max-height: 130px; /* Adjust the size as needed */
+			}
+			}
+			/* Maximum font size for larger devices */
+			@media (min-width: 1200px) {
+			.header-logo {
+			max-height: 130px; /* Adjust the size as needed */
+			}
+			}
+			/* Content section styles */
+			.content-wrapper {
+			display: flex;
+			align-items: center; /* Vertically center the content */
+			justify-content: space-between; /* Put maximum space between text and image */
+			}
+			/* Adjust margins for the image and text */
+			.content-image {
+			flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
+			width: 400px; /* Desired width for the image */
+			margin-top: 20px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			margin-left: 100px; /* Margin to the left of the image */
+			/* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
+			}
+			.content-text {
+			flex-grow: 1; /* Allow text container to grow, but it will not push the image */
+			margin-right: 100px;
+			padding-right: 20px; /* Padding to ensure text doesn't touch the image */
+			text-align: justify; /* Justify text for tidy alignment */
+			}
+			/* Responsive adjustments for smaller screens */
+			@media (max-width: 767px) {
+			.content-wrapper {
+			display: block; /* Stack the image and text on smaller screens */
+			}
+			.content-image {
+			width: 80%; /* Responsive width for the image */
+			margin: 20px auto; /* Center the image with automatic horizontal margins */
+			display: block; /* Ensures the image is treated as a block-level element */
+			/* Adjust 'height' as necessary, or use 'height: auto;' to maintain aspect ratio */
+			}
+			.content-text {
+			margin: 20px; /* Consistent margin for the text */
+			text-align: justify; /* Justify text for tidy alignment */
+			}
+			}
+			.content {
+			margin: 20px; /* Margin from the boundary */
+			}
+			.content {
+			margin: 20px; /* Margin from the boundary */
+			}
+			.menu-controls {
+			display: flex;
+			justify-content: space-between;
+			align-items: center; /* Align items vertically */
+			width: 100%;
+			padding: 0 20px; /* Padding on sides */
+			}
+			#lightbox {
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.8);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			}
+			#lightbox-image {
+			max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
+			max-height: 80%;
+			margin: auto; /* This will center the image in the lightbox */
+			}
+			.lightbox-close {
+			position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
+			top: 20px;
+			right: 20px;
+			font-size: 30px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			z-index: 1001; /* Ensure it's above the lightbox image */
+			}
+			/* Big devices with a minimum width of 768px */
+			@media (min-width: 768px) {
+			#lightbox-image {
+			max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
+			}
+			}
+			.hamburger {
+			cursor: pointer;
+			display: block;
+			}
+			.hamburger .bar {
+			display: block;
+			width: 25px;
+			height: 3px;
+			margin: 5px 0;
+			background-color: white;
+			transition: 0.4s;
+			}
+			.change .bar.top {
+			transform: translateY(8px) rotate(45deg);
+			}
+			.change .bar.middle {
+			opacity: 0;
+			}
+			.change .bar.bottom {
+			transform: translateY(-8px) rotate(-45deg);
+			}
+			.menu {
+			display: none;
+			width: 100%;
+			background-color: white;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			z-index: 10;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
+			}
+			.menu a {
+			text-decoration: none;
+			color: black;
+			padding: 10px 15px;
+			display: block;
+			}
+			.menu a:hover {
+			background-color: #7a1c28;
+			color: white;
+			}
+			.menu.active {
+			display: block;
+			}
+			.lang-switch {
+			cursor: pointer;
+			display: block;
+			}
+			@media (max-width: 768px) {
+			.header-description {
+			text-align: center;
+			}
+			.hamburger,
+			.lang-switch {
+			display: block;
+			}
+			.menu {
+			display: none;
+			}
+			}
+			/* Existing base styles for your site footer */
+			.site-footer {
+			background-color: #333;
+			color: white;
+			padding: 20px 0;
+			margin-top: 40px;
+			}
+			.site-footer a {
+			color: #6DF;
+			text-decoration: none;
+			}
+			.site-footer a:hover {
+			text-decoration: underline;
+			}
+			/* Flexbox layout for the footer content */
+			.footer-content {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			}
+			.footer-section {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 100px;
+			margin-right: 100px;
+			flex: 1;
+			min-width: 150px; /* Minimum width before wrapping */
+			text-align: left; /* Align text to the left */
+			}
+			/* Shared styles for Quick Links and Follow Us lists */
+			.footer-links,
+			.social-links {
+			list-style: none; /* Remove bullet points */
+			padding: 0;
+			margin: 0; /* Remove default margin */
+			}
+			.footer-links li a,
+			.social-links li a {
+			color: #6DF;
+			text-decoration: none;
+			display: block; /* Make the links full-width within the section */
+			}
+			.footer-links li a:hover,
+			.social-links li a:hover {
+			text-decoration: underline;
+			}
+			/* Responsive design adjustments */
+			@media (max-width: 768px) {
+			.footer-content {
+			flex-direction: column;
+			align-items: flex-start; /* Align items to the left on smaller screens */
+			}
+			.footer-section {
+			/* Full width on smaller screens */
+			flex-basis: 100%;
+			margin: 20px;
+			}
+			}
+			/* Styles for the footer bottom */
+			.footer-bottom {
+			text-align: center; /* Keep copyright notice centered */
+			margin-top: 20px;
+			border-top: 1px solid #474747;
+			padding-top: 20px;
+			}
+			#loading-spinner {
+			position: fixed; /* Full screen */
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: white; /* Or any color that matches your brand */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999; /* High z-index to make sure it's on top */
+			}
+			.spinner {
+			border: 5px solid #f3f3f3; /* Light grey background */
+			border-top: 5px solid #9b1c31; /* Main color */
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			animation: spin 1s linear infinite;
+			}
+			@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+			}
+			/* Hide the spinner by default and only show it when the .loading class is present */
+			body:not(.loading) #loading-spinner {
+			display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="menu-controls">
+				<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+					<div class="bar top"></div>
+					<div class="bar middle"></div>
+					<div class="bar bottom"></div>
+				</div>
+				<a href="index.html">
+				<img src="Images/citypb.icon.png" alt="City Pipe Band" class="header-logo" />
+				</a>
+				<div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
+					中/Eng
+				</div>
+			</div>
+			<h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
+			<p class="header-description" id="header-description">香港城市風笛隊</p>
+			<nav class="menu" id="menu">
+				<a href="index.html" id="nav-the-band">The Band</a>
+				<a href="aboutus.html" id="nav-about-us">About Us</a>
+				<a href="services.html" id="nav-services">Services</a>
+				<a href="gallery.html" id="nav-gallery">Gallery</a>
+				<a href="contact.html" id="nav-contact">Contact</a>
+			</nav>
+		</header>
+		<body class="loading">
+			<div id="loading-spinner">
+				<div class="spinner"></div>
+			</div>
+			<div class="content-wrapper" id="the-band">
+				<!-- Image on the left -->
+				<div class="content-image">
+					<img src="Images/index.p1.jpg" alt="Team photo" style="max-width: 100%;" onclick="openLightbox(this.src);">
+				</div>
+				<!-- Text on the right -->
+				<div class="content-text">
+					<h2>The Band</h2>
+					<p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
+					<p><a href="aboutus.html" style="text-decoration: underline;">For more/了解更多</a></p>
+				</div>
+			</div>
+			<!-- Lightbox Container -->
+			<div id="lightbox" onclick="closeLightbox();" style="display:none;">
+				<img id="lightbox-image" />
+				<p id="lightbox-description"></p>
+				<!-- Description paragraph -->
+				<span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<footer>
+			<footer class="site-footer">
+				<div class="footer-content">
+					<!-- Quick Links Section -->
+					<div class="footer-section">
+						<h3>Quick Links</h3>
+						<ul class="footer-links">
+							<li><a href="index.html">The Band</a></li>
+							<li><a href="aboutus.html">About Us</a></li>
+							<li><a href="services.html">Services</a></li>
+							<li><a href="gallery.html">Gallery</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+					<!-- Contact Information -->
+					<div class="footer-section">
+						<h3>Contact Information</h3>
+						<p>Email: <a href="mailto:cityofhongkongpipeband@gmail.com">cityofhongkongpipeband@gmail.com</a></p>
+					</div>
+					<!-- Social Media Links -->
+					<div class="footer-section">
+						<h3>Follow Us</h3>
+						<div class="social-links">
+							<!-- Replace '#' with your actual social media links -->
+							<a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Facebook</a>
+						</div>
+					</div>
+				</div>
+				<!-- Copyright Notice -->
+				<div class="footer-bottom">
+					<p>&copy; 2024 City of Hong Kong Pipe Band. All rights reserved.</p>
+				</div>
+			</footer>
+			<script>
+				// Function to toggle the mobile menu
+				function toggleMenu() {
+				    var menu = document.getElementById("menu");
+				    var hamburger = document.getElementById("hamburger");
+				    menu.classList.toggle("active");
+				    hamburger.classList.toggle("change");
+				}
+				
+				// Object containing language text for content sections
+				var languageTexts = {
+				    'en': {
+				        'the-band': {
+				            'heading': 'The Band',
+				            'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
+				        }
+				        // ... other content sections in English
+				    },
+				    'zh': {
+				        'the-band': {
+				            'heading': '笛勢山河',
+				            'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
+				        }
+				        // ... other content sections in Chinese
+				    }
+				};
+				
+				// Function to toggle the language of content sections
+				function toggleLanguage() {
+				    var currentLang = document.documentElement.lang;
+				    var newLang = currentLang === 'zh' ? 'en' : 'zh';
+				    document.documentElement.lang = newLang;
+				
+				    // Update the text content of content sections based on the new language
+				    for (var sectionId in languageTexts[newLang]) {
+				        if (languageTexts[newLang].hasOwnProperty(sectionId)) {
+				            var section = document.getElementById(sectionId);
+				            if (section) {
+				                section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
+				                section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
+				            }
+				        }
+				    }
+				
+				    // Update the language switch button text
+				    var langSwitch = document.getElementById('lang-switch');
+				    langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
+				}
+				
+				function openLightbox(imageSrc, imageAlt) {
+				var lightbox = document.getElementById('lightbox');
+				var lightboxImage = document.getElementById('lightbox-image');
+				var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
+				
+				lightboxImage.src = imageSrc;
+				lightboxDescription.textContent = imageAlt; // Set the alt text as the description
+				lightbox.style.display = 'flex';
+				}
+				
+				function closeLightbox() {
+				var lightbox = document.getElementById('lightbox');
+				lightbox.style.display = 'none';
+				}
+				
+				window.addEventListener('load', function() {
+				    document.body.classList.remove('loading');
+				});
+				
+			</script>
+	</body>
 </html>
