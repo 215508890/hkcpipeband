@@ -273,24 +273,23 @@
             }
         }
         
-    .contact-form-container {
-    background: #fff; /* Match the form background with your design */
+    /* Base styles */
+.contact-form-container {
+    background: #fff;
     padding: 20px;
     margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the form */
-    border-radius: 15px; /* Adjust as necessary for the desired curve */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
 .contact-form h2 {
-    color: #9b1c31; /* Match the header color */
-    margin-bottom: 20px; /* Spacing below the form title */
+    color: #9b1c31;
+    margin-bottom: 20px;
 }
 
 .contact-form label {
     display: block;
-    margin-bottom: 5px; /* Spacing below the label */
+    margin-bottom: 5px;
 }
 
 .contact-form input[type="text"],
@@ -298,23 +297,73 @@
 .contact-form textarea {
     width: 100%;
     padding: 20px;
-    margin-bottom: 20px; /* Spacing below the input/textarea */
+    margin-bottom: 20px;
     border: 1px solid #ddd;
-    border-radius: 10px; /* Rounded corners for inputs and textarea */
+    border-radius: 10px;
 }
 
 .submit-btn {
-    background-color: #9b1c31; /* Match the header background color */
+    background-color: #9b1c31;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 5px; /* 50% would make it a circle, adjust for desired curvature */
+    border-radius: 5px;
 }
 
 .submit-btn:hover {
-    background-color: #82212e; /* This is a darker shade of #9b1c31 */
+    background-color: #82212e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .container {
+        max-width: calc(100% - 40px);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .contact-item {
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: justify;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: calc(100% - 200px);
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .contact-item {
+        margin-bottom: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        text-align: justify;
+    }
+
+    .contact-header {
+        margin-bottom: 40px;
+    }
+}
+
+.contact-item a {
+    display: inline-block;
+    text-decoration: none;
+    color: #0077cc;
+    border: 2px solid #0077cc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+    background-color: #0077cc;
+    color: white;
 }
         
         
