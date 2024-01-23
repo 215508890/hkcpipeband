@@ -273,6 +273,45 @@
             }
         }
         
+        .contact-form-container {
+    background: #fff; /* Match the form background with your design */
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the form */
+}
+
+.contact-form h2 {
+    color: #9b1c31; /* Match the header color */
+    margin-bottom: 20px; /* Spacing below the form title */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px; /* Spacing below the label */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* Spacing below the input/textarea */
+    border: 1px solid #ddd;
+}
+
+.submit-btn {
+    background-color: #9b1c31; /* Match the header background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: darken(#9b1c31, 10%); /* Slightly darken the button on hover */
+}
+        
         
         /* Existing base styles for your site footer */
 .site-footer {
@@ -440,6 +479,36 @@
     <p>For quick queries, send us a message on Facebook Messenger.</p>
     <a href="https://m.me/citypipeband" target="_blank" class="call-to-action">Send a Message</a>
   </div>
+
+<div class="container contact-form-container">
+    <form action="contact_form_handler.php" method="post" class="contact-form">
+        <h2>Contact Us</h2>
+
+        <div class="contact-item">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="contact-item">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="contact-item">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="contact-item">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <div class="contact-item">
+            <button type="submit" class="submit-btn">Send Message</button>
+        </div>
+    </form>
+</div>
 
 <br>
 <br>
