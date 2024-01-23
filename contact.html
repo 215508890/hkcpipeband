@@ -291,7 +291,10 @@
 
 .contact-form label {
     display: block;
+    width: calc(100% - 40px); /* Subtract left and right margins */
     margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .contact-form input[type="text"],
@@ -311,13 +314,14 @@
     background-color: #9b1c31;
     color: white;
     border: none;
-    padding: 20px 30px; /* Vertically 20px and Horizontally 30px padding */
+    padding: 10px 20px; /* Reduced padding for a tighter fit around the text */
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 5px;
-    text-align: center; /* Ensures the text is centered, which is the default for buttons */
-    display: inline-block; /* Ensures the button respects the text-align property */
-    width: auto; /* The width can be 'auto' for the content to define the button's width */
+    text-align: center;
+    display: inline-block;
+    font-size: 16px; /* Adjust the font size as needed */
+    width: auto;
 }
 
 .submit-btn:hover {
