@@ -297,21 +297,27 @@
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    width: 100%;
+    width: calc(100% - 40px); /* Subtract left and right margins */
     padding: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
+    box-sizing: border-box; /* Include padding and border in the element's width */
 }
 
 .submit-btn {
     background-color: #9b1c31;
     color: white;
     border: none;
-    padding: 20px 30px;
+    padding: 20px 30px; /* Vertically 20px and Horizontally 30px padding */
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 5px;
+    text-align: center; /* Ensures the text is centered, which is the default for buttons */
+    display: inline-block; /* Ensures the button respects the text-align property */
+    width: auto; /* The width can be 'auto' for the content to define the button's width */
 }
 
 .submit-btn:hover {
