@@ -258,7 +258,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Animated diagonal grid pattern - continuous movement */
         .hero::before {
             content: '';
             position: absolute;
@@ -273,7 +272,6 @@
             pointer-events: none;
             animation: driftDiagonal 25s linear infinite;
         }
-        /* Scottish Saltire X marks - continuous drifting */
         .hero::after {
             content: '';
             position: absolute;
@@ -355,7 +353,7 @@
             }
         }
 
-        /* The Band Section */
+        /* The Band Section with Image Carousel */
         .band-section {
             padding: 3.5rem 0;
             background: var(--white);
@@ -366,17 +364,106 @@
             gap: 3rem;
             align-items: center;
         }
-        .band-img img {
+        
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
             width: 100%;
             border-radius: var(--border-radius-card);
+            overflow: hidden;
             box-shadow: var(--shadow-md);
-            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            background: #f5f5f5;
+        }
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+        }
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
             cursor: pointer;
         }
-        .band-img img:hover {
-            transform: scale(1.01);
-            box-shadow: var(--shadow-hover);
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
         }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .carousel-slide img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Navigation Arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+        .carousel-arrow:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.05);
+        }
+        .carousel-arrow.prev {
+            left: 15px;
+        }
+        .carousel-arrow.next {
+            right: 15px;
+        }
+        
+        /* Dots Indicators */
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            background: rgba(0,0,0,0.4);
+            padding: 6px 12px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-dot.active {
+            background: var(--primary-light);
+            width: 24px;
+            border-radius: 10px;
+        }
+        .carousel-dot:hover {
+            background: var(--primary);
+        }
+        
         .band-text h2 {
             font-size: 2rem;
             font-weight: 700;
@@ -424,6 +511,10 @@
             .band-section { padding: 2.5rem 0; }
             .band-grid { grid-template-columns: 1fr; gap: 1.8rem; }
             .band-text h2 { font-size: 1.8rem; }
+            .carousel-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
+            .carousel-dots { bottom: 10px; padding: 4px 10px; }
+            .carousel-dot { width: 8px; height: 8px; }
+            .carousel-dot.active { width: 20px; }
         }
 
         /* Services Preview Cards */
@@ -503,7 +594,7 @@
         .service-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700; }
         .service-card p { color: var(--gray-mid); font-size: 0.88rem; }
 
-        /* CTA SECTION — with continuous moving background animation */
+        /* CTA SECTION */
         .cta-section {
             background: var(--primary);
             color: white;
@@ -512,7 +603,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Animated geometric pattern for CTA - continuous movement */
         .cta-section::before {
             content: '';
             position: absolute;
@@ -524,7 +614,6 @@
             animation: rotateFlow 20s linear infinite;
             pointer-events: none;
         }
-        /* Additional moving pattern overlay */
         .cta-section::after {
             content: '';
             position: absolute;
@@ -580,7 +669,7 @@
             .cta-section h3 { font-size: 1.3rem; }
         }
 
-        /* Footer - Responsive layout with proper stacking on mobile */
+        /* Footer */
         .site-footer {
             background: #111216;
             color: #d1d5db;
@@ -779,7 +868,26 @@
     <section class="band-section">
         <div class="container band-grid">
             <div class="band-img">
-                <img src="Images/index.p2.jpg" alt="City of Hong Kong Pipe Band group photo" onclick="openLightbox(this.src)">
+                <div class="carousel-container" id="imageCarousel">
+                    <div class="carousel-slides" id="carouselSlides">
+                        <div class="carousel-slide" data-index="0">
+                            <img src="Images/index.p2.jpg" alt="City of Hong Kong Pipe Band Performance 1" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="carousel-slide" data-index="1">
+                            <img src="Images/index.p3.jpg" alt="City of Hong Kong Pipe Band Performance 2" onclick="openLightbox(this.src)">
+                        </div>
+                        <div class="carousel-slide" data-index="2">
+                            <img src="Images/index.p4.jpg" alt="City of Hong Kong Pipe Band Performance 3" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    <div class="carousel-arrow prev" id="prevArrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next" id="nextArrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                </div>
             </div>
             <div class="band-text">
                 <h2>The Band</h2>
@@ -828,7 +936,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas favelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
                     <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
                     <p>Hong Kong based, worldwide</p>
                 </div>
@@ -852,6 +960,7 @@
     </div>
 
     <script>
+        // Mobile menu toggle
         const hamburger = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
@@ -859,6 +968,7 @@
             link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
 
+        // Lightbox functions
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-image');
@@ -873,7 +983,77 @@
         window.closeLightbox = closeLightbox;
         window.openLightbox = openLightbox;
 
-        window.addEventListener('load', () => document.body.classList.remove('loading'));
+        // Carousel Implementation
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prevArrow');
+        const nextBtn = document.getElementById('nextArrow');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        let autoInterval;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentIndex);
+            });
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlides();
+            resetAutoPlay();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlides();
+            resetAutoPlay();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlides();
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            autoInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoInterval);
+            startAutoPlay();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Pause auto-play on hover
+        const carousel = document.getElementById('imageCarousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(autoInterval));
+        carousel.addEventListener('mouseleave', startAutoPlay);
+
+        // Start auto-play
+        startAutoPlay();
+
+        window.addEventListener('load', () => {
+            document.body.classList.remove('loading');
+            updateSlides();
+        });
 
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
