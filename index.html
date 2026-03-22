@@ -1,487 +1,870 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
-	<head>
-  <meta charset="UTF-8">
-  <title>City of Hong Kong Pipe Band|香港城市風笛隊</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>City of Hong Kong Pipe Band | 香港城市風笛隊</title>
+    
+    <!-- SEO Meta Tags (English) -->
+    <meta name="description" content="City of Hong Kong Pipe Band – professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and cultural programs since 2013.">
+    <meta name="keywords" content="Scottish bagpipe, bagpipe performance Hong Kong, pipe band, wedding bagpiper, funeral bagpiper, corporate event, celebration music">
+    <meta name="author" content="City of Hong Kong Pipe Band">
+    <link rel="canonical" href="https://cityhkpipeband.com/index-en.html">
+    <meta property="og:title" content="City of Hong Kong Pipe Band | Professional Bagpipe Performances">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cityhkpipeband.com/index-en.html">
+    <meta property="og:description" content="Authentic Scottish bagpipe music for weddings, funerals, celebrations & corporate events in Hong Kong.">
+    <meta property="og:image" content="Images/citypb.icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Alternate language link -->
+    <link rel="alternate" hreflang="zh-HK" href="index-zh.html">
+    <link rel="alternate" hreflang="en" href="index-en.html">
+    
+    <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="Images/citypb.icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XK7BMF7NJQ');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Chinese Description & Keywords -->
-  <meta name="description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-  <meta name="keywords" content="演出,慶典,晚宴,商業推廣,文娛節目,演奏,喪禮,婚禮,蘇格蘭風笛,蘇格蘭風笛演出,風笛,風笛演出,">
+        :root {
+            --primary: #9b1c31;
+            --primary-dark: #7a1628;
+            --primary-light: #c13a51;
+            --secondary: #1e2a32;
+            --light-bg: #faf9f8;
+            --gray-light: #f0efed;
+            --gray-mid: #6c6a67;
+            --dark-text: #1e1e1e;
+            --white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --border-radius-card: 1.25rem;
+        }
 
-  <!-- English Description & Keywords -->
-  <meta name="description" lang="en" content="Providing a variety of performances, including celebrations, banquets, commercial promotions, entertainment programs, performances, funerals, weddings, and more.">
-  <meta name="keywords" lang="en" content="performance, celebration, banquet, commercial promotion, entertainment program, events , funeral, wedding, Scottish bagpipes, Scottish bagpipes performance, bagpipes, bagpipes performance,">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://cityhkpipeband.com/">
-  <meta property="og:title" content="City of Hong Kong Pipe Band|香港城市風笛隊">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cityhkpipeband.com/">
-  <meta property="og:description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-  <meta property="og:site_name" content="City of Hong Kong Pipe Band|香港城市風笛隊">
-  <meta property="og:image" content="Images/citypb.icon.png">
-  <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="Images/citypb.icon.png">
-  <link rel="profile" href="http://gmpg.org/xfn/11">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-    gtag('config', 'G-XK7BMF7NJQ');
-  </script>
+        /* loading spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loading #loading-spinner { display: flex; }
+        body:not(.loading) #loading-spinner { display: none; }
 
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
 
-		<style>
-			body {
-			margin: 0;
-			font-family: Arial, sans-serif;
-			}
-			header {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 20px;
-			background-color: #9b1c31;
-			color: white;
-			position: relative;
-			}
-			.header-title {
-			font-size: 5vw; /* Responsive font size */
-			margin: 5px 0;
-			text-align: center;
-			padding-bottom: 10px; /* Space for the menu */
-			}
-			.header-description {
-			font-size: 3vw; /* Responsive font size */
-			margin: 0;
-			text-align: center;
-			}
-			/* Minimum font size for smaller devices */
-			@media (max-width: 768px) {
-			.header-title {
-			font-size: 26px; /* Fixed minimum font size for smaller screens */
-			}
-			.header-description {
-			font-size: 24px; /* Fixed minimum font size for smaller screens */
-			}
-			}
-			/* Minimum font size for smaller devices */
-			@media (max-width: 1200px) {
-			.header-logo {
-			max-height: 70px; /* Adjust the size as needed */
-			}
-			}
-			/* Maximum font size for larger devices */
-			@media (min-width: 1200px) {
-			.header-title {
-			font-size: 45px; /* Fixed maximum font size for larger screens */
-			}
-			.header-description {
-			font-size: 43px; /* Fixed maximum font size for larger screens */
-			}
-			.header-logo {
-			max-height: 130px; /* Adjust the size as needed */
-			}
-			}
-			@media (min-width: 1200px) {
-			.header-logo {
-			max-height: 130px; /* Adjust the size as needed */
-			}
-			}
-			/* Content section styles */
-			.content-wrapper {
-			display: flex;
-			align-items: center; /* Vertically center the content */
-			justify-content: space-between; /* Put maximum space between text and image */
-			}
-			/* Adjust margins for the image and text */
-			.content-image {
-			flex: 0 0 auto; /* Do not grow, do not shrink, and is based on the width property */
-			width: 600px; /* Desired width for the image */
-			height: auto; /* Maintain aspect ratio */
-			margin-top: 20px;
-			margin-right: 20px;
-			margin-bottom: 20px;
-			margin-left: 100px; /* Margin to the left of the image */
-			}
-			.content-text {
-			flex-grow: 1; /* Allow text container to grow, but it will not push the image */
-			margin-right: 100px;
-			padding-right: 20px; /* Padding to ensure text doesn't touch the image */
-			text-align: justify; /* Justify text for tidy alignment */
-			max-width: 100%; /* Ensure the text does not overflow its container */
-			}
-			/* Responsive adjustments for smaller screens */
-			@media (max-width: 767px) {
-			.content-wrapper {
-			display: block; /* Stack the image and text on smaller screens */
-			}
-			.content-image {
-			width: 80%; /* Responsive width for the image */
-			height: auto; /* Maintain aspect ratio */
-			margin: 20px auto; /* Center the image with automatic horizontal margins */
-			display: block; /* Ensures the image is treated as a block-level element */
-			}
-			.content-text {
-			margin: 20px; /* Consistent margin for the text */
-			text-align: justify; /* Justify text for tidy alignment */
-			}
-			}
-			.content {
-			margin: 20px; /* Margin from the boundary */
-			}
-			.menu-controls {
-			display: flex;
-			justify-content: space-between;
-			align-items: center; /* Align items vertically */
-			width: 100%;
-			padding: 0 20px; /* Padding on sides */
-			}
-			#lightbox {
-			position: fixed;
-			z-index: 1000;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0,0,0,0.8);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			}
-			#lightbox-image {
-			max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
-			max-height: 80%;
-			margin: auto; /* This will center the image in the lightbox */
-			}
-			.lightbox-close {
-			position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
-			top: 20px;
-			right: 20px;
-			font-size: 30px;
-			font-weight: bold;
-			color: white;
-			cursor: pointer;
-			z-index: 1001; /* Ensure it's above the lightbox image */
-			}
-			/* Big devices with a minimum width of 768px */
-			@media (min-width: 768px) {
-			#lightbox-image {
-			max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
-			}
-			}
-			.hamburger {
-			cursor: pointer;
-			display: block;
-			}
-			.hamburger .bar {
-			display: block;
-			width: 25px;
-			height: 3px;
-			margin: 5px 0;
-			background-color: white;
-			transition: 0.4s;
-			}
-			.change .bar.top {
-			transform: translateY(8px) rotate(45deg);
-			}
-			.change .bar.middle {
-			opacity: 0;
-			}
-			.change .bar.bottom {
-			transform: translateY(-8px) rotate(-45deg);
-			}
-			.menu {
-			display: none;
-			width: 100%;
-			background-color: white;
-			position: absolute;
-			top: 100%;
-			left: 0;
-			z-index: 10;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
-			}
-			.menu a {
-			text-decoration: none;
-			color: black;
-			padding: 10px 15px;
-			display: block;
-			}
-			.menu a:hover {
-			background-color: #7a1c28;
-			color: white;
-			}
-			.menu.active {
-			display: block;
-			}
-			.lang-switch {
-			cursor: pointer;
-			display: block;
-			}
-			@media (max-width: 768px) {
-			.header-description {
-			text-align: center;
-			}
-			.hamburger,
-			.lang-switch {
-			display: block;
-			}
-			.menu {
-			display: none;
-			}
-			}
-			/* Existing base styles for your site footer */
-			.site-footer {
-			background-color: #333;
-			color: white;
-			padding: 20px 0;
-			margin-top: 40px;
-			}
-			.site-footer a {
-			color: #6DF;
-			text-decoration: none;
-			}
-			.site-footer a:hover {
-			text-decoration: underline;
-			}
-			/* Flexbox layout for the footer content */
-			.footer-content {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			}
-			.footer-section {
-			margin-top: 10px;
-			margin-bottom: 10px;
-			margin-left: 100px;
-			margin-right: 100px;
-			flex: 1;
-			min-width: 150px; /* Minimum width before wrapping */
-			text-align: left; /* Align text to the left */
-			}
-			/* Shared styles for Quick Links and Follow Us lists */
-			.footer-links,
-			.social-links {
-			list-style: none; /* Remove bullet points */
-			padding: 0;
-			margin: 0; /* Remove default margin */
-			}
-			.footer-links li a,
-			.social-links li a {
-			color: #6DF;
-			text-decoration: none;
-			display: block; /* Make the links full-width within the section */
-			}
-			.footer-links li a:hover,
-			.social-links li a:hover {
-			text-decoration: underline;
-			}
-			/* Responsive design adjustments */
-			@media (max-width: 768px) {
-			.footer-content {
-			flex-direction: column;
-			align-items: flex-start; /* Align items to the left on smaller screens */
-			}
-			.footer-section {
-			/* Full width on smaller screens */
-			flex-basis: 100%;
-			margin: 20px;
-			}
-			}
-			/* Styles for the footer bottom */
-			.footer-bottom {
-			text-align: center; /* Keep copyright notice centered */
-			margin-top: 20px;
-			border-top: 1px solid #474747;
-			padding-top: 20px;
-			}
-			#loading-spinner {
-			position: fixed; /* Full screen */
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: white; /* Or any color that matches your brand */
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			z-index: 9999; /* High z-index to make sure it's on top */
-			}
-			.spinner {
-			border: 5px solid #f3f3f3; /* Light grey background */
-			border-top: 5px solid #9b1c31; /* Main color */
-			border-radius: 50%;
-			width: 50px;
-			height: 50px;
-			animation: spin 1s linear infinite;
-			}
-			@keyframes spin {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-			}
-			/* Hide the spinner by default and only show it when the .loading class is present */
-			body:not(.loading) #loading-spinner {
-			display: none;
-			}
-		</style>
-	</head>
-	<body>
-		<header>
-			<div class="menu-controls">
-				<div class="hamburger" id="hamburger" onclick="toggleMenu()">
-					<div class="bar top"></div>
-					<div class="bar middle"></div>
-					<div class="bar bottom"></div>
-				</div>
-				<a href="index.html">
-				<img src="Images/citypb.icon.png" alt="City Pipe Band" class="header-logo" />
-				</a>
-				<div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
-					中/Eng
-				</div>
-			</div>
-			<h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
-			<p class="header-description" id="header-description">香港城市風笛隊</p>
-			<nav class="menu" id="menu">
-				<a href="index.html" id="nav-the-band">The Band</a>
-				<a href="aboutus.html" id="nav-about-us">About Us</a>
-				<a href="services.html" id="nav-services">Services</a>
-				<a href="gallery.html" id="nav-gallery">Gallery</a>
-				<a href="contact.html" id="nav-contact">Contact</a>
-			</nav>
-		</header>
-		<body class="loading">
-			<div id="loading-spinner">
-				<div class="spinner"></div>
-			</div>
-			<div class="content-wrapper" id="the-band">
-				<!-- Image on the left -->
-				<div class="content-image">
-					<img src="Images/index.p1.jpg" alt="Team photo" style="max-width: 100%;" onclick="openLightbox(this.src);">
-				</div>
-				<!-- Text on the right -->
-				<div class="content-text">
-					<h2>The Band</h2>
-					<p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
-					<p><a href="aboutus.html" style="text-decoration: underline;">For more/了解更多</a></p>
-				</div>
-			</div>
-			<!-- Lightbox Container -->
-			<div id="lightbox" onclick="closeLightbox();" style="display:none;">
-				<img id="lightbox-image" />
-				<p id="lightbox-description"></p>
-				<!-- Description paragraph -->
-				<span class="lightbox-close" onclick="closeLightbox();">&times;</span>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<footer>
-			<footer class="site-footer">
-				<div class="footer-content">
-					<!-- Quick Links Section -->
-					<div class="footer-section">
-						<h3>Quick Links</h3>
-						<ul class="footer-links">
-							<li><a href="index.html">The Band</a></li>
-							<li><a href="aboutus.html">About Us</a></li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-					<!-- Contact Information -->
-					<div class="footer-section">
-						<h3>Contact Information</h3>
-						<p>Email: <a href="mailto:cityofhongkongpipeband@gmail.com">cityofhongkongpipeband@gmail.com</a></p>
-					</div>
-					<!-- Social Media Links -->
-					<div class="footer-section">
-						<h3>Follow Us</h3>
-						<div class="social-links">
-							<!-- Replace '#' with your actual social media links -->
-							<a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Facebook</a>
-						</div>
-					</div>
-				</div>
-				<!-- Copyright Notice -->
-				<div class="footer-bottom">
-					<p>&copy; 2024 City of Hong Kong Pipe Band. All rights reserved.</p>
-				</div>
-			</footer>
-			<script>
-				// Function to toggle the mobile menu
-				function toggleMenu() {
-				    var menu = document.getElementById("menu");
-				    var hamburger = document.getElementById("hamburger");
-				    menu.classList.toggle("active");
-				    hamburger.classList.toggle("change");
-				}
-				
-				// Object containing language text for content sections
-				var languageTexts = {
-				    'en': {
-				        'the-band': {
-				            'heading': 'The Band',
-				            'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
-				        }
-				        // ... other content sections in English
-				    },
-				    'zh': {
-				        'the-band': {
-				            'heading': '笛勢山河',
-				            'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
-				        }
-				        // ... other content sections in Chinese
-				    }
-				};
-				
-				// Function to toggle the language of content sections
-				function toggleLanguage() {
-				    var currentLang = document.documentElement.lang;
-				    var newLang = currentLang === 'zh' ? 'en' : 'zh';
-				    document.documentElement.lang = newLang;
-				
-				    // Update the text content of content sections based on the new language
-				    for (var sectionId in languageTexts[newLang]) {
-				        if (languageTexts[newLang].hasOwnProperty(sectionId)) {
-				            var section = document.getElementById(sectionId);
-				            if (section) {
-				                section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
-				                section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
-				            }
-				        }
-				    }
-				
-				    // Update the language switch button text
-				    var langSwitch = document.getElementById('lang-switch');
-				    langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
-				}
-				
-				function openLightbox(imageSrc, imageAlt) {
-				var lightbox = document.getElementById('lightbox');
-				var lightboxImage = document.getElementById('lightbox-image');
-				var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
-				
-				lightboxImage.src = imageSrc;
-				lightboxDescription.textContent = imageAlt; // Set the alt text as the description
-				lightbox.style.display = 'flex';
-				}
-				
-				function closeLightbox() {
-				var lightbox = document.getElementById('lightbox');
-				lightbox.style.display = 'none';
-				}
-				
-				window.addEventListener('load', function() {
-				    document.body.classList.remove('loading');
-				});
-				
-			</script>
-	</body>
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.7rem 1.5rem; }
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.8rem; }
+            .logo-img { height: 36px; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .lang-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2rem;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .lang-btn::after { display: none; }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1.8rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .mobile-lang {
+            background: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* ===== HERO SECTION — SCOTTISH SALTIRE (X) PATTERN ===== */
+        .hero {
+            background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 2px, transparent 2px, transparent 60px),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 2px, transparent 2px, transparent 60px);
+            background-size: 85px 85px, 85px 85px;
+            pointer-events: none;
+            animation: slowDrift 30s linear infinite;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" opacity="0.2"><path d="M20 20 L100 100 M100 20 L20 100" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M40 40 L80 80 M80 40 L40 80" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/></svg>');
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            pointer-events: none;
+            animation: slowPulse 20s ease-in-out infinite;
+        }
+        @keyframes slowDrift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(3%, 2%) rotate(1deg); }
+        }
+        @keyframes slowPulse {
+            0%, 100% { opacity: 0.18; transform: scale(1); }
+            50% { opacity: 0.28; transform: scale(1.02); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-weight: 400;
+        }
+        .hero h1 {
+            animation: gentleGlow 2.5s ease-in-out infinite;
+        }
+        @keyframes gentleGlow {
+            0% { text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+            50% { text-shadow: 0 4px 18px rgba(255,215,150,0.4); }
+            100% { text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { font-size: 0.85rem; max-width: 90%; }
+        }
+        @media (min-width: 1200px) {
+            .hero { padding: 2.2rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        /* ===== SECTION ANIMATIONS ===== */
+        .band-section, .services-preview, .cta-section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+        .band-section { animation-delay: 0.1s; }
+        .services-preview { animation-delay: 0.2s; }
+        .cta-section { animation-delay: 0.3s; }
+        
+        @keyframes sectionReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* The Band Section */
+        .band-section {
+            padding: 3.5rem 0;
+            background: var(--white);
+        }
+        .band-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .band-img img {
+            width: 100%;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .band-img img:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-hover);
+        }
+        .band-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+        }
+        .band-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            animation: widthGrow 0.6s ease-out 0.3s forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        @keyframes widthGrow {
+            to { transform: scaleX(1); }
+        }
+        .band-text p {
+            font-size: 1rem;
+            color: #2c3e3f;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 2px solid var(--primary-light);
+            transition: var(--transition);
+        }
+        .btn-link:hover { gap: 0.8rem; color: var(--primary-dark); }
+
+        @media (max-width: 768px) {
+            .band-section { padding: 2.5rem 0; }
+            .band-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+            .band-text h2 { font-size: 1.8rem; }
+        }
+
+        /* Services Preview Cards */
+        .services-preview {
+            background: var(--light-bg);
+            padding: 3.5rem 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+        .section-header h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            animation: centerGrow 0.5s ease-out 0.4s forwards;
+            transform: scaleX(0);
+        }
+        @keyframes centerGrow {
+            to { transform: translateX(-50%) scaleX(1); }
+        }
+        .section-header p {
+            color: var(--gray-mid);
+            max-width: 550px;
+            margin: 1rem auto 0;
+            font-size: 0.95rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+        }
+        .service-card {
+            background: white;
+            padding: 1.6rem 1.3rem;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+            opacity: 0;
+            transform: translateY(25px);
+            animation: cardReveal 0.5s ease-out forwards;
+        }
+        .service-card:nth-child(1) { animation-delay: 0.2s; }
+        .service-card:nth-child(2) { animation-delay: 0.3s; }
+        .service-card:nth-child(3) { animation-delay: 0.4s; }
+        .service-card:nth-child(4) { animation-delay: 0.5s; }
+        @keyframes cardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .service-card p { color: var(--gray-mid); font-size: 0.88rem; }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotateSlow 25s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .cta-section h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section p {
+            position: relative;
+            z-index: 2;
+            font-size: 0.95rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            margin-top: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-btn:hover {
+            transform: scale(1.03);
+            background: #fff5f0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        @media (max-width: 640px) {
+            .cta-section { padding: 2rem 1rem; }
+            .cta-section h3 { font-size: 1.3rem; }
+        }
+
+        /* Footer - Responsive layout with proper stacking on mobile */
+        .site-footer {
+            background: #111216;
+            color: #d1d5db;
+            padding: 2.5rem 0 1.2rem;
+            opacity: 0;
+            animation: footerFade 0.6s ease-out 0.5s forwards;
+        }
+        @keyframes footerFade {
+            to { opacity: 1; }
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        /* On smaller screens, stack vertically and prevent overlap */
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .footer-col {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        /* Remove bullet points from lists */
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+        .footer-col ul li::before {
+            display: none;
+            content: none;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .footer-col a {
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary-light); }
+        
+        /* Contact links styling */
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            word-break: break-word;
+            flex-wrap: wrap;
+        }
+        .contact-link i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-link:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        /* Social links styling */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .social-links a i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #2a2c33;
+            font-size: 0.75rem;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        #lightbox-image {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            animation: zoomIn 0.2s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 38px;
+            font-weight: 300;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        @media (max-width: 768px) {
+            .lightbox-close { top: 15px; right: 20px; font-size: 30px; }
+        }
+    </style>
+</head>
+<body class="loading">
+    <div id="loading-spinner"><div class="spinner"></div></div>
+
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="Images/citypb.icon.png" alt="City of Hong Kong Pipe Band Logo" class="logo-img">
+                <div class="logo-text">
+                    City of Hong Kong<br><span>Pipe Band</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="index-en.html" class="active">The Band</a>
+                <a href="aboutus-en.html">About Us</a>
+                <a href="services-en.html">Services</a>
+                <a href="gallery-en.html">Gallery</a>
+                <a href="contact-en.html">Contact</a>
+                <a href="index-zh.html" class="lang-btn">中文版</a>
+            </div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index-en.html">The Band</a>
+            <a href="aboutus-en.html">About Us</a>
+            <a href="services-en.html">Services</a>
+            <a href="gallery-en.html">Gallery</a>
+            <a href="contact-en.html">Contact</a>
+            <a href="index-zh.html" class="mobile-lang">中文版</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>City of Hong Kong<br>Pipe Band</h1>
+            <p>Tradition meets excellence — authentic Scottish bagpipe music for every moment</p>
+        </div>
+    </section>
+
+    <section class="band-section">
+        <div class="container band-grid">
+            <div class="band-img">
+                <img src="Images/index.p1.jpg" alt="City of Hong Kong Pipe Band group photo" onclick="openLightbox(this.src)">
+            </div>
+            <div class="band-text">
+                <h2>The Band</h2>
+                <p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
+                <a href="aboutus-en.html" class="btn-link">More about us →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Signature Services</h2>
+                <p>Elevate your occasions with the timeless resonance of the Great Highland Bagpipe</p>
+            </div>
+            <div class="card-grid">
+                <div class="service-card"><div class="card-icon">🎉</div><h3>Celebrations</h3><p>Weddings, birthdays, grand openings & festive events.</p></div>
+                <div class="service-card"><div class="card-icon">💼</div><h3>Corporate Events</h3><p>Product launches, gala dinners, brand experiences.</p></div>
+                <div class="service-card"><div class="card-icon">🕯️</div><h3>Funerals & Memorials</h3><p>Dignified & moving tribute with pipes.</p></div>
+                <div class="service-card"><div class="card-icon">🎭</div><h3>Cultural Programs</h3><p>Festivals, concerts, traditional ceremonies.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h3>Ready to make your event extraordinary?</h3>
+            <p>Contact us to discuss availability and personalized performances</p>
+            <a href="contact-en.html" class="cta-btn">Inquire Now →</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index-en.html">The Band</a></li>
+                        <li><a href="aboutus-en.html">About Us</a></li>
+                        <li><a href="services-en.html">Services</a></li>
+                        <li><a href="gallery-en.html">Gallery</a></li>
+                        <li><a href="contact-en.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p>Hong Kong based, worldwide</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/cityofhongkongpipeband" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" onclick="closeLightbox();" style="display:none;">
+        <img id="lightbox-image" />
+        <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        window.closeLightbox = closeLightbox;
+        window.openLightbox = openLightbox;
+
+        window.addEventListener('load', () => document.body.classList.remove('loading'));
+
+        const currentPage = window.location.pathname.split('/').pop() || 'index-en.html';
+        document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+            const href = link.getAttribute('href');
+            if(href === currentPage || (currentPage === '' && href === 'index-en.html')) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
 </html>
