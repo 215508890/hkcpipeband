@@ -9,17 +9,17 @@
     <meta name="description" content="City of Hong Kong Pipe Band – professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and cultural programs since 2013.">
     <meta name="keywords" content="Scottish bagpipe, bagpipe performance Hong Kong, pipe band, wedding bagpiper, funeral bagpiper, corporate event, celebration music">
     <meta name="author" content="City of Hong Kong Pipe Band">
-    <link rel="canonical" href="https://cityhkpipeband.com/index-en.html">
+    <link rel="canonical" href="https://cityhkpipeband.com/index.html">
     <meta property="og:title" content="City of Hong Kong Pipe Band | Professional Bagpipe Performances">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cityhkpipeband.com/index-en.html">
+    <meta property="og:url" content="https://cityhkpipeband.com/index.html">
     <meta property="og:description" content="Authentic Scottish bagpipe music for weddings, funerals, celebrations & corporate events in Hong Kong.">
     <meta property="og:image" content="Images/citypb.icon.png">
     <meta name="twitter:card" content="summary_large_image">
     
     <!-- Alternate language link -->
     <link rel="alternate" hreflang="zh-HK" href="index-zh.html">
-    <link rel="alternate" hreflang="en" href="index-en.html">
+    <link rel="alternate" hreflang="en" href="index.html">
     
     <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="Images/citypb.icon.png">
@@ -249,7 +249,7 @@
             .hamburger { display: flex; }
         }
 
-        /* ===== HERO SECTION — SCOTTISH SALTIRE (X) PATTERN ===== */
+        /* ===== HERO SECTION — SCOTTISH SALTIRE (X) PATTERN WITH CONTINUOUS MOVEMENT ===== */
         .hero {
             background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 2rem 1rem;
@@ -258,40 +258,42 @@
             position: relative;
             overflow: hidden;
         }
+        /* Animated diagonal grid pattern - continuous movement */
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 200%;
+            height: 200%;
             background-image: 
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 2px, transparent 2px, transparent 60px),
-                repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 2px, transparent 2px, transparent 60px);
-            background-size: 85px 85px, 85px 85px;
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 50px),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 2px, transparent 2px, transparent 50px);
+            background-size: 70px 70px, 70px 70px;
             pointer-events: none;
-            animation: slowDrift 30s linear infinite;
+            animation: driftDiagonal 25s linear infinite;
         }
+        /* Scottish Saltire X marks - continuous drifting */
         .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" opacity="0.2"><path d="M20 20 L100 100 M100 20 L20 100" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M40 40 L80 80 M80 40 L40 80" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/></svg>');
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" opacity="0.2"><path d="M20 20 L100 100 M100 20 L20 100" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M40 40 L80 80 M80 40 L40 80" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.6"/><path d="M60 60 L70 70 M70 60 L60 70" stroke="white" stroke-width="1.5" opacity="0.4"/></svg>');
             background-repeat: repeat;
-            background-size: 100px 100px;
+            background-size: 110px 110px;
             pointer-events: none;
-            animation: slowPulse 20s ease-in-out infinite;
+            animation: driftXmarks 35s linear infinite;
         }
-        @keyframes slowDrift {
+        @keyframes driftDiagonal {
             0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(3%, 2%) rotate(1deg); }
+            100% { transform: translate(30px, 20px) rotate(2deg); }
         }
-        @keyframes slowPulse {
-            0%, 100% { opacity: 0.18; transform: scale(1); }
-            50% { opacity: 0.28; transform: scale(1.02); }
+        @keyframes driftXmarks {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate(40px, -30px) rotate(3deg) scale(1.05); }
         }
         .hero-content {
             position: relative;
@@ -501,7 +503,7 @@
         .service-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700; }
         .service-card p { color: var(--gray-mid); font-size: 0.88rem; }
 
-        /* CTA Section */
+        /* CTA SECTION — with continuous moving background animation */
         .cta-section {
             background: var(--primary);
             color: white;
@@ -510,20 +512,37 @@
             position: relative;
             overflow: hidden;
         }
+        /* Animated geometric pattern for CTA - continuous movement */
         .cta-section::before {
             content: '';
             position: absolute;
-            top: -50%;
+            top: -30%;
             left: -20%;
             width: 140%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotateSlow 25s linear infinite;
+            height: 160%;
+            background: radial-gradient(circle at 30% 40%, rgba(255,215,150,0.12) 0%, rgba(255,255,255,0.05) 30%, transparent 70%);
+            animation: rotateFlow 20s linear infinite;
             pointer-events: none;
         }
-        @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* Additional moving pattern overlay */
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px);
+            pointer-events: none;
+            animation: slowShift 30s linear infinite;
+        }
+        @keyframes rotateFlow {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+        @keyframes slowShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(35px, 25px); }
         }
         .cta-section h3 {
             font-size: 1.6rem;
@@ -583,7 +602,6 @@
             flex: 1;
             min-width: 200px;
         }
-        /* On smaller screens, stack vertically and prevent overlap */
         @media (max-width: 768px) {
             .footer-grid {
                 flex-direction: column;
@@ -600,7 +618,6 @@
             font-size: 1rem;
             font-weight: 600;
         }
-        /* Remove bullet points from lists */
         .footer-col ul {
             list-style: none;
             padding: 0;
@@ -628,7 +645,6 @@
         }
         .footer-col a:hover { color: var(--primary-light); }
         
-        /* Contact links styling */
         .contact-link {
             display: inline-flex;
             align-items: center;
@@ -649,7 +665,6 @@
             transform: translateX(3px);
         }
         
-        /* Social links styling */
         .social-links {
             display: flex;
             flex-direction: column;
@@ -732,11 +747,11 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="index-en.html" class="active">The Band</a>
-                <a href="aboutus-en.html">About Us</a>
-                <a href="services-en.html">Services</a>
-                <a href="gallery-en.html">Gallery</a>
-                <a href="contact-en.html">Contact</a>
+                <a href="index.html" class="active">The Band</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
                 <a href="index-zh.html" class="lang-btn">中文版</a>
             </div>
             <div class="hamburger" id="hamburgerBtn">
@@ -744,15 +759,16 @@
             </div>
         </div>
         <div class="mobile-menu" id="mobileMenu">
-            <a href="index-en.html">The Band</a>
-            <a href="aboutus-en.html">About Us</a>
-            <a href="services-en.html">Services</a>
-            <a href="gallery-en.html">Gallery</a>
-            <a href="contact-en.html">Contact</a>
+            <a href="index.html">The Band</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
             <a href="index-zh.html" class="mobile-lang">中文版</a>
         </div>
     </div>
 
+    <!-- HERO with continuous moving Scottish Saltire pattern -->
     <section class="hero">
         <div class="hero-content">
             <h1>City of Hong Kong<br>Pipe Band</h1>
@@ -768,7 +784,7 @@
             <div class="band-text">
                 <h2>The Band</h2>
                 <p>Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We're all about sharing the joy and tradition of the pipes, whether we're lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.</p>
-                <a href="aboutus-en.html" class="btn-link">More about us →</a>
+                <a href="aboutus.html" class="btn-link">More about us →</a>
             </div>
         </div>
     </section>
@@ -788,11 +804,12 @@
         </div>
     </section>
 
+    <!-- CTA SECTION with continuous moving background animation -->
     <section class="cta-section">
         <div class="container">
             <h3>Ready to make your event extraordinary?</h3>
             <p>Contact us to discuss availability and personalized performances</p>
-            <a href="contact-en.html" class="cta-btn">Inquire Now →</a>
+            <a href="contact.html" class="cta-btn">Inquire Now →</a>
         </div>
     </section>
 
@@ -802,16 +819,16 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index-en.html">The Band</a></li>
-                        <li><a href="aboutus-en.html">About Us</a></li>
-                        <li><a href="services-en.html">Services</a></li>
-                        <li><a href="gallery-en.html">Gallery</a></li>
-                        <li><a href="contact-en.html">Contact</a></li>
+                        <li><a href="index.html">The Band</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas favelope"></i> cityofhongkongpipeband@gmail.com</a></p>
                     <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
                     <p>Hong Kong based, worldwide</p>
                 </div>
@@ -824,7 +841,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
+                <p>&copy; 2026 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
             </div>
         </div>
     </footer>
@@ -858,10 +875,10 @@
 
         window.addEventListener('load', () => document.body.classList.remove('loading'));
 
-        const currentPage = window.location.pathname.split('/').pop() || 'index-en.html';
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
             const href = link.getAttribute('href');
-            if(href === currentPage || (currentPage === '' && href === 'index-en.html')) {
+            if(href === currentPage || (currentPage === '' && href === 'index.html')) {
                 link.classList.add('active');
             }
         });
