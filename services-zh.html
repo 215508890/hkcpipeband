@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>服務項目 | 香港城市風笛隊 - City of Hong Kong Pipe Band</title>
+    
+    <!-- Chinese SEO Meta Tags -->
+    <meta name="description" content="香港城市風笛隊提供專業蘇格蘭風笛演出服務，包括婚禮、慶典、喪禮、企業活動等。可選擇獨奏風笛手、二重奏、四重奏、小型樂隊或大型樂隊。">
+    <meta name="keywords" content="服務項目, 風笛演出, 蘇格蘭風笛, 婚禮風笛, 喪禮風笛, 企業活動, 風笛樂隊, 獨奏風笛手, 風笛二重奏, 小型樂隊, 大型樂隊">
+    
+    <!-- English SEO Meta Tags -->
+    <meta name="description" lang="en" content="Professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and more. Choose from solo piper, duo, quartet, mini band, or full band.">
+    <meta name="keywords" lang="en" content="bagpipe services, Scottish bagpipe, wedding bagpiper, funeral bagpiper, corporate event, pipe band, solo piper, duo pipers, quartet, mini band, full band">
+    
+    <link rel="canonical" href="https://cityhkpipeband.com/services-zh.html">
+    <meta property="og:title" content="服務項目 | 香港城市風笛隊">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cityhkpipeband.com/services-zh.html">
+    <meta property="og:description" content="香港城市風笛隊提供專業蘇格蘭風笛演出服務，包括婚禮、慶典、喪禮、企業活動等。">
+    <meta property="og:image" content="Images/citypb.icon.png">
+    <meta property="og:site_name" content="香港城市風笛隊">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Alternate language link -->
+    <link rel="alternate" hreflang="en" href="services.html">
+    <link rel="alternate" hreflang="zh-HK" href="services-zh.html">
+    
+    <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="Images/citypb.icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XK7BMF7NJQ');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #9b1c31;
+            --primary-dark: #7a1628;
+            --primary-light: #c13a51;
+            --secondary: #1e2a32;
+            --light-bg: #faf9f8;
+            --gray-light: #f0efed;
+            --gray-mid: #6c6a67;
+            --dark-text: #1e1e1e;
+            --white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --border-radius-card: 1.25rem;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* loading spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loading #loading-spinner { display: flex; }
+        body:not(.loading) #loading-spinner { display: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.7rem 1.5rem; }
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo-area:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        .logo-img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.8rem; }
+            .logo-img { height: 36px; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .lang-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2rem;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .lang-btn::after { display: none; }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1.8rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .mobile-lang {
+            background: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        
+        .hero .tartan-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/><path d="M80 80 L100 100 M100 80 L80 100" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.12"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" opacity="0.1"><path d="M30 30 L50 50 M50 30 L30 50" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 10 L70 70 M70 10 L10 70" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.6"/></svg>');
+            background-repeat: repeat, repeat, repeat;
+            background-size: 180px 180px, 220px 220px, 100px 100px;
+            background-position: 0 0, 90px 90px, 45px 45px;
+            animation: tartanDrift 70s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero .wave-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,215,150,0.06) 20%, transparent 60%);
+            animation: elegantWave 28s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes tartanDrift {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 100% 100%, 100% 100%, 100% 100%; }
+        }
+        
+        @keyframes elegantWave {
+            0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, 3%) rotate(2deg) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: contentFadeIn 0.9s ease-out;
+        }
+        
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', 'Noto Sans TC', serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 18px rgba(0,0,0,0.28);
+            line-height: 1.2;
+            animation: titleSoftBreathing 3.8s ease-in-out infinite;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-weight: 400;
+        }
+        
+        @keyframes titleSoftBreathing {
+            0% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+            50% { text-shadow: 0 5px 28px rgba(255,215,150,0.45); }
+            100% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { font-size: 0.85rem; max-width: 90%; }
+            .hero .tartan-pattern {
+                background-size: 140px 140px, 170px 170px, 80px 80px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .hero { padding: 2.2rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tartan-pattern {
+                background-size: 200px 200px, 240px 240px, 110px 110px;
+            }
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out forwards;
+        }
+        
+        .services-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .services-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .services-intro p {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            margin-top: 1.2rem;
+        }
+        
+        @keyframes sectionReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-list {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.1s forwards;
+        }
+        
+        .service-list h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .service-list ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--dark-text);
+        }
+        
+        .service-list li i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 24px;
+        }
+        
+        /* Service Cards Grid */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.2s forwards;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-card-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+        
+        .service-card:hover .service-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-card-content {
+            padding: 1.5rem;
+        }
+        
+        .service-card-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .service-card-content p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        /* Video Demo Section */
+        .video-demo {
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.3s forwards;
+        }
+        
+        .video-demo h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-demo p {
+            color: var(--gray-mid);
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact CTA */
+        .contact-cta {
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.4s forwards;
+        }
+        
+        .contact-cta p {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            margin-bottom: 1.2rem;
+        }
+        
+        .contact-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .contact-cta .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            gap: 0.8rem;
+        }
+        
+        /* Floating Action Button - Inquire Now */
+        .inquire-fab {
+            position: fixed;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 3rem;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(155, 28, 49, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .inquire-fab i {
+            font-size: 1.1rem;
+        }
+        
+        .inquire-fab:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(155, 28, 49, 0.4);
+        }
+        
+        /* Desktop positioning */
+        @media (min-width: 769px) {
+            .inquire-fab {
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        
+        /* Mobile positioning - fixed at bottom center */
+        @media (max-width: 768px) {
+            .inquire-fab {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0.7rem 1.3rem;
+                font-size: 0.9rem;
+                width: auto;
+                white-space: nowrap;
+            }
+            .inquire-fab:hover {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-cards { grid-template-columns: 1fr; }
+            .service-list ul { grid-template-columns: 1fr; }
+            .services-intro h2 { font-size: 1.8rem; }
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #111216;
+            color: #d1d5db;
+            padding: 2.5rem 0 1.2rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .footer-col {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .footer-col a {
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary-light); }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .contact-link i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .contact-link:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .social-links a i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #2a2c33;
+            font-size: 0.75rem;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        #lightbox-image {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            animation: zoomIn 0.2s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 38px;
+            font-weight: 300;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        @media (max-width: 768px) {
+            .lightbox-close { top: 15px; right: 20px; font-size: 30px; }
+        }
+    </style>
+</head>
+<body class="loading">
+    <div id="loading-spinner"><div class="spinner"></div></div>
+
+    <div class="navbar">
+        <div class="nav-container">
+            <a href="#" id="logoLink" class="logo-area" style="text-decoration: none;">
+                <img src="Images/citypb.icon.png" alt="香港城市風笛隊標誌" class="logo-img">
+                <div class="logo-text">
+                    香港城市風笛隊<br><span>City of Hong Kong Pipe Band</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index-zh.html">樂團介紹</a>
+                <a href="aboutus-zh.html">關於我們</a>
+                <a href="services-zh.html" class="active">服務項目</a>
+                <a href="gallery-zh.html">活動相簿</a>
+                <a href="contact-zh.html">聯絡我們</a>
+                <a href="services.html" class="lang-btn">English</a>
+            </div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index-zh.html">樂團介紹</a>
+            <a href="aboutus-zh.html">關於我們</a>
+            <a href="services-zh.html">服務項目</a>
+            <a href="gallery-zh.html">活動相簿</a>
+            <a href="contact-zh.html">聯絡我們</a>
+            <a href="services.html" class="mobile-lang">English</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="tartan-pattern"></div>
+        <div class="wave-glow"></div>
+        <div class="hero-content">
+            <h1>服務項目</h1>
+            <p>為每個重要場合量身打造的蘇格蘭風笛演出</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="services-intro">
+                <h2>服務範疇</h2>
+                <p>預訂香港城市風笛隊的多元服務，讓您的活動更添特色。</p>
+            </div>
+            
+            <div class="service-list">
+                <h3>我們提供的服務</h3>
+                <ul>
+                    <li><i class="fas fa-heart"></i> <strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶</li>
+                    <li><i class="fas fa-glass-cheers"></i> <strong>晚宴：</strong>優雅的風笛曲調為您的晚宴活動添上一抹高雅</li>
+                    <li><i class="fas fa-birthday-cake"></i> <strong>週年紀念：</strong>以永恆的音樂聲慶祝里程碑，用傳統標記每一年</li>
+                    <li><i class="fas fa-music"></i> <strong>典慶：</strong>活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛</li>
+                    <li><i class="fas fa-chart-line"></i> <strong>商業推廣：</strong>用獨特的風笛旋律讓您的品牌脫穎而出</li>
+                    <li><i class="fas fa-calendar-alt"></i> <strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美基調</li>
+                    <li><i class="fas fa-door-open"></i> <strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大</li>
+                </ul>
+            </div>
+            
+            <div class="service-cards">
+                <!-- 獨奏風笛手 -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s1.jpg" alt="獨奏風笛手" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>獨奏風笛手</h3>
+                        <p>一位獨奏笛手用高地風笛的氣勢，非常適合帶領嘉賓場合或感人時刻。</p>
+                        <span class="service-tag">適合溫馨的私人場合</span>
+                    </div>
+                </div>
+                
+                <!-- 風笛二重奏 -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s2.jpg" alt="風笛二重奏" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>風笛二重奏</h3>
+                        <p>旋律加倍，感動亦加倍。兩位演奏的笛手，提供了更豐滿的聲響和振奮人心的氣場。</p>
+                        <span class="service-tag">豐滿和諧的聲響</span>
+                    </div>
+                </div>
+                
+                <!-- 風笛四重奏 -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s3.jpg" alt="風笛四重奏" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>風笛四重奏</h3>
+                        <p>體驗四位笛手交織出的豐富音樂層次，他們精湛的音樂演出迷人且令人著迷。</p>
+                        <span class="service-tag">豐富層次的音樂體驗</span>
+                    </div>
+                </div>
+                
+                <!-- 小型樂隊 -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s4.jpg" alt="小型樂隊" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>小型樂隊</h3>
+                        <p>我們的小型樂隊選項包括四位笛手和兩位鼓手，他們悠揚節拍相得益彰，旋律和節奏的完美演繹。</p>
+                        <span class="service-tag">旋律與節奏的完美結合</span>
+                    </div>
+                </div>
+                
+                <!-- 大型樂隊 -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s5.jpg" alt="大型樂隊" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>大型樂隊</h3>
+                        <p>為了舉辦一場真正盛大的活動，大型樂隊呈現一個令人印象深刻的笛手和鼓手組合，根據您活動的規模量身定制，以達到最大的效果。</p>
+                        <span class="service-tag">盛大隆重的演出陣容</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Demo -->
+            <div class="video-demo">
+                <h3>服務示範</h3>
+                <p>體驗香港城市風笛隊扣人心弦的音樂魅力</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=316&href=https%3A%2F%2Fwww.facebook.com%2Fcitypipeband%2Fvideos%2F2807165972673128%2F&show_text=false&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+            </div>
+            
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <p>若想瞭解每個方案的更多細節，或為您的活動量身定制需求，敬請聯繫我們。我們期待與您合作，為您的典慶打造一次難忘的音樂體驗。</p>
+                <a href="contact-zh.html" class="btn-primary"><i class="fas fa-envelope"></i> 聯絡我們獲取報價</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Inquire Now Button -->
+    <a href="contact-zh.html" class="inquire-fab">
+        <i class="fas fa-comment-dots"></i> 立即查詢
+    </a>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>快速連結</h4>
+                    <ul>
+                        <li><a href="index-zh.html">樂團介紹</a></li>
+                        <li><a href="aboutus-zh.html">關於我們</a></li>
+                        <li><a href="services-zh.html">服務項目</a></li>
+                        <li><a href="gallery-zh.html">活動相簿</a></li>
+                        <li><a href="contact-zh.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>聯絡資訊</h4>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p>立足香港，服務全球</p>
+                </div>
+                <div class="footer-col">
+                    <h4>追蹤我們</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/cityofhongkongpipeband" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 香港城市風笛隊 版權所有 | 中西傳統融合與傳承蘇格蘭樂韻</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox();" style="display:none;">
+        <img id="lightbox-image" />
+        <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        // Smart Logo Link
+        const logoLink = document.getElementById('logoLink');
+        const currentPage = window.location.pathname.split('/').pop() || 'services-zh.html';
+        if (currentPage.includes('zh')) {
+            logoLink.href = 'index-zh.html';
+        } else {
+            logoLink.href = 'index.html';
+        }
+
+        // Lightbox functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        window.closeLightbox = closeLightbox;
+        window.openLightbox = openLightbox;
+
+        window.addEventListener('load', () => {
+            document.body.classList.remove('loading');
+        });
+
+        // Active nav link highlighting
+        document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+            const href = link.getAttribute('href');
+            if(href === currentPage || (currentPage === '' && href === 'services-zh.html')) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
