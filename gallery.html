@@ -1,709 +1,935 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>照片庫 香港城市風笛隊-City of Hong Kong Pipe Band</title>
-  <meta name="description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-  <meta name="keywords" content="演出,慶典,晚宴,商業推廣,文娛節目,演奏,喪禮,婚禮,蘇格蘭風笛,蘇格蘭風笛演出,風笛,風笛演出,">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://cityhkpipeband.com/">
-  <meta property="og:title" content="照片庫 - 香港城市風笛隊">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cityhkpipeband.com/">
-  <meta property="og:description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。"> 
-  <meta property="og:site_name" content="香港城市風笛隊">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="Images/citypb.icon.png">
-  <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="Images/citypb.icon.png">
-
-  <link rel="profile" href="http://gmpg.org/xfn/11">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gallery | City of Hong Kong Pipe Band</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore the photo gallery of City of Hong Kong Pipe Band - capturing moments from our performances at celebrations, ceremonies, community events, and international festivals since 2013.">
+    <meta name="keywords" content="gallery, pipe band photos, Scottish bagpipe performances, Hong Kong pipe band, event photos, bagpipe band gallery">
+    <meta name="author" content="City of Hong Kong Pipe Band">
+    <link rel="canonical" href="https://cityhkpipeband.com/gallery.html">
+    <meta property="og:title" content="Gallery | City of Hong Kong Pipe Band">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cityhkpipeband.com/gallery.html">
+    <meta property="og:description" content="Browse our photo gallery featuring performances at weddings, corporate events, festivals, and community celebrations.">
+    <meta property="og:image" content="Images/citypb.icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Alternate language link -->
+    <link rel="alternate" hreflang="zh-HK" href="gallery-zh.html">
+    <link rel="alternate" hreflang="en" href="gallery.html">
+    
+    <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="Images/citypb.icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XK7BMF7NJQ');
+    </script>
+    
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
+        :root {
+            --primary: #9b1c31;
+            --primary-dark: #7a1628;
+            --primary-light: #c13a51;
+            --secondary: #1e2a32;
+            --light-bg: #faf9f8;
+            --gray-light: #f0efed;
+            --gray-mid: #6c6a67;
+            --dark-text: #1e1e1e;
+            --white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --border-radius-card: 1.25rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* loading spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
-            background-color: #9b1c31;
-            color: white;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loading #loading-spinner { display: flex; }
+        body:not(.loading) #loading-spinner { display: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.7rem 1.5rem; }
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo-area:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        .logo-img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.8rem; }
+            .logo-img { height: 36px; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 0.95rem;
             position: relative;
         }
-
-.header-title {
-    font-size: 5vw; /* Responsive font size */
-    margin: 5px 0;
-    text-align: center;
-    padding-bottom: 10px; /* Space for the menu */
-}
-
-.header-description {
-    font-size: 3vw; /* Responsive font size */
-    margin: 0;
-    text-align: center;
-}
-
-/* Minimum font size for smaller devices */
-@media (max-width: 768px) {
-    .header-title {
-        font-size: 26px; /* Fixed minimum font size for smaller screens */
-    }
-    .header-description {
-        font-size: 24px; /* Fixed minimum font size for smaller screens */
-    }
-}
-
-    /* Minimum font size for smaller devices */
-@media (max-width: 1200px) {
-    .header-logo {
-  max-height: 70px; /* Adjust the size as needed */
-}
-}
-
-/* Maximum font size for larger devices */
-@media (min-width: 1200px) {
-    .header-title {
-        font-size: 45px; /* Fixed maximum font size for larger screens */
-    }
-    .header-description {
-        font-size: 43px; /* Fixed maximum font size for larger screens */
-    }
-    .header-logo {
-  max-height: 130px; /* Adjust the size as needed */
-}
-}
-
-/* Maximum font size for larger devices */
-@media (min-width: 1200px) {
-
-    .header-logo {
-  max-height: 130px; /* Adjust the size as needed */
-}
-}
-
-.gallery-page {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Adjust based on design */
-    display: none; /* Initiate with all pages hidden */
-}
-
-.gallery-item {
-    box-sizing: border-box;
-    margin: 10px; /* Adjust the margin as needed */
-    width: calc(50% - 40px); /* Subtracts total margin (20px left + 20px right) from width */
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Small devices */
-@media (max-width: 767px) {
-    .gallery-item {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-/* Big devices */
-@media (min-width: 768px) {
-    .gallery-item {
-        width: calc(33.333% - 200px); /* Adjust width for 3 items per row with margin */
-        margin-left: 100px;
-        margin-right: 100px;
-    }
-}
-
-/* Make sure the first page is visible when the page loads */
-#page-1 {
-    display: flex;
-}
-
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.page-link {
-    margin: 0 8px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.page-link:hover {
-    text-decoration: underline;
-}
-
-#lightbox {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#lightbox-image {
-    max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
-    max-height: 80%;
-    margin: auto; /* This will center the image in the lightbox */
-}
-
-.lightbox-close {
-    position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it's above the lightbox image */
-}
-
-/* Big devices with a minimum width of 768px */
-@media (min-width: 768px) {
-    #lightbox-image {
-        max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
-    }
-}
-
-.photo-description {
-    text-align: center;
-    margin-top: 8px;
-    font-size: 14px;
-    color: #666;
-}
-
-      
-      .menu-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items vertically */
-  width: 100%;
-  padding: 0 20px; /* Padding on sides */
-}
-
-
-        .hamburger {
-            cursor: pointer;
-            display: block;
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px 0;
-            background-color: white;
-            transition: 0.4s;
-        }
-
-        .change .bar.top {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .change .bar.middle {
-            opacity: 0;
-        }
-
-        .change .bar.bottom {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .menu {
-            display: none;
-            width: 100%;
-            background-color: white;
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            top: 100%;
+            bottom: -6px;
             left: 0;
-            z-index: 10;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
         }
-
-        .menu a {
-            text-decoration: none;
-            color: black;
-            padding: 10px 15px;
-            display: block;
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .lang-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2rem;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.85rem;
         }
-
-        .menu a:hover {
-            background-color: #7a1c28;
-            color: white;
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
-
-        .menu.active {
-            display: block;
-        }
-
-        .lang-switch {
+        .lang-btn::after { display: none; }
+        
+        .hamburger {
+            display: none;
             cursor: pointer;
-            display: block;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1.8rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .mobile-lang {
+            background: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 3rem;
+            margin-top: 0.5rem;
         }
 
         @media (max-width: 768px) {
-            .header-description {
-                text-align: center;
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
 
-            .hamburger,
-            .lang-switch {
-                display: block;
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        
+        .hero .tartan-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/><path d="M80 80 L100 100 M100 80 L80 100" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.12"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" opacity="0.1"><path d="M30 30 L50 50 M50 30 L30 50" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 10 L70 70 M70 10 L10 70" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.6"/></svg>');
+            background-repeat: repeat, repeat, repeat;
+            background-size: 180px 180px, 220px 220px, 100px 100px;
+            background-position: 0 0, 90px 90px, 45px 45px;
+            animation: tartanDrift 70s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero .wave-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,215,150,0.06) 20%, transparent 60%);
+            animation: elegantWave 28s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes tartanDrift {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 100% 100%, 100% 100%, 100% 100%; }
+        }
+        
+        @keyframes elegantWave {
+            0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, 3%) rotate(2deg) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: contentFadeIn 0.9s ease-out;
+        }
+        
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 18px rgba(0,0,0,0.28);
+            line-height: 1.2;
+            animation: titleSoftBreathing 3.8s ease-in-out infinite;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-weight: 400;
+        }
+        
+        @keyframes titleSoftBreathing {
+            0% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+            50% { text-shadow: 0 5px 28px rgba(255,215,150,0.45); }
+            100% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { font-size: 0.85rem; max-width: 90%; }
+            .hero .tartan-pattern {
+                background-size: 140px 140px, 170px 170px, 80px 80px;
             }
+        }
+        @media (min-width: 1200px) {
+            .hero { padding: 2.2rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tartan-pattern {
+                background-size: 200px 200px, 240px 240px, 110px 110px;
+            }
+        }
 
-            .menu {
-                display: none;
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: galleryReveal 0.7s ease-out forwards;
+        }
+        
+        @keyframes galleryReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
+        .gallery-item {
+            background: var(--white);
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+        }
         
-        /* Existing base styles for your site footer */
-.site-footer {
-  background-color: #333;
-  color: white;
-  padding: 20px 0;
-  margin-top: 40px;
-}
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .gallery-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            padding: 1rem 1.2rem 1.2rem;
+            background: var(--white);
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            line-height: 1.4;
+            font-weight: 500;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .page-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 0.8rem;
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 2rem;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .page-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .page-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .page-btn.prev-next {
+            background: var(--light-bg);
+        }
+        
+        @media (max-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .page-btn {
+                min-width: 36px;
+                height: 36px;
+                font-size: 0.8rem;
+            }
+        }
 
-.site-footer a {
-  color: #6DF;
-  text-decoration: none;
-}
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255,215,150,0.12) 0%, rgba(255,255,255,0.06) 30%, transparent 70%);
+            animation: rotateFlow 30s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotateFlow {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.1); }
+        }
+        .cta-section h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section p {
+            position: relative;
+            z-index: 2;
+            font-size: 0.95rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 0.7rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            margin-top: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-btn:hover {
+            transform: scale(1.03);
+            background: #fff5f0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        @media (max-width: 640px) {
+            .cta-section { padding: 2rem 1rem; }
+            .cta-section h3 { font-size: 1.3rem; }
+        }
 
-.site-footer a:hover {
-  text-decoration: underline;
-}
+        /* Footer */
+        .site-footer {
+            background: #111216;
+            color: #d1d5db;
+            padding: 2.5rem 0 1.2rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .footer-col {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .footer-col a {
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary-light); }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .contact-link i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .contact-link:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .social-links a i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #2a2c33;
+            font-size: 0.75rem;
+        }
 
-/* Flexbox layout for the footer content */
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.footer-section {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 100px;
-  margin-right: 100px;
-  flex: 1;
-  min-width: 150px; /* Minimum width before wrapping */
-  text-align: left; /* Align text to the left */
-}
-
-/* Shared styles for Quick Links and Follow Us lists */
-.footer-links,
-.social-links {
-  list-style: none; /* Remove bullet points */
-  padding: 0;
-  margin: 0; /* Remove default margin */
-}
-
-.footer-links li a,
-.social-links li a {
-  color: #6DF;
-  text-decoration: none;
-  display: block; /* Make the links full-width within the section */
-}
-
-.footer-links li a:hover,
-.social-links li a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left on smaller screens */
-  }
-
-  .footer-section {
-    /* Full width on smaller screens */
-    flex-basis: 100%;
-    margin: 20px;
-  }
-}
-
-/* Styles for the footer bottom */
-.footer-bottom {
-  text-align: center; /* Keep copyright notice centered */
-  margin-top: 20px;
-  border-top: 1px solid #474747;
-  padding-top: 20px;
-}
-
- #loading-spinner {
-        position: fixed; /* Full screen */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white; /* Or any color that matches your brand */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999; /* High z-index to make sure it's on top */
-    }
-
-    .spinner {
-        border: 5px solid #f3f3f3; /* Light grey background */
-        border-top: 5px solid #9b1c31; /* Main color */
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* Hide the spinner by default and only show it when the .loading class is present */
-    body:not(.loading) #loading-spinner {
-        display: none;
-    }
-      
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        #lightbox-image {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            animation: zoomIn 0.2s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 38px;
+            font-weight: 300;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        @media (max-width: 768px) {
+            .lightbox-close { top: 15px; right: 20px; font-size: 30px; }
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.6);
+            padding: 0.8rem;
+            margin: 0 auto;
+            width: fit-content;
+            border-radius: 2rem;
+            backdrop-filter: blur(4px);
+        }
     </style>
 </head>
-<body>
-
-<header>
-    <div class="menu-controls">
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <div class="bar top"></div>
-            <div class="bar middle"></div>
-            <div class="bar bottom"></div>
-        </div>
-        <img src="Images/citypb.icon.png" alt="City Pipe Band" class="header-logo" />
-        <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
-            中/Eng
-        </div>
-    </div>
-    <h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
-    <p class="header-description" id="header-description">香港城市風笛隊</p>
-    <nav class="menu" id="menu">
-        <a href="index.html" id="nav-the-band">The Band</a>
-        <a href="aboutus.html" id="nav-about-us">About Us</a>
-        <a href="services.html" id="nav-services">Services</a>
-        <a href="gallery.html" id="nav-gallery">Gallery</a>
-        <a href="contact.html" id="nav-contact">Contact</a>
-    </nav>
-</header>
-
 <body class="loading">
-<div id="loading-spinner">
-    <div class="spinner"></div>
-</div>
+    <div id="loading-spinner"><div class="spinner"></div></div>
 
-<div class="gallery">
-    <!-- Page 1 -->
-    <div class="gallery-page" id="page-1">
-        <!-- Photo 1 -->
-        <div class="gallery-item">
-            <img src="Images/g1.jpg" alt="香港工業專業評審局 2021" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港工業專業評審局 7.2021</p>
+    <div class="navbar">
+        <div class="nav-container">
+            <a href="#" id="logoLink" class="logo-area" style="text-decoration: none;">
+                <img src="Images/citypb.icon.png" alt="City of Hong Kong Pipe Band Logo" class="logo-img">
+                <div class="logo-text">
+                    City of Hong Kong<br><span>Pipe Band</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">The Band</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="index-zh.html" class="lang-btn">中文版</a>
+            </div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <!-- Photo 2 -->
-        <div class="gallery-item">
-            <img src="Images/g2.jpg" alt="St. John officer mess annual ball 7.2020" onclick="openLightbox(this.src);">
-            <p class="photo-description">St. John officer mess annual ball 7.2020</p>
-        </div>
-        <!-- Photo 3 -->
-        <div class="gallery-item">
-            <img src="Images/g3.jpg" alt="St John's carnival 2.2019" onclick="openLightbox(this.src);">
-            <p class="photo-description">St John's carnival 2.2019</p>
-        </div>
-        <!-- Photo 4 -->
-        <div class="gallery-item">
-            <img src="Images/g4.jpg" alt="香港內坑鎮聯鄉總會 11.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港內坑鎮聯鄉總會 11.2018</p>
-        </div>
-        <!-- Photo 5 -->
-        <div class="gallery-item">
-            <img src="Images/g5.jpg" alt="內坑中學香港校友會 11.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">內坑中學香港校友會 11.2018</p>
-        </div>
-        <!-- Photo 6 -->
-        <div class="gallery-item">
-            <img src="Images/g6.jpg" alt="「慈善行、建仁心」步行籌款 10.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">「慈善行、建仁心」步行籌款 10.2018</p>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">The Band</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="index-zh.html" class="mobile-lang">中文版</a>
         </div>
     </div>
 
-    <!-- Page 2 -->
-    <div class="gallery-page" id="page-2" style="display: none;">
-        <!-- Photo 7 -->
-        <div class="gallery-item">
-            <img src="Images/g7.jpg" alt="「慈善行、建仁心」步行籌款 10.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">「慈善行、建仁心」步行籌款 10.2018</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="tartan-pattern"></div>
+        <div class="wave-glow"></div>
+        <div class="hero-content">
+            <h1>Gallery</h1>
+            <p>Capturing moments of tradition, celebration, and musical excellence</p>
         </div>
-        <!-- Photo 8 -->
-        <div class="gallery-item">
-            <img src="Images/g8.jpg" alt="香港聯業合力堂 10.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港聯業合力堂 10.2018</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid"></div>
+            <div class="pagination" id="pagination"></div>
         </div>
-        <!-- Photo 9 -->
-        <div class="gallery-item">
-            <img src="Images/g9.jpg" alt="St. John Ambulance Parade 10.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">St. John Ambulance Parade 10.2018</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Want to create memorable moments with us?</h3>
+            <p>Contact us to book our pipe band for your next event</p>
+            <a href="contact.html" class="cta-btn">Book Now →</a>
         </div>
-        <!-- Photo 10 -->
-        <div class="gallery-item">
-            <img src="Images/g10.jpg" alt="香港島童軍第21旅旅團-風笛及敲擊鼓推廣日 10.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港島童軍第21旅旅團-風笛及敲擊鼓推廣日 10.2018</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">The Band</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p>Hong Kong based, worldwide</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/cityofhongkongpipeband" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
+            </div>
         </div>
-        <!-- Photo 11 -->
-        <div class="gallery-item">
-            <img src="Images/g11.jpg" alt="St. John Ambulance Parade 8.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">St. John Ambulance Parade 8.2018</p>
-        </div>
-        <!-- Photo 12 -->
-        <div class="gallery-item">
-            <img src="Images/g12.jpg" alt="健康生活在大嶼 5.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">健康生活在大嶼 5.2018</p>
-        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox();" style="display:none;">
+        <img id="lightbox-image" />
+        <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <!-- Page 3 -->
-    <div class="gallery-page" id="page-3" style="display: none;">
-        <!-- Photo 13 -->
-        <div class="gallery-item">
-            <img src="Images/g13.jpg" alt="Malaysia Highland Games 5.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">Malaysia Highland Games 5.2018</p>
-        </div>
-        <!-- Photo 14 -->
-        <div class="gallery-item">
-            <img src="Images/g14.jpg" alt="St. Paul's Hospital 120th Anniversary Dinner 4.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">St. Paul's Hospital 120th Anniversary Dinner 4.2018</p>
-        </div>
-        <!-- Photo 15 -->
-        <div class="gallery-item">
-            <img src="Images/g15.jpg" alt="安居·樂業《共創新里程步行樂2018》 3.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">安居·樂業《共創新里程步行樂2018》 3.2018</p>
-        </div>
-        <!-- Photo 16 -->
-        <div class="gallery-item">
-            <img src="Images/g16.jpg" alt="安居·樂業《共創新里程步行樂2018》 3.2018" onclick="openLightbox(this.src);">
-            <p class="photo-description">安居·樂業《共創新里程步行樂2018》 3.2018</p>
-        </div>
-        <!-- Photo 17 -->
-        <div class="gallery-item">
-            <img src="Images/g17.jpg" alt=" IBA Global Splendor - A X'mas Voyage 12.2017" onclick="openLightbox(this.src);">
-            <p class="photo-description">IBA Global Splendor - A X'mas Voyage 12.2017</p>
-        </div>
-        <!-- Photo 18 -->
-        <div class="gallery-item">
-            <img src="Images/g18.jpg" alt="香港聯業合力堂慈善基金會-廣東清遠 11.2017" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港聯業合力堂慈善基金會-廣東清遠 11.2017</p>
-        </div>
-    </div>
+    <script>
+        // Gallery Data
+        const galleryItems = [
+            { src: "Images/g1.jpg", caption: "香港工業專業評審局 7.2021" },
+            { src: "Images/g2.jpg", caption: "St. John officer mess annual ball 7.2020" },
+            { src: "Images/g3.jpg", caption: "St John's carnival 2.2019" },
+            { src: "Images/g4.jpg", caption: "香港內坑鎮聯鄉總會 11.2018" },
+            { src: "Images/g5.jpg", caption: "內坑中學香港校友會 11.2018" },
+            { src: "Images/g6.jpg", caption: "「慈善行、建仁心」步行籌款 10.2018" },
+            { src: "Images/g7.jpg", caption: "「慈善行、建仁心」步行籌款 10.2018" },
+            { src: "Images/g8.jpg", caption: "香港聯業合力堂 10.2018" },
+            { src: "Images/g9.jpg", caption: "St. John Ambulance Parade 10.2018" },
+            { src: "Images/g10.jpg", caption: "香港島童軍第21旅旅團-風笛及敲擊鼓推廣日 10.2018" },
+            { src: "Images/g11.jpg", caption: "St. John Ambulance Parade 8.2018" },
+            { src: "Images/g12.jpg", caption: "健康生活在大嶼 5.2018" },
+            { src: "Images/g13.jpg", caption: "Malaysia Highland Games 5.2018" },
+            { src: "Images/g14.jpg", caption: "St. Paul's Hospital 120th Anniversary Dinner 4.2018" },
+            { src: "Images/g15.jpg", caption: "安居·樂業《共創新里程步行樂2018》 3.2018" },
+            { src: "Images/g16.jpg", caption: "安居·樂業《共創新里程步行樂2018》 3.2018" },
+            { src: "Images/g17.jpg", caption: "IBA Global Splendor - A X'mas Voyage 12.2017" },
+            { src: "Images/g18.jpg", caption: "香港聯業合力堂慈善基金會-廣東清遠 11.2017" },
+            { src: "Images/g19.jpg", caption: "香港聯業合力堂慈善基金會-廣東清遠 11.2017" },
+            { src: "Images/g20.jpg", caption: "「慈善行.建仁心」慈善步行 10.2017" },
+            { src: "Images/g21.jpg", caption: "敬老同樂日 4.2017" },
+            { src: "Images/g22.jpg", caption: "油尖旺滅罪禁毒委員會 4.2017" },
+            { src: "Images/g23.jpg", caption: "Jakarta Highland Gathering 7.2015" }
+        ];
 
-    <!-- Page 4 -->
-    <div class="gallery-page" id="page-4" style="display: none;">
-        <!-- Photo 19 -->
-        <div class="gallery-item">
-            <img src="Images/g19.jpg" alt="香港聯業合力堂慈善基金會-廣東清遠 11.2017" onclick="openLightbox(this.src);">
-            <p class="photo-description">香港聯業合力堂慈善基金會-廣東清遠 11.2017</p>
-        </div>
-        <!-- Photo 20 -->
-        <div class="gallery-item">
-            <img src="Images/g20.jpg" alt="「慈善行.建仁心」慈善步行 10.2017 " onclick="openLightbox(this.src);">
-            <p class="photo-description">「慈善行.建仁心」慈善步行 10.2017 </p>
-        </div>
-        <!-- Photo 21 -->
-        <div class="gallery-item">
-            <img src="Images/g21.jpg" alt="敬老同樂日 4.2017" onclick="openLightbox(this.src);">
-            <p class="photo-description">敬老同樂日 4.2017</p>
-        </div>
-        <!-- Photo 22 -->
-        <div class="gallery-item">
-            <img src="Images/g22.jpg" alt="油尖旺滅罪禁毒委員會 4.2017" onclick="openLightbox(this.src);">
-            <p class="photo-description">油尖旺滅罪禁毒委員會 4.2017</p>
-        </div>
-        <!-- Photo 23 -->
-        <div class="gallery-item">
-            <img src="Images/g23.jpg" alt="Jakarta Highland Gathering 7.2015" onclick="openLightbox(this.src);">
-            <p class="photo-description">Jakarta Highland Gathering 7.2015</p>
-        </div>
-        
-    </div>
-  
-</div>
+        const itemsPerPage = 12;
+        let currentPage = 1;
+        const totalPages = Math.ceil(galleryItems.length / itemsPerPage);
 
-
-
-<!-- Pagination -->
-<div class="pagination" style="text-align: center;">
-    <a class="page-link" href="#" onclick="changePage(-1);">Previous</a>
-    <a class="page-link" href="#" onclick="showPage(1);">1</a>
-    <a class="page-link" href="#" onclick="showPage(2);">2</a>
-    <a class="page-link" href="#" onclick="showPage(3);">3</a>
-    <a class="page-link" href="#" onclick="showPage(4);">4</a>
-    <!-- ... more page links as needed -->
-    <a class="page-link" href="#" onclick="changePage(1);">Next</a>
-</div>
-
-<!-- Lightbox Container -->
-<div id="lightbox" onclick="closeLightbox();" style="display:none;">
-    <img id="lightbox-image" />
-    <p id="lightbox-description"></p> <!-- Description paragraph -->
-    <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
-</div>
-  
-<br>
-<br>
-<br>
-<br>
-  
-<footer>
-<footer class="site-footer">
-  <div class="footer-content">
-
-
-    <!-- Quick Links Section -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="index.html">The Band</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact Information -->
-    <div class="footer-section">
-      <h3>Contact Information</h3>
-      <p>Email: <a href="mailto:cityofhongkongpipeband@gmail.com">cityofhongkongpipeband@gmail.com</a></p>
-    </div>
-
-    <!-- Social Media Links -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-links">
-        <!-- Replace '#' with your actual social media links -->
-        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Facebook</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Copyright Notice -->
-  <div class="footer-bottom">
-    <p>&copy; 2024 City of Hong Kong Pipe Band. All rights reserved.</p>
-  </div>
-</footer>
-
-
-<script>
-    // Function to toggle the mobile menu
-    function toggleMenu() {
-        var menu = document.getElementById("menu");
-        var hamburger = document.getElementById("hamburger");
-        menu.classList.toggle("active");
-        hamburger.classList.toggle("change");
-    }
-
-    // Object containing language text for content sections
-    var languageTexts = {
-        'en': {
-            'the-band': {
-                'heading': 'The Band',
-                'description': 'Welcome to the City of Hong Kong Pipe Band! Since we started in 2013, our passion for Scottish bagpipe music has been the heartbeat of our ensemble. We are all about sharing the joy and tradition of the pipes, whether we are lighting up the stage, joining in a community celebration, or adding a special touch to private gatherings. Dive into the melody and spirit of our band, and see how we can make your next event unforgettable.'
-            }
-            // ... other content sections in English
-        },
-        'zh': {
-            'the-band': {
-                'heading': '笛勢山河',
-                'description': '歡迎您來到香港城市風笛樂隊！樂隊於2013年成立以來，我們一直秉持對蘇格蘭風笛音樂的熱誠。不論是在舞台上綻放光彩、參與社群慶典，或為私人聚會增添一抹特別的氛圍，我們都致力於傳遞風笛的歡樂與傳統。齊來感受我們樂隊的旋律與精神，讓我們為您的下一場活動留下難忘的印象。'
-            }
-            // ... other content sections in Chinese
-        }
-    };
-
-    // Function to toggle the language of content sections
-    function toggleLanguage() {
-        var currentLang = document.documentElement.lang;
-        var newLang = currentLang === 'zh' ? 'en' : 'zh';
-        document.documentElement.lang = newLang;
-
-        // Update the text content of content sections based on the new language
-        for (var sectionId in languageTexts[newLang]) {
-            if (languageTexts[newLang].hasOwnProperty(sectionId)) {
-                var section = document.getElementById(sectionId);
-                if (section) {
-                    section.querySelector('h2').textContent = languageTexts[newLang][sectionId].heading;
-                    section.querySelector('p').textContent = languageTexts[newLang][sectionId].description;
-                }
-            }
+        function renderGallery() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = galleryItems.slice(start, end);
+            
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = pageItems.map(item => `
+                <div class="gallery-item" onclick="openLightbox('${item.src}', '${item.caption.replace(/'/g, "\\'")}')">
+                    <div class="gallery-image">
+                        <img src="${item.src}" alt="${item.caption}" loading="lazy">
+                    </div>
+                    <div class="gallery-caption">
+                        <p>${item.caption}</p>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Update the language switch button text
-        var langSwitch = document.getElementById('lang-switch');
-        langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
-    }
+        function renderPagination() {
+            const paginationDiv = document.getElementById('pagination');
+            let paginationHtml = '';
+            
+            // Previous button
+            paginationHtml += `<a class="page-btn prev-next" onclick="changePage(-1)"><i class="fas fa-chevron-left"></i> Prev</a>`;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHtml += `<a class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</a>`;
+            }
+            
+            // Next button
+            paginationHtml += `<a class="page-btn prev-next" onclick="changePage(1)">Next <i class="fas fa-chevron-right"></i></a>`;
+            
+            paginationDiv.innerHTML = paginationHtml;
+        }
 
-var currentPage = 1;
-var totalPages = 4; // Set to the actual number of pages you have
+        function goToPage(page) {
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderGallery();
+            renderPagination();
+            window.scrollTo({ top: document.querySelector('.gallery-section').offsetTop - 80, behavior: 'smooth' });
+        }
 
-function showPage(pageNumber) {
-    if (pageNumber < 1 || pageNumber > totalPages) {
-        return; // Out of range
-    }
-    currentPage = pageNumber;
-    var pages = document.getElementsByClassName('gallery-page');
-    for (var i = 0; i < pages.length; i++) {
-        pages[i].style.display = 'none'; // Hide all pages
-    }
-    document.getElementById('page-' + pageNumber).style.display = 'flex'; // Show the selected page
-}
+        function changePage(delta) {
+            goToPage(currentPage + delta);
+        }
 
-function changePage(step) {
-    showPage(currentPage + step);
-}
+        // Lightbox functions
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-function openLightbox(imageSrc, imageAlt) {
-    var lightbox = document.getElementById('lightbox');
-    var lightboxImage = document.getElementById('lightbox-image');
-    var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
 
-    lightboxImage.src = imageSrc;
-    lightboxDescription.textContent = imageAlt; // Set the alt text as the description
-    lightbox.style.display = 'flex';
-}
+        window.openLightbox = openLightbox;
+        window.closeLightbox = closeLightbox;
+        window.goToPage = goToPage;
+        window.changePage = changePage;
 
-function closeLightbox() {
-    var lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
-}
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
 
-window.onload = function() {
-    showPage(currentPage);
-};
+        // Smart Logo Link
+        const logoLink = document.getElementById('logoLink');
+        const currentPageName = window.location.pathname.split('/').pop() || 'gallery.html';
+        if (currentPageName.includes('zh')) {
+            logoLink.href = 'index-zh.html';
+        } else {
+            logoLink.href = 'index.html';
+        }
 
-window.addEventListener('load', function() {
-        document.body.classList.remove('loading');
-    });
-  
-</script>
+        window.addEventListener('load', () => {
+            document.body.classList.remove('loading');
+            renderGallery();
+            renderPagination();
+        });
 
+        // Active nav link highlighting
+        document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+            const href = link.getAttribute('href');
+            if(href === currentPageName || (currentPageName === '' && href === 'gallery.html')) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
