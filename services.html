@@ -361,6 +361,10 @@
         }
 
         /* ===== SERVICES SECTION ===== */
+        .services-section {
+            padding: 4rem 0;
+        }
+        
         .services-intro {
             text-align: center;
             max-width: 800px;
@@ -404,8 +408,9 @@
             }
         }
         
+        /* Service List - Optimized for mobile (vertical layout) */
         .service-list {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 3rem;
             background: var(--light-bg);
             border-radius: var(--border-radius-card);
@@ -419,31 +424,93 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
         
-        .service-list ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.8rem;
-            list-style: none;
-            padding: 0;
+        .service-list-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
         
-        .service-list li {
+        .service-item {
+            display: flex;
+            gap: 1rem;
             padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--dark-text);
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
         }
         
-        .service-list li i {
-            color: var(--primary);
-            font-size: 1.1rem;
-            width: 24px;
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark-text);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            line-height: 1.4;
+        }
+        
+        /* Desktop: keep horizontal layout with icon inline */
+        @media (min-width: 769px) {
+            .service-list-items {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: none;
+                background: var(--white);
+                border-radius: 1rem;
+                transition: var(--transition);
+            }
+            
+            .service-item:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-sm);
+            }
+            
+            .service-icon {
+                margin: 0 auto 0.8rem;
+            }
+            
+            .service-title {
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .service-desc {
+                text-align: center;
+            }
         }
         
         /* Service Cards Grid */
@@ -652,8 +719,8 @@
         
         @media (max-width: 768px) {
             .service-cards { grid-template-columns: 1fr; }
-            .service-list ul { grid-template-columns: 1fr; }
             .services-intro h2 { font-size: 1.8rem; }
+            .service-list { padding: 1.5rem; }
         }
 
         /* Footer */
@@ -841,7 +908,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services-section" style="padding: 4rem 0;">
+    <section class="services-section">
         <div class="container">
             <div class="services-intro">
                 <h2>Service Offerings</h2>
@@ -850,15 +917,57 @@
             
             <div class="service-list">
                 <h3>What We Offer</h3>
-                <ul>
-                    <li><i class="fas fa-heart"></i> <strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes</li>
-                    <li><i class="fas fa-glass-cheers"></i> <strong>Galas:</strong> Add sophistication to evening events with elegant pipe tunes</li>
-                    <li><i class="fas fa-birthday-cake"></i> <strong>Anniversaries:</strong> Celebrate milestones with timeless music</li>
-                    <li><i class="fas fa-music"></i> <strong>Festivals:</strong> Bring joy and festivity with upbeat performances</li>
-                    <li><i class="fas fa-chart-line"></i> <strong>Business Promotions:</strong> Make your brand stand out with unique melodies</li>
-                    <li><i class="fas fa-calendar-alt"></i> <strong>Events:</strong> From formal gatherings to casual meetups, we set the perfect tone</li>
-                    <li><i class="fas fa-door-open"></i> <strong>Welcoming Guests:</strong> Greet guests with dignified and warm bagpipe sounds</li>
-                </ul>
+                <div class="service-list-items">
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-heart"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Weddings</span>
+                            <span class="service-desc">Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Galas</span>
+                            <span class="service-desc">Add a touch of sophistication to your evening events with our elegant pipe tunes.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Anniversaries</span>
+                            <span class="service-desc">Celebrate milestones with the timeless sound of our music, marking each year with tradition.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-music"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Festivals</span>
+                            <span class="service-desc">Bring joy and festivity to your celebrations with our upbeat and lively performances.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Business Promotions</span>
+                            <span class="service-desc">Make your brand stand out with the unique backdrop of our bagpipe melodies.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Events</span>
+                            <span class="service-desc">From formal gatherings to casual meetups, our music sets the perfect tone for any event.</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">Welcoming Guests</span>
+                            <span class="service-desc">Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="service-cards">
