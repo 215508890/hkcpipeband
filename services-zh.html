@@ -366,6 +366,10 @@
         }
 
         /* ===== SERVICES SECTION ===== */
+        .services-section {
+            padding: 4rem 0;
+        }
+        
         .services-intro {
             text-align: center;
             max-width: 800px;
@@ -409,8 +413,9 @@
             }
         }
         
+        /* Service List - Optimized for mobile (vertical layout) */
         .service-list {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 3rem;
             background: var(--light-bg);
             border-radius: var(--border-radius-card);
@@ -424,31 +429,93 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
         
-        .service-list ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.8rem;
-            list-style: none;
-            padding: 0;
+        .service-list-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
         
-        .service-list li {
+        .service-item {
+            display: flex;
+            gap: 1rem;
             padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--dark-text);
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
         }
         
-        .service-list li i {
-            color: var(--primary);
-            font-size: 1.1rem;
-            width: 24px;
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark-text);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            line-height: 1.4;
+        }
+        
+        /* Desktop: keep horizontal layout with icon inline */
+        @media (min-width: 769px) {
+            .service-list-items {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: none;
+                background: var(--white);
+                border-radius: 1rem;
+                transition: var(--transition);
+            }
+            
+            .service-item:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-sm);
+            }
+            
+            .service-icon {
+                margin: 0 auto 0.8rem;
+            }
+            
+            .service-title {
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .service-desc {
+                text-align: center;
+            }
         }
         
         /* Service Cards Grid */
@@ -657,8 +724,8 @@
         
         @media (max-width: 768px) {
             .service-cards { grid-template-columns: 1fr; }
-            .service-list ul { grid-template-columns: 1fr; }
             .services-intro h2 { font-size: 1.8rem; }
+            .service-list { padding: 1.5rem; }
         }
 
         /* Footer */
@@ -846,7 +913,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services-section" style="padding: 4rem 0;">
+    <section class="services-section">
         <div class="container">
             <div class="services-intro">
                 <h2>服務範疇</h2>
@@ -855,15 +922,57 @@
             
             <div class="service-list">
                 <h3>我們提供的服務</h3>
-                <ul>
-                    <li><i class="fas fa-heart"></i> <strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶</li>
-                    <li><i class="fas fa-glass-cheers"></i> <strong>晚宴：</strong>優雅的風笛曲調為您的晚宴活動添上一抹高雅</li>
-                    <li><i class="fas fa-birthday-cake"></i> <strong>週年紀念：</strong>以永恆的音樂聲慶祝里程碑，用傳統標記每一年</li>
-                    <li><i class="fas fa-music"></i> <strong>典慶：</strong>活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛</li>
-                    <li><i class="fas fa-chart-line"></i> <strong>商業推廣：</strong>用獨特的風笛旋律讓您的品牌脫穎而出</li>
-                    <li><i class="fas fa-calendar-alt"></i> <strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美基調</li>
-                    <li><i class="fas fa-door-open"></i> <strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大</li>
-                </ul>
+                <div class="service-list-items">
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-heart"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">婚禮</span>
+                            <span class="service-desc">用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">晚宴</span>
+                            <span class="service-desc">優雅的風笛曲調為您的晚宴活動添上一抹高雅。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">週年紀念</span>
+                            <span class="service-desc">以永恆的音樂聲慶祝里程碑，用傳統標記每一年。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-music"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">典慶</span>
+                            <span class="service-desc">活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">商業推廣</span>
+                            <span class="service-desc">用獨特的風笛旋律讓您的品牌脫穎而出。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">活動</span>
+                            <span class="service-desc">從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美基調。</span>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                        <div class="service-content">
+                            <span class="service-title">迎賓</span>
+                            <span class="service-desc">以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="service-cards">
