@@ -133,6 +133,13 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo-area:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
         }
         .logo-img {
             height: 44px;
@@ -249,7 +256,7 @@
             .hamburger { display: flex; }
         }
 
-        /* ===== HERO SECTION — SCOTTISH SALTIRE (X) PATTERN WITH CONTINUOUS MOVEMENT ===== */
+        /* ===== HERO SECTION — SCOTTISH TARTAN STYLE INFINITE X PATTERN ===== */
         .hero {
             background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 2rem 1rem;
@@ -257,85 +264,139 @@
             color: white;
             position: relative;
             overflow: hidden;
+            isolation: isolate;
         }
-        .hero::before {
-            content: '';
+        
+        /* 苏格兰格纹风格 - 大型X形图案，无缝无限延伸 */
+        .hero .tartan-pattern {
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                /* 主X形图案 - 大尺寸，交错排列，永不间断 */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/><path d="M80 80 L100 100 M100 80 L80 100" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>'),
+                /* 第二层X形图案 - 偏移形成格纹效果 */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.12"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'),
+                /* 第三层细线 - 增加格纹密度 */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" opacity="0.1"><path d="M30 30 L50 50 M50 30 L30 50" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 10 L70 70 M70 10 L10 70" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.6"/></svg>');
+            background-repeat: repeat, repeat, repeat;
+            background-size: 180px 180px, 220px 220px, 100px 100px;
+            background-position: 0 0, 90px 90px, 45px 45px;
+            animation: tartanDrift 70s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* 优雅的波浪光晕层 */
+        .hero .wave-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
             width: 200%;
             height: 200%;
-            background-image: 
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 50px),
-                repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 2px, transparent 2px, transparent 50px);
-            background-size: 70px 70px, 70px 70px;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,215,150,0.06) 20%, transparent 60%);
+            animation: elegantWave 28s ease-in-out infinite;
             pointer-events: none;
-            animation: driftDiagonal 25s linear infinite;
+            z-index: 1;
         }
-        .hero::after {
-            content: '';
+        
+        /* 微妙的粒子光点 - 增添质感 */
+        .hero .particles {
             position: absolute;
-            top: -20%;
-            left: -20%;
-            width: 140%;
-            height: 140%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" opacity="0.2"><path d="M20 20 L100 100 M100 20 L20 100" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M40 40 L80 80 M80 40 L40 80" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.6"/><path d="M60 60 L70 70 M70 60 L60 70" stroke="white" stroke-width="1.5" opacity="0.4"/></svg>');
-            background-repeat: repeat;
-            background-size: 110px 110px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0;
+            animation: particleFloat 80s linear infinite;
             pointer-events: none;
-            animation: driftXmarks 35s linear infinite;
+            z-index: 1;
         }
-        @keyframes driftDiagonal {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(30px, 20px) rotate(2deg); }
+        
+        /* 柔和的边缘光晕 */
+        .hero .edge-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.12) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
-        @keyframes driftXmarks {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate(40px, -30px) rotate(3deg) scale(1.05); }
+        
+        @keyframes tartanDrift {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 100% 100%, 100% 100%, 100% 100%; }
         }
+        
+        @keyframes elegantWave {
+            0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, 3%) rotate(2deg) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+        }
+        
+        @keyframes particleFloat {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        
         .hero-content {
             position: relative;
-            z-index: 2;
-            animation: fadeInUp 0.7s ease-out;
+            z-index: 10;
+            animation: contentFadeIn 0.9s ease-out;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+        
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
         .hero h1 {
             font-size: 2.2rem;
             font-weight: 800;
             font-family: 'Cormorant Garamond', serif;
             letter-spacing: -0.02em;
             margin-bottom: 0.4rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            text-shadow: 0 2px 18px rgba(0,0,0,0.28);
             line-height: 1.2;
+            animation: titleSoftBreathing 3.8s ease-in-out infinite;
         }
+        
         .hero p {
             font-size: 1rem;
             max-width: 550px;
             margin: 0 auto;
             opacity: 0.92;
             font-weight: 400;
+            letter-spacing: 0.2px;
         }
-        .hero h1 {
-            animation: gentleGlow 2.5s ease-in-out infinite;
+        
+        @keyframes titleSoftBreathing {
+            0% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); letter-spacing: -0.02em; }
+            50% { text-shadow: 0 5px 28px rgba(255,215,150,0.45); letter-spacing: -0.01em; }
+            100% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); letter-spacing: -0.02em; }
         }
-        @keyframes gentleGlow {
-            0% { text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-            50% { text-shadow: 0 4px 18px rgba(255,215,150,0.4); }
-            100% { text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-        }
+        
         @media (max-width: 768px) {
             .hero { padding: 1.5rem 1rem; }
             .hero h1 { font-size: 1.7rem; }
             .hero p { font-size: 0.85rem; max-width: 90%; }
+            .hero .tartan-pattern {
+                background-size: 140px 140px, 170px 170px, 80px 80px;
+            }
         }
         @media (min-width: 1200px) {
             .hero { padding: 2.2rem 2rem; }
             .hero h1 { font-size: 2.5rem; }
+            .hero .tartan-pattern {
+                background-size: 200px 200px, 240px 240px, 110px 110px;
+            }
         }
-
 
         /* ===== SECTION ANIMATIONS ===== */
         .band-section, .services-preview, .cta-section {
@@ -404,14 +465,13 @@
             transform: scale(1.02);
         }
         
-        /* Navigation Arrows */
         .carousel-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 40px;
             height: 40px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -421,20 +481,15 @@
             z-index: 10;
             transition: all 0.3s ease;
             font-size: 1.2rem;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(3px);
         }
         .carousel-arrow:hover {
             background: var(--primary);
             transform: translateY(-50%) scale(1.05);
         }
-        .carousel-arrow.prev {
-            left: 15px;
-        }
-        .carousel-arrow.next {
-            right: 15px;
-        }
+        .carousel-arrow.prev { left: 15px; }
+        .carousel-arrow.next { right: 15px; }
         
-        /* Dots Indicators */
         .carousel-dots {
             position: absolute;
             bottom: 15px;
@@ -461,9 +516,7 @@
             width: 24px;
             border-radius: 10px;
         }
-        .carousel-dot:hover {
-            background: var(--primary);
-        }
+        .carousel-dot:hover { background: var(--primary); }
         
         .band-text h2 {
             font-size: 2rem;
@@ -518,13 +571,8 @@
             border-radius: 2px;
             transition: width 0.3s ease;
         }
-        .btn-link:hover::after {
-            width: 100%;
-        }
-        .btn-link:hover {
-            gap: 0.8rem;
-            color: var(--primary-dark);
-        }
+        .btn-link:hover::after { width: 100%; }
+        .btn-link:hover { gap: 0.8rem; color: var(--primary-dark); }
 
         @media (max-width: 768px) {
             .band-section { padding: 2.5rem 0; }
@@ -624,7 +672,7 @@
             line-height: 1.5;
         }
 
-        /* CTA SECTION — with smooth rotating animation (same as previous working speed) */
+        /* CTA SECTION */
         .cta-section {
             background: var(--primary);
             color: white;
@@ -633,7 +681,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Smooth rotating gradient animation - same style as previously working */
         .cta-section::before {
             content: '';
             position: absolute;
@@ -641,29 +688,13 @@
             left: -20%;
             width: 140%;
             height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,255,255,0.08) 30%, transparent 70%);
-            animation: rotateFlow 25s linear infinite;
+            background: radial-gradient(circle at 30% 40%, rgba(255,215,150,0.12) 0%, rgba(255,255,255,0.06) 30%, transparent 70%);
+            animation: rotateFlow 30s linear infinite;
             pointer-events: none;
-        }
-        /* Additional moving pattern overlay */
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 45px);
-            pointer-events: none;
-            animation: slowShiftPattern 30s linear infinite;
         }
         @keyframes rotateFlow {
             0% { transform: rotate(0deg) scale(1); }
-            100% { transform: rotate(360deg) scale(1.2); }
-        }
-        @keyframes slowShiftPattern {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 30px); }
+            100% { transform: rotate(360deg) scale(1.1); }
         }
         .cta-section h3 {
             font-size: 1.6rem;
@@ -748,10 +779,6 @@
             margin-bottom: 0.5rem;
             font-size: 0.85rem;
             list-style: none;
-        }
-        .footer-col ul li::before {
-            display: none;
-            content: none;
         }
         .footer-col p {
             margin-bottom: 0.6rem;
@@ -861,12 +888,13 @@
 
     <div class="navbar">
         <div class="nav-container">
-            <div class="logo-area">
+            <!-- Logo area with smart link - detects current language version -->
+            <a href="#" id="logoLink" class="logo-area" style="text-decoration: none;">
                 <img src="Images/citypb.icon.png" alt="City of Hong Kong Pipe Band Logo" class="logo-img">
                 <div class="logo-text">
                     City of Hong Kong<br><span>Pipe Band</span>
                 </div>
-            </div>
+            </a>
             <div class="nav-links">
                 <a href="index.html" class="active">The Band</a>
                 <a href="aboutus.html">About Us</a>
@@ -889,8 +917,12 @@
         </div>
     </div>
 
-    <!-- HERO with exquisite staggered X pattern -->
+    <!-- HERO with Scottish tartan style infinite X pattern -->
     <section class="hero">
+        <div class="tartan-pattern"></div>
+        <div class="wave-glow"></div>
+        <div class="particles"></div>
+        <div class="edge-glow"></div>
         <div class="hero-content">
             <h1>City of Hong Kong<br>Pipe Band</h1>
             <p>Tradition meets excellence — authentic Scottish bagpipe music for every moment</p>
@@ -960,7 +992,6 @@
         </div>
     </section>
 
-    <!-- CTA SECTION with smooth rotating animation (original working speed) -->
     <section class="cta-section">
         <div class="container">
             <h3>Ready to make your event extraordinary?</h3>
@@ -1016,6 +1047,17 @@
             link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
 
+        // Smart Logo Link - detects current language version
+        const logoLink = document.getElementById('logoLink');
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Determine the correct home page based on current language
+        if (currentPage.includes('zh') || currentPage === 'index-zh.html') {
+            logoLink.href = 'index-zh.html';
+        } else {
+            logoLink.href = 'index.html';
+        }
+
         // Lightbox functions
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
@@ -1039,7 +1081,6 @@
         let currentIndex = 0;
         let autoInterval;
 
-        // Create dots
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('carousel-dot');
@@ -1086,16 +1127,13 @@
             startAutoPlay();
         }
 
-        // Event listeners
         prevBtn.addEventListener('click', prevSlide);
         nextBtn.addEventListener('click', nextSlide);
 
-        // Pause auto-play on hover
         const carousel = document.getElementById('imageCarousel');
         carousel.addEventListener('mouseenter', () => clearInterval(autoInterval));
         carousel.addEventListener('mouseleave', startAutoPlay);
 
-        // Start auto-play
         startAutoPlay();
 
         window.addEventListener('load', () => {
@@ -1103,7 +1141,7 @@
             updateSlides();
         });
 
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        // Active nav link highlighting
         document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
             const href = link.getAttribute('href');
             if(href === currentPage || (currentPage === '' && href === 'index.html')) {
