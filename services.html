@@ -1,891 +1,1034 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>服務演出 香港城市風笛隊-City of Hong Kong Pipe Band</title>
-  <meta name="description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。">
-  <meta name="keywords" content="演出,慶典,晚宴,商業推廣,文娛節目,演奏,喪禮,婚禮,蘇格蘭風笛,蘇格蘭風笛演出,風笛,風笛演出,">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://cityhkpipeband.com/">
-  <meta property="og:title" content="服務演出 - 香港城市風笛隊">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cityhkpipeband.com/">
-  <meta property="og:description" content="提供各類演出，包括慶典、晚宴、商業推廣、文娛節目、演奏、喪禮、婚禮，等等。"> 
-  <meta property="og:site_name" content="香港城市風笛隊">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="Images/citypb.icon.png">
-  <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="Images/citypb.icon.png">
-
-  <link rel="profile" href="http://gmpg.org/xfn/11">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Services | City of Hong Kong Pipe Band</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and more. Choose from solo piper, duo, quartet, mini band, or full band.">
+    <meta name="keywords" content="bagpipe services, Scottish bagpipe, wedding bagpiper, funeral bagpiper, corporate event, pipe band, solo piper, duo pipers, quartet, mini band, full band">
+    <meta name="author" content="City of Hong Kong Pipe Band">
+    <link rel="canonical" href="https://cityhkpipeband.com/services.html">
+    <meta property="og:title" content="Services | City of Hong Kong Pipe Band">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cityhkpipeband.com/services.html">
+    <meta property="og:description" content="Professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and more.">
+    <meta property="og:image" content="Images/citypb.icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Alternate language link -->
+    <link rel="alternate" hreflang="zh-HK" href="services-zh.html">
+    <link rel="alternate" hreflang="en" href="services.html">
+    
+    <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="Images/citypb.icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XK7BMF7NJQ');
+    </script>
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background: #f4f4f4;
-            color: #333;
+        * {
             margin: 0;
-            padding: 0px; /* margin for small devices */
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
+        :root {
+            --primary: #9b1c31;
+            --primary-dark: #7a1628;
+            --primary-light: #c13a51;
+            --secondary: #1e2a32;
+            --light-bg: #faf9f8;
+            --gray-light: #f0efed;
+            --gray-mid: #6c6a67;
+            --dark-text: #1e1e1e;
+            --white: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --border-radius-card: 1.25rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* loading spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
-            background-color: #9b1c31;
-            color: white;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loading #loading-spinner { display: flex; }
+        body:not(.loading) #loading-spinner { display: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.7rem 1.5rem; }
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo-area:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        .logo-img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.8rem; }
+            .logo-img { height: 36px; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 0.95rem;
             position: relative;
         }
-
-.header-title {
-    font-size: 5vw; /* Responsive font size */
-    margin: 5px 0;
-    text-align: center;
-    padding-bottom: 10px; /* Space for the menu */
-}
-
-.header-description {
-    font-size: 3vw; /* Responsive font size */
-    margin: 0;
-    text-align: center;
-}
-
-/* Minimum font size for smaller devices */
-@media (max-width: 768px) {
-    .header-title {
-        font-size: 26px; /* Fixed minimum font size for smaller screens */
-    }
-    .header-description {
-        font-size: 24px; /* Fixed minimum font size for smaller screens */
-    }
-}
-
-    /* Minimum font size for smaller devices */
-@media (max-width: 1200px) {
-    .header-logo {
-  max-height: 70px; /* Adjust the size as needed */
-}
-}
-
-/* Maximum font size for larger devices */
-@media (min-width: 1200px) {
-    .header-title {
-        font-size: 45px; /* Fixed maximum font size for larger screens */
-    }
-    .header-description {
-        font-size: 43px; /* Fixed maximum font size for larger screens */
-    }
-    .header-logo {
-  max-height: 130px; /* Adjust the size as needed */
-}
-}
-
-/* Maximum font size for larger devices */
-@media (min-width: 1200px) {
-
-    .header-logo {
-  max-height: 130px; /* Adjust the size as needed */
-}
-}
-
-  
-@media (max-width: 767px) {
-  .service-offerings {
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: justify;
-  }
-
-  .service-offerings h2 {
-    text-align: left;
-  }
-}
-
-@media (min-width: 768px) {
-  .service-offerings {
-    margin-bottom: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-    text-align: justify;
-  }
-
-  .service-offerings h2 {
-    text-align: left;
-  }
-}
-      
-        .menu-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items vertically */
-  width: 100%;
-  padding: 0 20px; /* Padding on sides */
-}
-
-
-        .hamburger {
-            cursor: pointer;
-            display: block;
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px 0;
-            background-color: white;
-            transition: 0.4s;
-        }
-
-        .change .bar.top {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .change .bar.middle {
-            opacity: 0;
-        }
-
-        .change .bar.bottom {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .menu {
-            display: none;
-            width: 100%;
-            background-color: white;
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            top: 100%;
+            bottom: -6px;
             left: 0;
-            z-index: 10;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the menu */
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
         }
-
-        .menu a {
-            text-decoration: none;
-            color: black;
-            padding: 10px 15px;
-            display: block;
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .lang-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2rem;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.85rem;
         }
-
-        .menu a:hover {
-            background-color: #7a1c28;
-            color: white;
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
-
-        .menu.active {
-            display: block;
-        }
-
-        .lang-switch {
+        .lang-btn::after { display: none; }
+        
+        .hamburger {
+            display: none;
             cursor: pointer;
-            display: block;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1.8rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .mobile-lang {
+            background: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 3rem;
+            margin-top: 0.5rem;
         }
 
         @media (max-width: 768px) {
-            .header-description {
-                text-align: center;
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
 
-            .hamburger,
-            .lang-switch {
-                display: block;
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        
+        .hero .tartan-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/><path d="M80 80 L100 100 M100 80 L80 100" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.12"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" opacity="0.1"><path d="M30 30 L50 50 M50 30 L30 50" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 10 L70 70 M70 10 L10 70" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.6"/></svg>');
+            background-repeat: repeat, repeat, repeat;
+            background-size: 180px 180px, 220px 220px, 100px 100px;
+            background-position: 0 0, 90px 90px, 45px 45px;
+            animation: tartanDrift 70s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero .wave-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,215,150,0.06) 20%, transparent 60%);
+            animation: elegantWave 28s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes tartanDrift {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 100% 100%, 100% 100%, 100% 100%; }
+        }
+        
+        @keyframes elegantWave {
+            0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, 3%) rotate(2deg) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: contentFadeIn 0.9s ease-out;
+        }
+        
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 18px rgba(0,0,0,0.28);
+            line-height: 1.2;
+            animation: titleSoftBreathing 3.8s ease-in-out infinite;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-weight: 400;
+        }
+        
+        @keyframes titleSoftBreathing {
+            0% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+            50% { text-shadow: 0 5px 28px rgba(255,215,150,0.45); }
+            100% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { font-size: 0.85rem; max-width: 90%; }
+            .hero .tartan-pattern {
+                background-size: 140px 140px, 170px 170px, 80px 80px;
             }
+        }
+        @media (min-width: 1200px) {
+            .hero { padding: 2.2rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tartan-pattern {
+                background-size: 200px 200px, 240px 240px, 110px 110px;
+            }
+        }
 
-            .menu {
-                display: none;
+        /* ===== SERVICES SECTION ===== */
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out forwards;
+        }
+        
+        .services-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .services-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .services-intro p {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            margin-top: 1.2rem;
+        }
+        
+        @keyframes sectionReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
+        .service-list {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.1s forwards;
+        }
         
-        /* Existing base styles for your site footer */
-.site-footer {
-  background-color: #333;
-  color: white;
-  padding: 20px 0;
-  margin-top: 40px;
-}
-
-.site-footer a {
-  color: #6DF;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Flexbox layout for the footer content */
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.footer-section {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 100px;
-  margin-right: 100px;
-  flex: 1;
-  min-width: 150px; /* Minimum width before wrapping */
-  text-align: left; /* Align text to the left */
-}
-
-/* Shared styles for Quick Links and Follow Us lists */
-.footer-links,
-.social-links {
-  list-style: none; /* Remove bullet points */
-  padding: 0;
-  margin: 0; /* Remove default margin */
-}
-
-.footer-links li a,
-.social-links li a {
-  color: #6DF;
-  text-decoration: none;
-  display: block; /* Make the links full-width within the section */
-}
-
-.footer-links li a:hover,
-.social-links li a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left on smaller screens */
-  }
-
-  .footer-section {
-    /* Full width on smaller screens */
-    flex-basis: 100%;
-    margin: 20px;
-  }
-}
-
-/* Styles for the footer bottom */
-.footer-bottom {
-  text-align: center; /* Keep copyright notice centered */
-  margin-top: 20px;
-  border-top: 1px solid #474747;
-  padding-top: 20px;
-}
-
-
+        .service-list h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
         
-    .service-plans {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0;
-}
-
-.service-plans h1,
-.service-plans p {
-    text-align: center;
-    margin: 0 0 20px;
-}
-
-.plan {
-    background: #fff;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: justify;
-}
-
-.plan img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    width: auto;
-}
-
-.plan h2 {
-    color: #333;
-    margin: 0 0 20px; /* Gap between title and description */
-}
-
-/* Styles for large devices */
-@media (min-width: 768px) {
-    .service-plans h1,
-    .service-plans p {
-        text-align: left;
-        margin-left: 100px; /* Align with the title */
-        margin-right: 100px;
-    }
-
-    .plan {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px;
-        margin: 20px 100px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .plan img {
-        max-width: 100%;
-        height: auto;
-        width: 200px; /* Fixed width for consistency */
-        margin-right: 20px; /* Gap between image and description */
-    }
-    
-    .plan h2 {
-        /* Set a fixed width to maintain consistency across all titles */
-        width: 25%; /* Adjust this percentage based on your layout/design */
-        text-align: left;
-        margin-right: 20px; /* Gap between title and description */
-    }
-    
-    .plan p {
-        flex: 1;
-        margin: 0;
-        padding: 0 20px; /* Add padding if needed */
-    }
-}
-
-      #lightbox {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#lightbox-image {
-    max-width: calc(100% - 40px); /* Subtract 20px margin from each side for small devices */
-    max-height: 80%;
-    margin: auto; /* This will center the image in the lightbox */
-}
-
-.lightbox-close {
-    position: fixed; /* Use 'fixed' instead of 'absolute' so it stays in place on the screen */
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it's above the lightbox image */
-}
-
-/* Big devices with a minimum width of 768px */
-@media (min-width: 768px) {
-    #lightbox-image {
-        max-width: calc(100% - 200px); /* Subtract 100px margin from each side for big devices */
-    }
-}
+        .service-list ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            padding: 0;
+        }
         
-        #service-demo-container {
-  border: 1px solid #ddd; /* Light grey border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Space inside the container */
-  margin: 20px auto; /* Centering the container */
-  max-width: 600px; /* Maximum width of the container */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-color: #fff; /* White background */
-  text-align: center; /* Centering the text */
-}
-
-.service-demo-title {
-  margin-bottom: 20px; /* Space below the title */
-  color: #333; /* Dark text color for readability */
-  font-family: Arial, sans-serif; /* Font family */
-  font-size: 24px; /* Size of the title text */
-}
-
-#facebook-video {
-  position: relative; /* Establishes containing block for positioning inner iframe */
-  overflow: hidden; /* Ensuring no scrollbars appear */
-  padding-top: 56.25%; /* Aspect ratio padding for 16:9 (100%/16*9) */
-  margin: auto; /* Centering the video */
-  border-radius: 8px; /* Rounded corners for the iframe */
-}
-
-#facebook-video iframe {
-  position: absolute; /* Absolute positioning inside the relative container */
-  top: 0;
-  left: 0;
-  width: 100%; /* Responsive width */
-  height: 100%; /* Responsive height */
-  border: none; /* Removes the border from the iframe */
-}
+        .service-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--dark-text);
+        }
         
-/* Button specific style */
-.get-quotation-btn {
-  display: block; /* make the button a block element to allow margin auto to work */
-  text-decoration: none;
-  color: #0077cc; /* text color is white */
-  background-color: white; 
-  border: 2px solid #0077cc;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  margin: 20px auto; /* auto margins for horizontal centering */
-  text-align: center;
-  width: fit-content; /* fit the button width to its content */
-}
+        .service-list li i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 24px;
+        }
+        
+        /* Service Cards Grid */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.2s forwards;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-card-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+        
+        .service-card:hover .service-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-card-content {
+            padding: 1.5rem;
+        }
+        
+        .service-card-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .service-card-content p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        /* Video Demo Section */
+        .video-demo {
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.3s forwards;
+        }
+        
+        .video-demo h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-demo p {
+            color: var(--gray-mid);
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact CTA */
+        .contact-cta {
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionReveal 0.7s ease-out 0.4s forwards;
+        }
+        
+        .contact-cta p {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            margin-bottom: 1.2rem;
+        }
+        
+        .contact-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .contact-cta .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            gap: 0.8rem;
+        }
+        
+        /* Floating Action Button - Inquire Now */
+        .inquire-fab {
+            position: fixed;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 3rem;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(155, 28, 49, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .inquire-fab i {
+            font-size: 1.1rem;
+        }
+        
+        .inquire-fab:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(155, 28, 49, 0.4);
+        }
+        
+        /* Desktop positioning */
+        @media (min-width: 769px) {
+            .inquire-fab {
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        
+        /* Mobile positioning - fixed at bottom center */
+        @media (max-width: 768px) {
+            .inquire-fab {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0.7rem 1.3rem;
+                font-size: 0.9rem;
+                width: auto;
+                white-space: nowrap;
+            }
+            .inquire-fab:hover {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-cards { grid-template-columns: 1fr; }
+            .service-list ul { grid-template-columns: 1fr; }
+            .services-intro h2 { font-size: 1.8rem; }
+        }
 
-.get-quotation-btn:hover {
-  background-color: #005fa3; /* a darker blue on hover */
-  color: white;
-}
+        /* Footer */
+        .site-footer {
+            background: #111216;
+            color: #d1d5db;
+            padding: 2.5rem 0 1.2rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .footer-col {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .footer-col a {
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary-light); }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .contact-link i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .contact-link:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .social-links a i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #2a2c33;
+            font-size: 0.75rem;
+        }
 
-/* Media query for smaller devices, if needed */
-@media (max-width: 767px) {
-  .get-quotation-btn {
-  font-size: 18px;  /* Styles for smaller devices */
-  }
-}
-
-/* Enlarge button for larger devices */
-@media (min-width: 768px) {
-  .get-quotation-btn {
-    padding: 15px 30px; /* Larger padding for a bigger button */
-    font-size: 28px; /* Larger font size for better readability on larger devices */
-    border-radius: 8px; /* Slightly more rounded corners for aesthetic */
-    /* Margin, text-align, and width can remain the same unless you want to change those as well */
-  }
-}
-      
-/* Floating Action Button Style */
-.freezer-btn {
-  position: fixed;
-  text-decoration: none;
-  color: white;
-  background-color: transparent; /* Using an image now */
-  background-image: url('Images/price-icon.png'); /* Path to your image */
-  background-size: cover; /* Cover the area of the button */
-  background-repeat: no-repeat;
-  background-position: center;
-  border: transparent;
-  padding: 40px; /* Adjust padding to change the size */
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  font-size: 16px;
-  right: 5px; /* Adjusted for the right side */
-  bottom: 10%; /* Adjusted for the bottom */
-}
-
-/* Size adjustments for larger devices */
-@media (min-width: 768px) {
-  .freezer-btn {
-    padding: 80px; /* Larger padding for a bigger button */
-    font-size: 20px; /* Optional: Adjust the font size if needed */
-    right: 5px; /* Consistent margin from the right */
-    bottom: 20px; /* Consistent margin from the bottom */
-  }
-}
-
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        #lightbox-image {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            animation: zoomIn 0.2s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 38px;
+            font-weight: 300;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        @media (max-width: 768px) {
+            .lightbox-close { top: 15px; right: 20px; font-size: 30px; }
+        }
     </style>
 </head>
-<body>
+<body class="loading">
+    <div id="loading-spinner"><div class="spinner"></div></div>
 
-<header>
-    <div class="menu-controls">
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <div class="bar top"></div>
-            <div class="bar middle"></div>
-            <div class="bar bottom"></div>
-        </div>
-       <a href="index.html">
-  <img src="Images/citypb.icon.png" alt="City Pipe Band" class="header-logo" />
-</a>
-        <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
-            中/Eng
-        </div>
-    </div>
-    <h1 class="header-title" id="header-title">City of Hong Kong Pipe Band</h1>
-    <p class="header-description" id="header-description">香港城市風笛隊</p>
-    <nav class="menu" id="menu">
-        <a href="index.html" id="nav-the-band">The Band</a>
-        <a href="aboutus.html" id="nav-about-us">About Us</a>
-        <a href="services.html" id="nav-services">Services</a>
-        <a href="gallery.html" id="nav-gallery">Gallery</a>
-        <a href="contact.html" id="nav-contact">Contact</a>
-    </nav>
-</header>
-
-  <div class="service-offerings">
-       <section id="service-offerings">
-  <br>
-  <h2>Service Offerings</h2>
-  <p>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event:</p>
-  <ul>
-    <li><strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.</li>
-    <li><strong>Galas:</strong> Add a touch of sophistication to your evening events with our elegant pipe tunes.</li>
-    <li><strong>Anniversaries:</strong> Celebrate milestones with the timeless sound of our music, marking each year with tradition.</li>
-    <li><strong>Festivals:</strong> Bring joy and festivity to your celebrations with our upbeat and lively performances.</li>
-    <li><strong>Business Promotions:</strong> Make your brand stand out with the unique backdrop of our bagpipe melodies.</li>
-    <li><strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.</li>
-    <li><strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.</li>
-  </ul>
-
-</section>
-            
-            
-        <section id="service-plans">
-  <h2>Explore Our Service Plans</h2>
-  <p>Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.</p>
-
-<div id="service-demo-container">
-  <h2 class="service-demo-title">Service Demonstration</h2>
-  <div id="facebook-video">
-    <iframe src="https://www.facebook.com/plugins/video.php?height=316&href=https%3A%2F%2Fwww.facebook.com%2Fcitypipeband%2Fvideos%2F2807165972673128%2F&show_text=true&width=560&t=0" width="560" height="431" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-  </div>
-</div>
-
-  <!-- Here you would place the details of each service plan -->
-  
-</section>
-  </div>
-
-        <!-- Solo Piper -->
-        <div class="plan" id="solo-piper">
-            <h2>Solo Piper</h2>
-            <p>A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.</p>
-            <!-- Replace with your image path -->
-            <img src="Images/s1.jpg" alt="Solo Piper" onclick="openLightbox(this.src);">
-        </div>
-  
-        <!-- Duo of Pipers -->
-        <div class="plan" id="duo-pipers">
-            <h2>Duo of Pipers</h2>
-            <p>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p>
-            <!-- Replace with your image path -->
-            <img src="Images/s2.jpg" alt="Duo of Pipers" onclick="openLightbox(this.src);">
-        </div>
-        
-        <!-- Quartet of Pipers -->
-        <div class="plan" id="quartet-pipers">
-            <h2>Quartet of Pipers</h2>
-            <p>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p>
-            <!-- Replace with your image path -->
-            <img src="Images/s3.jpg" alt="Quartet of Pipers" onclick="openLightbox(this.src);">
-        </div>
-        
-        <!-- Mini Band -->
-        <div class="plan" id="mini-band">
-            <h2>Mini Band</h2>
-            <p>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p>
-            <!-- Replace with your image path -->
-            <img src="Images/s4.jpg" alt="Mini Band" onclick="openLightbox(this.src);">
-        </div>
-        
-        <!-- Full Band -->
-        <div class="plan" id="full-band">
-            <h2>Full Band</h2>
-            <p>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p>
-            <!-- Replace with your image path -->
-            <img src="Images/s5.jpg" alt="Full Band" onclick="openLightbox(this.src);">
-        </div>
-</section>
-  
-  <div class="service-offerings" id="more-details">
-            <p>For more details on each plan and to discuss the specific requirements for your event, please contact us. We are excited to work with you to craft a memorable musical experience that perfectly suits your celebration.</p>
-  </div>
-
-  <br>
-  
-<button type="button" class="get-quotation-btn" data-toggle="modal" data-target="#quotationModal">
-  Get Quotation<br>獲取報價
-</button>
-
-<!-- Floating Action Button for Get Quotation -->
-<button type="button" class="freezer-btn" data-toggle="modal" data-target="#quotationModal">
-  <!-- Removed icon text -->
-</button>
-
-<!-- Modal -->
-<div class="modal" id="quotationModal" tabindex="-1" role="dialog" aria-labelledby="quotationModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="quotationModalLabel">Choose Your Service Plan <br>選擇您的服務計劃</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Service plan options go here -->
-        <form>
-            <div class="form-group">
-                <label for="servicePlanSelect">Service Plan 服務計劃</label>
-                <select class="form-control" id="servicePlanSelect">
-                    <option value="">Select a plan 選擇計劃</option>
-                    <option value="solo">Solo Piper 獨奏風笛手</option>
-                    <option value="duo">Duo of Pipers 風笛二重奏</option>
-                    <option value="quartet">Quartet of Pipers 風笛四重奏</option>
-                    <option value="mini">Mini Band 小型樂隊</option>
-                    <option value="full">Full Band 大型樂隊</option>
-                </select>
+    <div class="navbar">
+        <div class="nav-container">
+            <a href="#" id="logoLink" class="logo-area" style="text-decoration: none;">
+                <img src="Images/citypb.icon.png" alt="City of Hong Kong Pipe Band Logo" class="logo-img">
+                <div class="logo-text">
+                    City of Hong Kong<br><span>Pipe Band</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">The Band</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="index-zh.html" class="lang-btn">中文版</a>
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="downloadButton">Download Quotation<br>下載報價單</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Include Bootstrap JS and its dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- Lightbox Container -->
-<div id="lightbox" onclick="closeLightbox();" style="display:none;">
-    <img id="lightbox-image" />
-    <p id="lightbox-description"></p> <!-- Description paragraph -->
-    <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
-</div>
-  
-<br>
-<br>
-<br>
-<br>
-  
-<footer>
-<footer class="site-footer">
-  <div class="footer-content">
-
-
-    <!-- Quick Links Section -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="index.html">The Band</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">The Band</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="index-zh.html" class="mobile-lang">中文版</a>
+        </div>
     </div>
 
-    <!-- Contact Information -->
-    <div class="footer-section">
-      <h3>Contact Information</h3>
-      <p>Email: <a href="mailto:cityofhongkongpipeband@gmail.com">cityofhongkongpipeband@gmail.com</a></p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="tartan-pattern"></div>
+        <div class="wave-glow"></div>
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Tailored Scottish bagpipe performances for every occasion</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Service Offerings</h2>
+                <p>Elevate your occasion with the City of Hong Kong Pipe Band's array of services, each designed to add a special note to your event.</p>
+            </div>
+            
+            <div class="service-list">
+                <h3>What We Offer</h3>
+                <ul>
+                    <li><i class="fas fa-heart"></i> <strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes</li>
+                    <li><i class="fas fa-glass-cheers"></i> <strong>Galas:</strong> Add sophistication to evening events with elegant pipe tunes</li>
+                    <li><i class="fas fa-birthday-cake"></i> <strong>Anniversaries:</strong> Celebrate milestones with timeless music</li>
+                    <li><i class="fas fa-music"></i> <strong>Festivals:</strong> Bring joy and festivity with upbeat performances</li>
+                    <li><i class="fas fa-chart-line"></i> <strong>Business Promotions:</strong> Make your brand stand out with unique melodies</li>
+                    <li><i class="fas fa-calendar-alt"></i> <strong>Events:</strong> From formal gatherings to casual meetups, we set the perfect tone</li>
+                    <li><i class="fas fa-door-open"></i> <strong>Welcoming Guests:</strong> Greet guests with dignified and warm bagpipe sounds</li>
+                </ul>
+            </div>
+            
+            <div class="service-cards">
+                <!-- Solo Piper -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s1.jpg" alt="Solo Piper" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Solo Piper</h3>
+                        <p>A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.</p>
+                        <span class="service-tag">Perfect for intimate ceremonies</span>
+                    </div>
+                </div>
+                
+                <!-- Duo of Pipers -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s2.jpg" alt="Duo of Pipers" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Duo of Pipers</h3>
+                        <p>Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.</p>
+                        <span class="service-tag">Rich, harmonious sound</span>
+                    </div>
+                </div>
+                
+                <!-- Quartet of Pipers -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s3.jpg" alt="Quartet of Pipers" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Quartet of Pipers</h3>
+                        <p>Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.</p>
+                        <span class="service-tag">Fuller, more layered sound</span>
+                    </div>
+                </div>
+                
+                <!-- Mini Band -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s4.jpg" alt="Mini Band" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Mini Band</h3>
+                        <p>Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.</p>
+                        <span class="service-tag">Melody & rhythm combined</span>
+                    </div>
+                </div>
+                
+                <!-- Full Band -->
+                <div class="service-card">
+                    <div class="service-card-image">
+                        <img src="Images/s5.jpg" alt="Full Band" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="service-card-content">
+                        <h3>Full Band</h3>
+                        <p>For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.</p>
+                        <span class="service-tag">Grand, impressive ensemble</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Demo -->
+            <div class="video-demo">
+                <h3>Service Demonstration</h3>
+                <p>Experience the captivating sound of the City of Hong Kong Pipe Band</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=316&href=https%3A%2F%2Fwww.facebook.com%2Fcitypipeband%2Fvideos%2F2807165972673128%2F&show_text=false&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+            </div>
+            
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <p>For more details on each plan and to discuss the specific requirements for your event, please contact us. We are excited to work with you to craft a memorable musical experience that perfectly suits your celebration.</p>
+                <a href="contact.html" class="btn-primary"><i class="fas fa-envelope"></i> Contact Us for Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Inquire Now Button -->
+    <a href="contact.html" class="inquire-fab">
+        <i class="fas fa-comment-dots"></i> Inquire Now
+    </a>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">The Band</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p>Hong Kong based, worldwide</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/cityofhongkongpipeband" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox();" style="display:none;">
+        <img id="lightbox-image" />
+        <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
     </div>
 
-    <!-- Social Media Links -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-links">
-        <!-- Replace '#' with your actual social media links -->
-        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank">Facebook</a>
-      </div>
-    </div>
-  </div>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
 
-  <!-- Copyright Notice -->
-  <div class="footer-bottom">
-    <p>&copy; 2024 City of Hong Kong Pipe Band. All rights reserved.</p>
-  </div>
-</footer>
-
-
-<script>
-    // Function to toggle the mobile menu
-    function toggleMenu() {
-        var menu = document.getElementById("menu");
-        var hamburger = document.getElementById("hamburger");
-        menu.classList.toggle("active");
-        hamburger.classList.toggle("change");
-    }
-
-    // Object containing language text for content sections
-  var languageTexts = {
-  'en': {
-    'service-offerings': {
-      'heading': 'Service Offerings',
-      'introduction': 'Elevate your occasion with the City of Hong Kong Pipe Band\'s array of services, each designed to add a special note to your event:',
-      'list': [
-        '<strong>Weddings:</strong> Enhance your special day with the romance of the bagpipes, creating memories that last a lifetime.',
-        '<strong>Galas:</strong> Add a touch of sophistication to your evening events with our elegant pipe tunes.',
-        '<strong>Anniversaries:</strong> Celebrate milestones with the timeless sound of our music, marking each year with tradition.',
-        '<strong>Festivals:</strong> Bring joy and festivity to your celebrations with our upbeat and lively performances.',
-        '<strong>Business Promotions:</strong> Make your brand stand out with the unique backdrop of our bagpipe melodies.',
-        '<strong>Events:</strong> From formal gatherings to casual meetups, our music sets the perfect tone for any event.',
-        '<strong>Welcoming Guests:</strong> Greet your guests with the dignified and warm sound of bagpipes, making every entrance grand.'
-      ],
-    },
-    'service-plans': {
-      'heading':'Explore Our Service Plans',
-      'introduction':'Let the City of Hong Kong Pipe Band create the perfect soundtrack for your event. Choose from our range of service plans to match the scale and atmosphere you desire. Each plan is accompanied by a visual glimpse of what we offer, allowing you to envision the ambiance we can provide.'
-    },
-    'service-demo-container': {
-      'heading':'Service Demonstration',
-    },
-    'solo-piper': {
-      'heading':'Solo Piper',
-      'introduction':'A lone piper stands, the echo of solitude in every note. A single melody weaves through the air, pure and unaccompanied, its haunting beauty resonating with the simplicity of a singular performance.'
-    },
-    'duo-pipers': {
-      'heading':'Duo of Pipers',
-      'introduction':'Double the melody, double the impact. Two pipers in harmony provide a fuller sound and a stirring presence.'
-    },
-    'quartet-pipers': {
-      'heading':'Quartet of Pipers',
-      'introduction':'Experience the rich layers of four pipers as they weave intricate musical patterns that captivate and enchant.'
-    },
-    'mini-band': {
-      'heading':'Mini Band',
-      'introduction':'Our mini band option includes four pipers complemented by the resonant beats of two drummers. The perfect balance of melody and rhythm.'
-    },
-    'full-band': {
-      'heading':'Full Band',
-      'introduction':'For a truly grand affair, the full band presents an impressive ensemble of pipers and drummers, tailored to the size of your event for maximum impact.'
-    },
-    'more-details': {
-      'introduction':'For more details on each plan and to discuss the specific requirements for your event, please contact us. We are excited to work with you to craft a memorable musical experience that perfectly suits your celebration.'
-    }
-    
-    
-    // ... other content sections in English
-  },
-  'zh': {
-    'service-offerings': {
-      'heading': '服務範疇',
-      'introduction': '預訂香港城市風笛隊的多元服務，讓您的活動更添特色：',
-      'list': [
-        '<strong>婚禮：</strong>用風笛的浪漫氛圍提升您的特別日子，創造終身難忘的回憶。',
-        '<strong>晚宴：</strong>我們優雅的風笛曲調為您的晚宴活動添上一抹高雅。',
-        '<strong>週年紀念：</strong>以我們永恆的音樂聲慶祝里程碑，用傳統標記每一年。',
-        '<strong>典慶：</strong>我們活潑熱烈的表演為您的慶祝活動帶來歡樂與熱情氣氛。',
-        '<strong>商業推廣：</strong>用我們獨特的風笛旋律讓您的品牌脫穎而出。',
-        '<strong>活動：</strong>從正式聚會到隨意的展覽會，我們的音樂為任何活動設定完美的基調。',
-        '<strong>迎賓：</strong>以風笛莊嚴和溫暖的聲音迎接您的賓客，使每一次進場都變得盛大。'
-      ],
-    },
-    'service-plans': {
-      'heading':'探索我們的服務計劃',
-      'introduction':'讓香港城市風笛隊為您的活動打造完美的配樂。從我們提供的服務計劃中選擇，找到符合您所需規模和氛圍的方案。每個計劃都附有一個視覺預覽，讓您能夠預想到我們能提供的氛圍。'
-    },
-    'service-demo-container': {
-      'heading':'服務示範',
-    },
-    'solo-piper': {
-      'heading':'獨奏風笛手',
-      'introduction':'一位獨奏笛手用高地風笛的氣勢，非常適合帶領嘉賓場合或感人時刻。'
-    },
-    'duo-pipers': {
-      'heading':'風笛二重奏',
-      'introduction':'旋律加倍，感動亦加倍。兩位演奏的笛手，提供了更豐滿的聲響和振奮人心的氣場。'
-    },
-    'quartet-pipers': {
-      'heading':'風笛四重奏',
-      'introduction':'體驗四位笛手交織出的豐富音樂層次，他們精湛的音樂演出迷人且令人著迷。'
-    },
-    'mini-band': {
-      'heading':'小型樂隊',
-      'introduction':'我們的小型樂隊選項包括四位笛手和兩位鼓手，他們悠揚節拍相得益彰，旋律和節奏的完美演繹。'
-    },
-    'full-band': {
-      'heading':'大型樂隊',
-      'introduction':'為了舉辦一場真正盛大的活動，大型樂隊呈現一個令人印象深刻的笛手和鼓手組合，根據您活動的規模量身定制，以達到最大的效果。'
-    },
-    'more-details': {
-      'introduction':'若想瞭解每個方案的更多細節，或訂製活動的特定需求，敬請聯繫我們。我們期待與您合作，為您的典慶量身打造一次難忘的音樂體驗。'
-    }
-    // ... 其他中文內容部分
-  }
-}; // 确保在整个对象结尾处有一个分号
-
-    // Function to toggle the language of content sections
-function toggleLanguage() {
-    var currentLang = document.documentElement.lang;
-    var newLang = currentLang === 'zh' ? 'en' : 'zh';
-    document.documentElement.lang = newLang;
-
-    // Update the text content of content sections based on the new language
-    Object.keys(languageTexts[newLang]).forEach(function (sectionId) {
-        var section = document.getElementById(sectionId);
-        if (section) {
-            // Update the heading
-            var heading = section.querySelector('h2');
-            if (heading) heading.textContent = languageTexts[newLang][sectionId].heading;
-
-            // Update the introduction paragraph
-            var introParagraph = section.querySelector('p');
-            if (introParagraph) introParagraph.innerHTML = languageTexts[newLang][sectionId].introduction;
-
-            // Update the list, if present
-            var list = section.querySelector('ul');
-            if (list && languageTexts[newLang][sectionId].list) {
-                list.innerHTML = languageTexts[newLang][sectionId].list.map(function (itemHtml) {
-                    return '<li>' + itemHtml + '</li>';
-                }).join('');
-            }
+        // Smart Logo Link
+        const logoLink = document.getElementById('logoLink');
+        const currentPage = window.location.pathname.split('/').pop() || 'services.html';
+        if (currentPage.includes('zh')) {
+            logoLink.href = 'index-zh.html';
+        } else {
+            logoLink.href = 'index.html';
         }
-    });
 
-    // Update the language switch button text
-    var langSwitch = document.getElementById('lang-switch');
-    if (langSwitch) langSwitch.textContent = newLang === 'en' ? '中/Eng' : 'Eng/中';
-}
+        // Lightbox functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        window.closeLightbox = closeLightbox;
+        window.openLightbox = openLightbox;
 
-// JavaScript function to check if a service plan has been selected and download the quotation based on selection
-document.getElementById('downloadButton').addEventListener('click', function() {
-    var servicePlanSelect = document.getElementById('servicePlanSelect');
-    var selectedValue = servicePlanSelect.value;
+        window.addEventListener('load', () => {
+            document.body.classList.remove('loading');
+        });
 
-    if (selectedValue === "") {
-        alert('Please select a service plan first. \n請先選擇一個服務計劃。');
-    } else if (selectedValue === "mini" || selectedValue === "full") {
-        // Alert for 'mini' and 'full' plan
-        alert("Please contact us for the 'Mini Band' and 'Full Band' service plans. \n請聯繫我們以獲取'小型樂隊'和'大型樂隊'服務計劃的詳情。");
-    } else {
-        // Replace the following URL with the actual path to your PDF files
-        var quotationUrls = {
-            'solo': 'Images/quota-solo.pdf',
-            'duo': 'Images/quota-duo.pdf',
-            'quartet': 'Images/quota-quarter.pdf'
-            // 'mini' and 'full' are not listed here as they require contact
-        };
-
-        // Open the PDF in a new tab
-        window.open(quotationUrls[selectedValue], '_blank');
-    }
-});
-
-function openLightbox(imageSrc, imageAlt) {
-    var lightbox = document.getElementById('lightbox');
-    var lightboxImage = document.getElementById('lightbox-image');
-    var lightboxDescription = document.getElementById('lightbox-description'); // Assuming you have a description element in your lightbox
-
-    lightboxImage.src = imageSrc;
-    lightboxDescription.textContent = imageAlt; // Set the alt text as the description
-    lightbox.style.display = 'flex';
-}
-
-function closeLightbox() {
-    var lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
-}
-  
-</script>
-
+        // Active nav link highlighting
+        document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+            const href = link.getAttribute('href');
+            if(href === currentPage || (currentPage === '' && href === 'services.html')) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
