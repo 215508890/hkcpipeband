@@ -133,11 +133,7 @@
         .print-button-wrapper { margin-top: 1rem; text-align: center; }
         .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
-        
-        /* Make date input same width as text inputs on mobile */
-        input[type="date"] {
-            width: 100%;
-        }
+        input[type="date"] { width: 100%; }
     </style>
 </head>
 <body>
@@ -160,11 +156,11 @@
             <!-- Control Panel -->
             <div class="controls-panel">
                 <h3 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-sliders-h"></i> Performance Config</h3>
-                <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Champions Showcase" placeholder="Performance title"></div>
-                <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate" value="2026-06-15"></div>
+                <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Gathering" placeholder="Performance title"></div>
+                <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate"></div>
                 <div class="inline-row">
-                    <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="7" value="5"></div>
-                    <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="8" value="4"></div>
+                    <div class="form-group" style="flex:1"><label>Rows (max 20)</label><input type="number" id="rowsInput" min="1" max="20" value="5"></div>
+                    <div class="form-group" style="flex:1"><label>Columns (max 10)</label><input type="number" id="colsInput" min="1" max="10" value="4"></div>
                     <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div>
                 </div>
                 
@@ -197,7 +193,7 @@
             
             <!-- Preview Area -->
             <div class="preview-panel" id="previewOnlyArea">
-                <div class="show-meta"><span class="show-title" id="liveShowTitleDisplay">Highland Champions Showcase</span><span class="performance-date" id="liveDateDisplay">📅 2026-06-15</span></div>
+                <div class="show-meta"><span class="show-title" id="liveShowTitleDisplay">Highland Gathering</span><span class="performance-date" id="liveDateDisplay"></span></div>
                 
                 <div class="drum-major-row">
                     <div class="drum-major-cell">
@@ -238,6 +234,7 @@
     let drumMajor = { name: "" };
     let selectedMainIndex = null;
     let selectedHelperIndex = null;
+    let printingInProgress = false; // prevent double print triggers
     
     // DOM elements
     const rowsInput = document.getElementById('rowsInput');
@@ -262,6 +259,11 @@
     const capacityWarning = document.getElementById('capacityWarning');
     const statsPanelPreview = document.getElementById('statsPanelPreview');
     
+    // Set default date to today
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+    liveDateSpan.innerText = today;
+    
     function getTotalMainCells() { return currentRows * currentCols; }
     
     function updateDrumMajorFromInput() {
@@ -273,9 +275,9 @@
     
     function updateMetaDisplay() {
         let titleVal = showTitleInput.value.trim();
-        liveTitleSpan.innerText = titleVal || "Performance";
+        liveTitleSpan.innerText = titleVal || "Highland Gathering";
         let dateVal = dateInput.value;
-        liveDateSpan.innerText = dateVal ? "📅 " + dateVal : "📅 Date TBA";
+        liveDateSpan.innerText = dateVal || "";
     }
     
     function renderFormationGrid() {
@@ -504,7 +506,7 @@
             <div class="stat-line"><span class="stat-label">Snare Drummers:</span><span class="stat-number">${stats.snare}</span></div>
             <div class="stat-line"><span class="stat-label">Bass Drummers:</span><span class="stat-number">${stats.bass}</span></div>
             <div class="stat-line"><span class="stat-label">Helpers:</span><span class="stat-number">${stats.helper}</span></div>
-            <div class="stat-line stat-total"><span class="stat-label">Total Performers:</span><span class="stat-number">${stats.total + stats.drumMajorCount}</span></div>
+            <div class="stat-line stat-total"><span class="stat-label">Total Personnel:</span><span class="stat-number">${stats.total + stats.drumMajorCount}</span></div>
         `;
     }
     
@@ -512,8 +514,8 @@
         let newRows = parseInt(rowsInput.value), newCols = parseInt(colsInput.value);
         if (isNaN(newRows)) newRows = 5;
         if (isNaN(newCols)) newCols = 4;
-        newRows = Math.min(7, Math.max(1, newRows));
-        newCols = Math.min(8, Math.max(1, newCols));
+        newRows = Math.min(20, Math.max(1, newRows));
+        newCols = Math.min(10, Math.max(1, newCols));
         currentRows = newRows;
         currentCols = newCols;
         rowsInput.value = currentRows;
@@ -578,9 +580,9 @@
         renderAll(); 
     }
     
-    // ========== DEMO BAND (exact 5x4 arrangement) ==========
+    // ========== DEMO BAND (5x4 arrangement as requested) ==========
     function loadDemoBand() {
-        const total = currentRows * currentCols; // 5*4=20
+        const total = currentRows * currentCols;
         const newMain = new Array(total).fill(null);
         
         // Row 0: 周Sir, Andrew, Kelven, Ben
@@ -603,7 +605,6 @@
         // Row 3: Maggie, 海哥, empty, Elaine
         newMain[12] = { id: Date.now()+11, name: "Maggie", instrument: "Tenor Drum" };
         newMain[13] = { id: Date.now()+12, name: "海哥", instrument: "Bass Drum" };
-        // index 14 = empty
         newMain[15] = { id: Date.now()+13, name: "Elaine", instrument: "Tenor Drum" };
         
         // Row 4: JOJO, 炒蛋, 松鼠, 輝哥
@@ -613,36 +614,36 @@
         newMain[19] = { id: Date.now()+17, name: "輝哥", instrument: "Snare Drum" };
         
         bandMembers = newMain;
-        
-        // Helpers
         helpers = [
             { id: Date.now()+100, name: "大師兄", instrument: "Helper" },
             { id: Date.now()+101, name: "Eric", instrument: "Helper" }
         ];
-        
         renderAll();
     }
     
-    // ========== PRINT / PDF (LANDSCAPE) - Always landscape, works on mobile ==========
+    // ========== PRINT / PDF (LANDSCAPE) - Fixed double trigger & mobile orientation ==========
     function printFormation() {
+        if (printingInProgress) return;
+        printingInProgress = true;
+        
         const stats = getStatsData();
         const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
         const drumMajorDisplayName = hasDrumMajor ? drumMajor.name : "—";
-        const titleText = showTitleInput.value.trim() || "Performance";
-        const dateText = dateInput.value || "Date TBA";
+        const titleText = showTitleInput.value.trim() || "Highland Gathering";
+        const dateText = dateInput.value || "";
         
-        // Build grid HTML for print
+        // Build grid HTML for print with visible borders and colors
         let gridCells = '';
         const totalMain = currentRows * currentCols;
         for (let i = 0; i < totalMain; i++) {
             const member = bandMembers[i];
             if (member && member !== null) {
-                gridCells += `<div style="background:#fefaf5; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center;">
-                                <div style="font-weight:700; font-size:13px;">${escapeHtml(member.name)}</div>
-                                <div style="font-size:10px; color:#6c6a67; margin-top:4px;">${escapeHtml(member.instrument)}</div>
+                gridCells += `<div style="background:#fefaf5; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center; box-shadow: none;">
+                                <div style="font-weight:600; font-size:12px;">${escapeHtml(member.name)}</div>
+                                <div style="font-size:10px; color:#6c6a67; margin-top:2px;">${escapeHtml(member.instrument)}</div>
                             </div>`;
             } else {
-                gridCells += `<div style="background:#f9f5f0; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center;">
+                gridCells += `<div style="background:#f9f5f0; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
                                 <div style="opacity:0;">—</div>
                             </div>`;
             }
@@ -651,8 +652,8 @@
         let helperItems = '';
         if (helpers.length) {
             helpers.forEach(helper => {
-                helperItems += `<div style="background:#e8e0d0; border-radius:8px; padding:6px 12px; text-align:center; min-width:80px;">
-                                <div style="font-weight:700; font-size:11px;">${escapeHtml(helper.name)}</div>
+                helperItems += `<div style="background:#d9d2c5; border-radius:6px; padding:5px 10px; text-align:center; min-width:75px; border:1px solid #b0a088;">
+                                <div style="font-weight:600; font-size:11px;">${escapeHtml(helper.name)}</div>
                                 <div style="font-size:9px;">Helper</div>
                             </div>`;
             });
@@ -660,9 +661,8 @@
             helperItems = '<div style="color:gray; font-size:12px;">No helpers assigned</div>';
         }
         
-        const cellWidth = Math.min(140, Math.max(100, Math.floor(750 / currentCols)));
+        const cellWidth = Math.min(130, Math.max(90, Math.floor(750 / currentCols)));
         
-        // Create print HTML with forced landscape and styles
         const printHtml = `
 <!DOCTYPE html>
 <html>
@@ -674,25 +674,25 @@
         @page { size: landscape; margin: 0.3in; }
         body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: white; margin: 0; padding: 0; }
         .container { width: 100%; max-width: 100%; margin: 0 auto; }
-        .header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #9b1c31; padding-bottom: 10px; margin-bottom: 20px; }
-        .title { font-size: 24px; font-weight: 800; color: #9b1c31; }
-        .date { font-size: 13px; background: #f0efed; padding: 4px 14px; border-radius: 20px; }
-        .layout { display: flex; gap: 24px; align-items: flex-start; }
+        .header { text-align: center; margin-bottom: 15px; }
+        .title { font-size: 26px; font-weight: 800; color: #9b1c31; }
+        .date { font-size: 14px; color: #4a4a4a; margin-top: 4px; }
+        .layout { display: flex; gap: 24px; align-items: flex-start; margin-top: 15px; }
         .formation-area { flex: 3; }
-        .stats-area { flex: 1.2; background: #f5f3ef; border-radius: 12px; padding: 16px; font-size: 12px; }
-        .stats-area h4 { font-size: 14px; margin-bottom: 12px; color: #9b1c31; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
-        .stat-line { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #ddd; }
-        .total-line { margin-top: 12px; padding-top: 8px; border-top: 2px solid #9b1c31; font-weight: 800; display: flex; justify-content: space-between; }
-        .grid { display: grid; grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr)); gap: 12px; margin-bottom: 16px; }
-        .drum-major { text-align: center; margin-bottom: 20px; }
-        .drum-major-inner { background: #9b1c31; color: white; border-radius: 12px; padding: 8px 24px; display: inline-block; }
-        .drum-major-name { font-weight: bold; font-size: 16px; }
-        .drum-major-post { font-size: 11px; opacity: 0.9; }
-        .helper-title { font-size: 12px; font-weight: 600; margin: 12px 0 8px; color: #6c6a67; }
-        .helper-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .stats-area { flex: 1.2; background: #f5f3ef; border-radius: 10px; padding: 14px; font-size: 12px; border: 1px solid #d0c8bc; }
+        .stats-area h4 { font-size: 14px; margin-bottom: 10px; color: #9b1c31; border-bottom: 1px solid #c0b8a8; padding-bottom: 5px; }
+        .stat-line { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #ccc; }
+        .total-line { margin-top: 10px; padding-top: 6px; border-top: 2px solid #9b1c31; font-weight: 700; display: flex; justify-content: space-between; }
+        .grid { display: grid; grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr)); gap: 10px; margin-bottom: 16px; }
+        .drum-major { text-align: center; margin-bottom: 18px; }
+        .drum-major-inner { background: #9b1c31; color: white; border-radius: 30px; padding: 6px 22px; display: inline-block; }
+        .drum-major-name { font-weight: bold; font-size: 15px; }
+        .drum-major-post { font-size: 10px; opacity: 0.9; }
+        .helper-title { font-size: 11px; font-weight: 600; margin: 10px 0 6px; color: #5a4a3a; }
+        .helper-grid { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         @media print {
             body { margin: 0; padding: 0; }
-            .grid { gap: 10px; }
+            .grid { gap: 8px; }
         }
     </style>
 </head>
@@ -700,7 +700,7 @@
     <div class="container">
         <div class="header">
             <div class="title">${escapeHtml(titleText)}</div>
-            <div class="date">📅 ${escapeHtml(dateText)}</div>
+            <div class="date">${escapeHtml(dateText)}</div>
         </div>
         <div class="layout">
             <div class="formation-area">
@@ -717,14 +717,14 @@
                 </div>
             </div>
             <div class="stats-area">
-                <h4>Instrument Count</h4>
+                <h4>Personnel Count</h4>
                 <div class="stat-line"><span>Drum Major:</span><span>${stats.drumMajorCount}</span></div>
                 <div class="stat-line"><span>Bagpipers:</span><span>${stats.bagpipe}</span></div>
                 <div class="stat-line"><span>Tenor Drummers:</span><span>${stats.tenor}</span></div>
                 <div class="stat-line"><span>Snare Drummers:</span><span>${stats.snare}</span></div>
                 <div class="stat-line"><span>Bass Drummers:</span><span>${stats.bass}</span></div>
                 <div class="stat-line"><span>Helpers:</span><span>${stats.helper}</span></div>
-                <div class="total-line"><span>Total Performers:</span><span>${stats.total + stats.drumMajorCount}</span></div>
+                <div class="total-line"><span>Total Personnel:</span><span>${stats.total + stats.drumMajorCount}</span></div>
             </div>
         </div>
     </div>
@@ -732,7 +732,6 @@
 </html>
         `;
         
-        // Create a new iframe and trigger print
         const iframe = document.createElement('iframe');
         iframe.style.position = 'fixed';
         iframe.style.top = '-9999px';
@@ -746,27 +745,26 @@
         iframeDoc.write(printHtml);
         iframeDoc.close();
         
-        // Ensure print is triggered after content loads
-        iframe.onload = function() {
-            setTimeout(() => {
-                try {
-                    iframe.contentWindow.focus();
-                    iframe.contentWindow.print();
-                } catch (e) {
-                    console.error("Print error:", e);
-                    alert("Print failed. Please try again.");
-                } finally {
-                    // Remove iframe after print dialog is done (user may cancel)
-                    setTimeout(() => {
-                        if (document.body.contains(iframe)) document.body.removeChild(iframe);
-                    }, 2000);
-                }
-            }, 300);
+        const printTrigger = () => {
+            try {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+            } catch (e) {
+                console.error("Print error:", e);
+                alert("Print failed. Please try again.");
+            } finally {
+                setTimeout(() => {
+                    if (document.body.contains(iframe)) document.body.removeChild(iframe);
+                    printingInProgress = false;
+                }, 1500);
+            }
         };
         
-        // If already loaded
+        // Ensure content is fully loaded before printing
         if (iframe.contentWindow.document.readyState === 'complete') {
-            iframe.onload();
+            printTrigger();
+        } else {
+            iframe.onload = printTrigger;
         }
     }
     
@@ -801,7 +799,7 @@
         const total = currentRows * currentCols;
         bandMembers = new Array(total).fill(null);
         helpers = [];
-        loadDemoBand();  // loads exact 5x4 arrangement
+        loadDemoBand();
         updateMetaDisplay();
         updateDrumMajorFromInput();
     }
