@@ -81,12 +81,22 @@
         input, select { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--gray-light); border-radius: 1rem; transition: var(--transition); background: var(--white); font-size: 0.9rem; }
         @media (max-width: 768px) { input, select { font-size: 0.85rem; padding: 0.6rem 0.8rem; } }
         input:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(155,28,49,0.1); }
-        .btn-primary, .btn-secondary, .btn-danger, .btn-pdf, .btn-sort { background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+        .btn-primary, .btn-secondary, .btn-danger, .btn-print, .btn-sort {
+            background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem;
+            border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        @media (max-width: 480px) {
+            .btn-primary, .btn-secondary, .btn-danger, .btn-print, .btn-sort {
+                padding: 0.5rem 1rem; font-size: 0.75rem; white-space: normal;
+            }
+        }
         .btn-secondary { background: var(--secondary); }
         .btn-danger { background: #b91c1c; }
-        .btn-pdf { background: #1e5631; }
+        .btn-print { background: #1e5631; }
         .btn-sort { background: #2c5a2e; }
-        .btn-primary:hover, .btn-secondary:hover, .btn-pdf:hover, .btn-sort:hover { transform: translateY(-2px); filter: brightness(1.05); }
+        .btn-primary:hover, .btn-secondary:hover, .btn-print:hover, .btn-sort:hover { transform: translateY(-2px); filter: brightness(1.05); }
         .inline-row { display: flex; gap: 0.8rem; align-items: flex-end; flex-wrap: wrap; }
         @media (max-width: 480px) { .inline-row { gap: 0.5rem; } .inline-row .form-group { flex: 1; } }
         .member-list { margin-top: 1.5rem; max-height: 380px; overflow-y: auto; border-top: 1px solid var(--gray-light); }
@@ -117,11 +127,11 @@
         .show-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 1rem; border-bottom: 1px dashed var(--gray-light); padding-bottom: 0.5rem; }
         .show-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); font-family: 'Cormorant Garamond', serif; }
         @media (max-width: 768px) { .show-title { font-size: 1.2rem; } }
-        .performance-date { font-size: 0.85rem; color: var(--gray-mid); background: #f0efed; padding: 0.2rem 0.8rem; border-radius: 2rem; }
+        .performance-date { font-size: 0.85rem; color: var(--gray-mid); background: #f0efed; padding: 0.2rem 0.8rem; border-radius: 2rem; white-space: nowrap; }
+        @media (max-width: 480px) { .performance-date { white-space: normal; font-size: 0.7rem; } }
         footer { background: #111216; color: #aaa; text-align: center; padding: 2rem; font-size: 0.75rem; margin-top: 2rem; }
-        .pdf-button-wrapper { margin-top: 1rem; text-align: center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .no-pdf-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
-        /* Responsive scroll for formation grid on mobile */
+        .print-button-wrapper { margin-top: 1rem; text-align: center; }
+        .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
     </style>
 </head>
@@ -147,12 +157,14 @@
                 <h3 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-sliders-h"></i> Performance Config</h3>
                 <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Champions Showcase" placeholder="Performance title"></div>
                 <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate" value="2026-06-15"></div>
-                <div class="inline-row"><div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="7" value="3"></div>
-                <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="8" value="4"></div>
-                <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div></div>
+                <div class="inline-row">
+                    <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="7" value="3"></div>
+                    <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="8" value="4"></div>
+                    <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div>
+                </div>
                 
                 <div class="form-group"><label><i class="fas fa-user-tie"></i> Drum Major (Front Center)</label>
-                    <input type="text" id="drumMajorName" placeholder="Name (optional)" value="Hamish MacLeod">
+                    <input type="text" id="drumMajorName" placeholder="Name (optional)" value="">
                 </div>
                 
                 <div class="form-group"><label><i class="fas fa-user-plus"></i> Add Band Member</label>
@@ -173,18 +185,18 @@
                 <div style="display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;">
                     <button id="resetDemoBtn" class="btn-secondary"><i class="fas fa-drumstick-bite"></i> Demo Band</button>
                     <button id="clearAllBtn" class="btn-danger"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    <button id="sortFormationBtn" class="btn-sort"><i class="fas fa-sort-amount-down"></i> Sort (Bagpipers Front)</button>
+                    <button id="sortFormationBtn" class="btn-sort"><i class="fas fa-sort-amount-down"></i> Sort</button>
                 </div>
                 <div id="capacityWarning" class="warning-badge" style="display: none;"></div>
             </div>
             
-            <!-- Preview Area (HTML view) -->
+            <!-- Preview Area -->
             <div class="preview-panel" id="previewOnlyArea">
                 <div class="show-meta"><span class="show-title" id="liveShowTitleDisplay">Highland Champions Showcase</span><span class="performance-date" id="liveDateDisplay">📅 2026-06-15</span></div>
                 
                 <div class="drum-major-row">
                     <div class="drum-major-cell">
-                        <div id="drumMajorNameDisplay">Hamish MacLeod</div>
+                        <div id="drumMajorNameDisplay">—</div>
                         <div class="post">Drum Major</div>
                     </div>
                 </div>
@@ -200,11 +212,11 @@
                 
                 <div id="statsPanelPreview" class="stats-panel"></div>
                 
-                <div class="pdf-button-wrapper">
-                    <button id="downloadPdfBtn" class="btn-pdf"><i class="fas fa-file-pdf"></i> Download PDF Formation</button>
+                <div class="print-button-wrapper">
+                    <button id="printPdfBtn" class="btn-print"><i class="fas fa-print"></i> Print / Save as PDF (Landscape)</button>
                 </div>
                 
-                <div class="no-pdf-tip"><i class="fas fa-info-circle"></i> Tip: Click any cell to swap positions. Helper row members are separate. Press Enter to add member.</div>
+                <div class="no-print-tip"><i class="fas fa-info-circle"></i> Tip: Click any cell to swap positions. Helper row members are separate. Press Enter to add member. Use Print > Save as PDF for best results.</div>
             </div>
         </div>
     </div>
@@ -218,7 +230,7 @@
     let helpers = [];
     let currentRows = 3;
     let currentCols = 4;
-    let drumMajor = { name: "Hamish MacLeod" };
+    let drumMajor = { name: "" };
     let selectedMainIndex = null;
     let selectedHelperIndex = null;
     
@@ -241,7 +253,7 @@
     const resetDemoBtn = document.getElementById('resetDemoBtn');
     const clearAllBtn = document.getElementById('clearAllBtn');
     const sortFormationBtn = document.getElementById('sortFormationBtn');
-    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const printPdfBtn = document.getElementById('printPdfBtn');
     const capacityWarning = document.getElementById('capacityWarning');
     const statsPanelPreview = document.getElementById('statsPanelPreview');
     
@@ -249,7 +261,7 @@
     
     function updateDrumMajorFromInput() {
         let newName = drumMajorNameInput.value.trim();
-        drumMajor.name = newName || "";
+        drumMajor.name = newName;
         drumMajorNameDisplay.innerText = drumMajor.name || "—";
         updateStatsPreview();
     }
@@ -561,42 +573,59 @@
         renderAll(); 
     }
     
+    // ========== DEMO BAND (user specified) ==========
     function loadDemoBand() {
+        // Clear existing
         const total = currentRows * currentCols;
-        const demo = [
-            { name: "Alasdair MacDonald", instrument: "Bagpipe" }, { name: "Fiona Grant", instrument: "Bagpipe" }, { name: "Ewan Sinclair", instrument: "Bagpipe" }, { name: "Morag Campbell", instrument: "Bagpipe" },
-            { name: "Callum Reid", instrument: "Bagpipe" }, { name: "Siobhan Murray", instrument: "Bagpipe" }, { name: "Dougal Stuart", instrument: "Tenor Drum" }, { name: "Angus MacKay", instrument: "Snare Drum" },
-            { name: "Lachlan Brown", instrument: "Snare Drum" }, { name: "Brenda Ross", instrument: "Bass Drum" }, { name: "Catriona Bell", instrument: "Snare Drum" }, { name: "Finlay MacRae", instrument: "Tenor Drum" }
+        const newMain = new Array(total).fill(null);
+        
+        // Bagpipers (10)
+        const bagpipers = [
+            "錢錢", "健", "Howell", "周Sir", "Ben", "Kelven", "瑤", "Bosco", "良哥", "Andrew"
         ];
-        const newArr = new Array(total).fill(null);
-        for (let i = 0; i < Math.min(demo.length, total); i++) newArr[i] = { id: Date.now()+i, name: demo[i].name, instrument: demo[i].instrument };
-        bandMembers = newArr;
-        helpers = [{ id: Date.now()+100, name: "John Helper", instrument: "Helper" }, { id: Date.now()+101, name: "Mary Support", instrument: "Helper" }];
+        // Snare Drum (4)
+        const snares = ["JOJO", "輝哥", "松鼠", "炒蛋"];
+        // Bass Drum (1)
+        const basses = ["海哥"];
+        // Tenor Drum (2)
+        const tenors = ["Maggie", "Elaine"];
+        
+        const allMain = [...bagpipers.map(n => ({ name: n, instrument: "Bagpipe" })),
+                        ...snares.map(n => ({ name: n, instrument: "Snare Drum" })),
+                        ...tenors.map(n => ({ name: n, instrument: "Tenor Drum" })),
+                        ...basses.map(n => ({ name: n, instrument: "Bass Drum" }))];
+        
+        for (let i = 0; i < Math.min(allMain.length, total); i++) {
+            newMain[i] = { id: Date.now()+i, name: allMain[i].name, instrument: allMain[i].instrument };
+        }
+        bandMembers = newMain;
+        
+        // Helpers
+        helpers = [
+            { id: Date.now()+100, name: "大師兄", instrument: "Helper" },
+            { id: Date.now()+101, name: "Eric", instrument: "Helper" }
+        ];
+        
         renderAll();
     }
     
-    // ========== OPTIMIZED PDF EXPORT - Full page utilization, landscape ==========
-    function exportToPDF() {
+    // ========== PRINT / PDF (LANDSCAPE) using iframe print ==========
+    function printFormation() {
         const stats = getStatsData();
         const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
         const drumMajorDisplayName = hasDrumMajor ? drumMajor.name : "—";
         const titleText = showTitleInput.value.trim() || "Performance";
         const dateText = dateInput.value || "Date TBA";
         
-        // Calculate optimal cell size based on number of columns to fill width
-        const minCellWidth = 100;
-        const maxCellWidth = 140;
-        const cellWidth = Math.min(maxCellWidth, Math.max(minCellWidth, Math.floor(750 / currentCols)));
-        
-        // Build grid HTML with bigger cells
+        // Build grid HTML for print
         let gridCells = '';
         const totalMain = currentRows * currentCols;
         for (let i = 0; i < totalMain; i++) {
             const member = bandMembers[i];
             if (member && member !== null) {
-                gridCells += `<div style="background:#fefaf5; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                gridCells += `<div style="background:#fefaf5; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center;">
                                 <div style="font-weight:700; font-size:13px;">${escapeHtml(member.name)}</div>
-                                <div style="font-size:10px; color:#6c6a67; margin-top:4px;">${escapeHtml(member.instrument || '—')}</div>
+                                <div style="font-size:10px; color:#6c6a67; margin-top:4px;">${escapeHtml(member.instrument)}</div>
                             </div>`;
             } else {
                 gridCells += `<div style="background:#f9f5f0; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center;">
@@ -605,7 +634,6 @@
             }
         }
         
-        // Helper items with slightly larger styling
         let helperItems = '';
         if (helpers.length) {
             helpers.forEach(helper => {
@@ -618,7 +646,8 @@
             helperItems = '<div style="color:gray; font-size:12px;">No helpers assigned</div>';
         }
         
-        // Create full HTML document for printing with landscape orientation
+        const cellWidth = Math.min(140, Math.max(100, Math.floor(750 / currentCols)));
+        
         const printHtml = `
 <!DOCTYPE html>
 <html>
@@ -627,128 +656,28 @@
     <title>${escapeHtml(titleText)} - Pipe Band Formation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        @page {
-            size: landscape;
-            margin: 0.3in;
-        }
-        body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            background: white;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 2px solid #9b1c31;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .title {
-            font-size: 24px;
-            font-weight: 800;
-            color: #9b1c31;
-        }
-        .date {
-            font-size: 13px;
-            background: #f0efed;
-            padding: 4px 14px;
-            border-radius: 20px;
-        }
-        .layout {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-        .formation-area {
-            flex: 3;
-        }
-        .stats-area {
-            flex: 1.2;
-            background: #f5f3ef;
-            border-radius: 12px;
-            padding: 16px;
-            font-size: 12px;
-        }
-        .stats-area h4 {
-            font-size: 14px;
-            margin-bottom: 12px;
-            color: #9b1c31;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 6px;
-        }
-        .stat-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px dashed #ddd;
-            font-size: 12px;
-        }
-        .total-line {
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 2px solid #9b1c31;
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr));
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-        .drum-major {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .drum-major-inner {
-            background: #9b1c31;
-            color: white;
-            border-radius: 12px;
-            padding: 8px 24px;
-            display: inline-block;
-        }
-        .drum-major-name {
-            font-weight: bold;
-            font-size: 16px;
-        }
-        .drum-major-post {
-            font-size: 11px;
-            opacity: 0.9;
-        }
-        .helper-title {
-            font-size: 12px;
-            font-weight: 600;
-            margin: 12px 0 8px;
-            color: #6c6a67;
-        }
-        .helper-grid {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 5px;
-        }
+        @page { size: landscape; margin: 0.3in; }
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: white; margin: 0; padding: 0; }
+        .container { width: 100%; max-width: 100%; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #9b1c31; padding-bottom: 10px; margin-bottom: 20px; }
+        .title { font-size: 24px; font-weight: 800; color: #9b1c31; }
+        .date { font-size: 13px; background: #f0efed; padding: 4px 14px; border-radius: 20px; }
+        .layout { display: flex; gap: 24px; align-items: flex-start; }
+        .formation-area { flex: 3; }
+        .stats-area { flex: 1.2; background: #f5f3ef; border-radius: 12px; padding: 16px; font-size: 12px; }
+        .stats-area h4 { font-size: 14px; margin-bottom: 12px; color: #9b1c31; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+        .stat-line { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #ddd; }
+        .total-line { margin-top: 12px; padding-top: 8px; border-top: 2px solid #9b1c31; font-weight: 800; display: flex; justify-content: space-between; }
+        .grid { display: grid; grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr)); gap: 12px; margin-bottom: 16px; }
+        .drum-major { text-align: center; margin-bottom: 20px; }
+        .drum-major-inner { background: #9b1c31; color: white; border-radius: 12px; padding: 8px 24px; display: inline-block; }
+        .drum-major-name { font-weight: bold; font-size: 16px; }
+        .drum-major-post { font-size: 11px; opacity: 0.9; }
+        .helper-title { font-size: 12px; font-weight: 600; margin: 12px 0 8px; color: #6c6a67; }
+        .helper-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         @media print {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            .container {
-                padding: 0;
-            }
-            .grid {
-                gap: 10px;
-            }
+            body { margin: 0; padding: 0; }
+            .grid { gap: 10px; }
         }
     </style>
 </head>
@@ -766,14 +695,10 @@
                         <div class="drum-major-post">Drum Major</div>
                     </div>
                 </div>
-                <div class="grid">
-                    ${gridCells}
-                </div>
+                <div class="grid">${gridCells}</div>
                 <div>
                     <div class="helper-title">Helper Support</div>
-                    <div class="helper-grid">
-                        ${helperItems}
-                    </div>
+                    <div class="helper-grid">${helperItems}</div>
                 </div>
             </div>
             <div class="stats-area">
@@ -792,7 +717,7 @@
 </html>
         `;
         
-        // Create an iframe, write content, and trigger print
+        // Create iframe and trigger print
         const iframe = document.createElement('iframe');
         iframe.style.position = 'fixed';
         iframe.style.top = '-9999px';
@@ -806,16 +731,14 @@
         iframeDoc.write(printHtml);
         iframeDoc.close();
         
-        // Wait for content to load then print
         setTimeout(() => {
             try {
                 iframe.contentWindow.focus();
                 iframe.contentWindow.print();
             } catch (e) {
                 console.error("Print error:", e);
-                alert("PDF generation failed. Please try again.");
+                alert("Print failed. Please try again.");
             } finally {
-                // Remove iframe after print dialog closes (give it time)
                 setTimeout(() => {
                     if (document.body.contains(iframe)) document.body.removeChild(iframe);
                 }, 1000);
@@ -840,7 +763,7 @@
     resetDemoBtn.addEventListener('click', () => { loadDemoBand(); });
     clearAllBtn.addEventListener('click', () => { clearAllMembers(); });
     sortFormationBtn.addEventListener('click', () => { sortFormation(); });
-    downloadPdfBtn.addEventListener('click', () => { exportToPDF(); });
+    printPdfBtn.addEventListener('click', () => { printFormation(); });
     
     drumMajorNameInput.addEventListener('input', () => { updateDrumMajorFromInput(); });
     showTitleInput.addEventListener('input', updateMetaDisplay);
@@ -852,7 +775,7 @@
         const total = currentRows * currentCols;
         bandMembers = new Array(total).fill(null);
         helpers = [];
-        loadDemoBand();
+        loadDemoBand();  // loads user's specified demo band
         updateMetaDisplay();
         updateDrumMajorFromInput();
     }
