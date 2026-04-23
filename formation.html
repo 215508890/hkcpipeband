@@ -21,7 +21,6 @@
             --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
             --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
             --border-radius-card: 1.25rem;
-            /* Instrument colors - light pastel */
             --bagpipe-bg: #e8f4e8;
             --snare-bg: #ffe8e8;
             --bass-bg: #fff0e0;
@@ -81,8 +80,8 @@
         @media (max-width: 768px) { .designer-grid { gap: 1.5rem; } }
         .controls-panel { flex: 1.2; min-width: 280px; background: var(--white); border-radius: var(--border-radius-card); padding: 1.5rem; box-shadow: var(--shadow-sm); height: fit-content; }
         @media (max-width: 768px) { .controls-panel { min-width: 100%; } }
-        .preview-panel { flex: 2.5; min-width: 320px; background: var(--white); border-radius: var(--border-radius-card); padding: 1.5rem; box-shadow: var(--shadow-md); }
-        @media (max-width: 768px) { .preview-panel { padding: 1rem; } }
+        .preview-panel { flex: 2.5; min-width: 320px; background: var(--white); border-radius: var(--border-radius-card); padding: 1.5rem; box-shadow: var(--shadow-md); margin: 0 0.5rem; }
+        @media (max-width: 768px) { .preview-panel { margin: 0; padding: 1rem; } }
         .form-group { margin-bottom: 1.2rem; width: 100%; }
         label { font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 0.4rem; color: var(--secondary); }
         input, select { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--gray-light); border-radius: 1rem; transition: var(--transition); background: var(--white); font-size: 0.9rem; }
@@ -140,14 +139,9 @@
         .print-button-wrapper { margin-top: 1rem; text-align: center; }
         .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
-        /* Ensure all form elements have consistent margins */
+        /* Ensure all form elements have proper width */
         .form-group { width: 100%; }
         input[type="date"] { width: 100%; }
-        /* Preview panel left/right margins */
-        .preview-panel { margin: 0 0.5rem; }
-        @media (max-width: 768px) {
-            .preview-panel { margin: 0; }
-        }
     </style>
 </head>
 <body>
@@ -228,7 +222,7 @@
                 <div id="statsPanelPreview" class="stats-panel"></div>
                 
                 <div class="print-button-wrapper">
-                    <button id="printPdfBtn" class="btn-print"><i class="fas fa-print"></i> Print / Save as PDF (Landscape)</button>
+                    <button id="printPdfBtn" class="btn-print"><i class="fas fa-print"></i> Print / Save as PDF</button>
                 </div>
                 
                 <div class="no-print-tip"><i class="fas fa-info-circle"></i> Tip: Click any cell to swap positions. Helper row members are separate. Press Enter to add member. Use Print > Save as PDF for best results.</div>
@@ -639,7 +633,7 @@
         renderAll();
     }
     
-    // ========== ROBUST PRINT FUNCTION (works on all devices, preserves colors, handles orientation) ==========
+    // ========== PORTRAIT PRINT FUNCTION (centered, preserves colors) ==========
     function printFormation() {
         if (printingInProgress) return;
         printingInProgress = true;
@@ -691,37 +685,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        @page { size: landscape; margin: 0.3in; }
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: white; margin: 0; padding: 0; }
-        /* Force background colors to print */
-        * { -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
-        .container { width: 100%; max-width: 100%; margin: 0 auto; }
+        @page { size: portrait; margin: 0.4in; }
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: white; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 15px; }
-        .title { font-size: 26px; font-weight: 800; color: #9b1c31; }
+        .title { font-size: 24px; font-weight: 800; color: #9b1c31; }
         .date { font-size: 14px; color: #4a4a4a; margin-top: 4px; }
         .red-line { height: 2px; background: #9b1c31; width: 100%; margin: 12px 0 16px; }
-        .layout { display: flex; gap: 24px; align-items: flex-start; }
-        .formation-area { flex: 3; min-width: 250px; }
-        .stats-area { flex: 1.2; min-width: 180px; background: #f5f3ef; border-radius: 10px; padding: 14px; font-size: 12px; border: 1px solid #d0c8bc; }
-        .stats-area h4 { font-size: 14px; margin-bottom: 10px; color: #9b1c31; border-bottom: 1px solid #c0b8a8; padding-bottom: 5px; }
+        .layout { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+        .formation-area { width: 100%; max-width: 100%; }
+        .stats-area { width: 100%; max-width: 500px; background: #f5f3ef; border-radius: 10px; padding: 14px; font-size: 12px; border: 1px solid #d0c8bc; margin: 0 auto; }
+        .stats-area h4 { font-size: 14px; margin-bottom: 10px; color: #9b1c31; border-bottom: 1px solid #c0b8a8; padding-bottom: 5px; text-align: center; }
         .stat-line { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #ccc; }
         .total-line { margin-top: 10px; padding-top: 6px; border-top: 2px solid #9b1c31; font-weight: 700; display: flex; justify-content: space-between; }
-        .grid { display: grid; grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr)); gap: 10px; margin-bottom: 16px; }
+        .grid { display: grid; grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr)); gap: 10px; margin-bottom: 16px; justify-content: center; }
         .drum-major { text-align: center; margin-bottom: 18px; }
         .drum-major-inner { background: #9b1c31; color: white; border-radius: 30px; padding: 6px 22px; display: inline-block; border: 1px solid #5a101c; }
         .drum-major-name { font-weight: bold; font-size: 15px; }
         .drum-major-post { font-size: 10px; opacity: 0.9; }
-        .helper-title { font-size: 11px; font-weight: 600; margin: 10px 0 6px; color: #5a4a3a; }
+        .helper-title { font-size: 11px; font-weight: 600; margin: 10px 0 6px; color: #5a4a3a; text-align: center; }
         .helper-grid { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-        /* Handle portrait orientation: stack vertically */
-        @media print and (orientation: portrait) {
-            .layout { flex-direction: column; }
-            .stats-area { width: 100%; margin-top: 20px; }
+        /* Force background colors to print */
+        * { -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
+        @media print {
+            body { margin: 0; padding: 0; }
             .grid { gap: 8px; }
-        }
-        @media (max-width: 700px) {
-            .layout { flex-direction: column; }
-            .stats-area { width: 100%; margin-top: 20px; }
         }
     </style>
 </head>
@@ -762,7 +750,6 @@
 </html>
         `;
         
-        // Open a new window/tab for printing (works on mobile and respects orientation)
         const printWindow = window.open();
         if (!printWindow) {
             alert("Please allow pop-ups to print the formation.");
@@ -773,7 +760,6 @@
         printWindow.document.close();
         printWindow.focus();
         
-        // Use a small delay to ensure content is rendered before print
         setTimeout(() => {
             printWindow.print();
             setTimeout(() => {
