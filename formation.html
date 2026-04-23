@@ -6,7 +6,6 @@
     <title>Pipe Band Formation Designer | Highland Performance Planner</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -126,9 +125,21 @@
         @media (max-width: 780px) { .grid-cell { min-width: 65px; padding: 0.4rem 0.1rem; } .member-name { font-size: 0.7rem; } }
         .no-pdf-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         
+        /* Print styles for PDF iframe method */
         @media print {
-            .no-pdf-tip, .controls-panel, .navbar, .hero, footer, .pdf-button-wrapper, .btn-pdf, .btn-sort { display: none !important; }
-            .preview-panel { display: none !important; }
+            body * {
+                visibility: hidden;
+            }
+            .pdf-print-area, .pdf-print-area * {
+                visibility: visible;
+            }
+            .pdf-print-area {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -582,114 +593,249 @@
         renderAll();
     }
     
-    // FIXED PDF EXPORT - Guaranteed to show all content
-    async function exportToPDF() {
-        // Get current data
+    // ========== OPTIMIZED PDF EXPORT - Full page utilization ==========
+    function exportToPDF() {
         const stats = getStatsData();
         const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
         const drumMajorDisplayName = hasDrumMajor ? drumMajor.name : "—";
         const titleText = showTitleInput.value.trim() || "Performance";
         const dateText = dateInput.value || "Date TBA";
         
-        // Create a wrapper div that will be visible and properly sized
-        const pdfDiv = document.createElement('div');
-        pdfDiv.style.position = 'absolute';
-        pdfDiv.style.left = '-9999px';
-        pdfDiv.style.top = '0';
-        pdfDiv.style.width = '1000px';
-        pdfDiv.style.backgroundColor = 'white';
-        pdfDiv.style.padding = '20px';
-        pdfDiv.style.fontFamily = 'Inter, sans-serif';
-        pdfDiv.style.boxSizing = 'border-box';
+        // Calculate optimal cell size based on number of columns to fill width
+        const minCellWidth = 100;
+        const maxCellWidth = 140;
+        // Use larger cells for more presence
+        const cellWidth = Math.min(maxCellWidth, Math.max(minCellWidth, Math.floor(750 / currentCols)));
         
-        // Build HTML content as string for reliability
-        let gridHtml = '';
+        // Build grid HTML with bigger cells
+        let gridCells = '';
         const totalMain = currentRows * currentCols;
         for (let i = 0; i < totalMain; i++) {
             const member = bandMembers[i];
             if (member && member !== null) {
-                gridHtml += `<div style="background:#fefaf5; border:1px solid #ece3db; border-radius:6px; padding:6px 2px; text-align:center;">
-                                <div style="font-weight:700; font-size:11px;">${escapeHtml(member.name)}</div>
-                                <div style="font-size:9px; color:#6c6a67;">${escapeHtml(member.instrument || '—')}</div>
+                gridCells += `<div style="background:#fefaf5; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                                <div style="font-weight:700; font-size:13px;">${escapeHtml(member.name)}</div>
+                                <div style="font-size:10px; color:#6c6a67; margin-top:4px;">${escapeHtml(member.instrument || '—')}</div>
                             </div>`;
             } else {
-                gridHtml += `<div style="background:#f9f5f0; border:1px solid #ece3db; border-radius:6px; padding:6px 2px; text-align:center;">
+                gridCells += `<div style="background:#f9f5f0; border:1px solid #ece3db; border-radius:8px; padding:10px 4px; text-align:center;">
                                 <div style="opacity:0;">—</div>
                             </div>`;
             }
         }
         
-        let helperHtml = '';
+        // Helper items with slightly larger styling
+        let helperItems = '';
         if (helpers.length) {
             helpers.forEach(helper => {
-                helperHtml += `<div style="background:#e8e0d0; border-radius:6px; padding:4px 8px; text-align:center; min-width:70px;">
-                                <div style="font-weight:700; font-size:10px;">${escapeHtml(helper.name)}</div>
-                                <div style="font-size:8px;">Helper</div>
+                helperItems += `<div style="background:#e8e0d0; border-radius:8px; padding:6px 12px; text-align:center; min-width:80px;">
+                                <div style="font-weight:700; font-size:11px;">${escapeHtml(helper.name)}</div>
+                                <div style="font-size:9px;">Helper</div>
                             </div>`;
             });
         } else {
-            helperHtml = '<div style="color:gray; font-size:11px;">No helpers assigned</div>';
+            helperItems = '<div style="color:gray; font-size:12px;">No helpers assigned</div>';
         }
         
-        // Construct the full PDF HTML
-        pdfDiv.innerHTML = `
-            <div style="border-bottom:2px solid #9b1c31; padding-bottom:8px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:baseline;">
-                <div style="font-size:20px; font-weight:800; color:#9b1c31;">${escapeHtml(titleText)}</div>
-                <div style="font-size:11px; background:#f0efed; padding:2px 10px; border-radius:20px;">📅 ${escapeHtml(dateText)}</div>
-            </div>
-            <div style="display:flex; gap:20px;">
-                <!-- Left: Formation -->
-                <div style="flex:3;">
-                    <div style="text-align:center; margin-bottom:10px;">
-                        <div style="background:#9b1c31; color:white; border-radius:8px; padding:4px 16px; display:inline-block;">
-                            <div style="font-weight:bold; font-size:12px;">${escapeHtml(drumMajorDisplayName)}</div>
-                            <div style="font-size:9px;">Drum Major</div>
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:repeat(${currentCols}, minmax(85px, 110px)); gap:6px; justify-content:center; margin-bottom:10px;">
-                        ${gridHtml}
-                    </div>
-                    <div style="margin-top:6px;">
-                        <div style="font-size:10px; font-weight:600; margin-bottom:4px; color:#6c6a67;">Helper Support</div>
-                        <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:center;">
-                            ${helperHtml}
-                        </div>
+        // Create full HTML document for printing with optimized sizing
+        const printHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>${escapeHtml(titleText)} - Pipe Band Formation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            padding: 0.2in;
+            background: white;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #9b1c31;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #9b1c31;
+        }
+        .date {
+            font-size: 13px;
+            background: #f0efed;
+            padding: 4px 14px;
+            border-radius: 20px;
+        }
+        .layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .formation-area {
+            flex: 3;
+        }
+        .stats-area {
+            flex: 1.2;
+            background: #f5f3ef;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 12px;
+        }
+        .stats-area h4 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #9b1c31;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+        }
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 12px;
+        }
+        .total-line {
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 2px solid #9b1c31;
+            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(${currentCols}, minmax(${cellWidth}px, 1fr));
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .drum-major {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .drum-major-inner {
+            background: #9b1c31;
+            color: white;
+            border-radius: 12px;
+            padding: 8px 24px;
+            display: inline-block;
+        }
+        .drum-major-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .drum-major-post {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+        .helper-title {
+            font-size: 12px;
+            font-weight: 600;
+            margin: 12px 0 8px;
+            color: #6c6a67;
+        }
+        .helper-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .container {
+                padding: 0.2in;
+            }
+            .grid {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">${escapeHtml(titleText)}</div>
+            <div class="date">📅 ${escapeHtml(dateText)}</div>
+        </div>
+        <div class="layout">
+            <div class="formation-area">
+                <div class="drum-major">
+                    <div class="drum-major-inner">
+                        <div class="drum-major-name">${escapeHtml(drumMajorDisplayName)}</div>
+                        <div class="drum-major-post">Drum Major</div>
                     </div>
                 </div>
-                <!-- Right: Stats -->
-                <div style="flex:1.2; background:#f5f3ef; border-radius:8px; padding:10px;">
-                    <div style="font-size:12px; font-weight:700; color:#9b1c31; border-bottom:1px solid #ddd; margin-bottom:6px; padding-bottom:3px;">Instrument Count</div>
-                    <div style="font-size:10px;">
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Drum Major:</span><span style="font-weight:700;">${stats.drumMajorCount}</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Bagpipers:</span><span style="font-weight:700;">${stats.bagpipe}</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Tenor Drummers:</span><span style="font-weight:700;">${stats.tenor}</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Snare Drummers:</span><span style="font-weight:700;">${stats.snare}</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Bass Drummers:</span><span style="font-weight:700;">${stats.bass}</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:3px 0;"><span>Helpers:</span><span style="font-weight:700;">${stats.helper}</span></div>
-                        <div style="display:flex; justify-content:space-between; margin-top:6px; padding-top:5px; border-top:1px solid #9b1c31; font-weight:800;"><span>Total Performers:</span><span>${stats.total + stats.drumMajorCount}</span></div>
+                <div class="grid">
+                    ${gridCells}
+                </div>
+                <div>
+                    <div class="helper-title">Helper Support</div>
+                    <div class="helper-grid">
+                        ${helperItems}
                     </div>
                 </div>
             </div>
+            <div class="stats-area">
+                <h4>Instrument Count</h4>
+                <div class="stat-line"><span>Drum Major:</span><span>${stats.drumMajorCount}</span></div>
+                <div class="stat-line"><span>Bagpipers:</span><span>${stats.bagpipe}</span></div>
+                <div class="stat-line"><span>Tenor Drummers:</span><span>${stats.tenor}</span></div>
+                <div class="stat-line"><span>Snare Drummers:</span><span>${stats.snare}</span></div>
+                <div class="stat-line"><span>Bass Drummers:</span><span>${stats.bass}</span></div>
+                <div class="stat-line"><span>Helpers:</span><span>${stats.helper}</span></div>
+                <div class="total-line"><span>Total Performers:</span><span>${stats.total + stats.drumMajorCount}</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
         `;
         
-        document.body.appendChild(pdfDiv);
+        // Create an iframe, write content, and trigger print
+        const iframe = document.createElement('iframe');
+        iframe.style.position = 'fixed';
+        iframe.style.top = '-9999px';
+        iframe.style.left = '-9999px';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        document.body.appendChild(iframe);
         
-        const opt = {
-            margin: [0.3, 0.3, 0.3, 0.3],
-            filename: `pipeband_${titleText.replace(/\s/g,'_')}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, logging: false },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
-        };
+        const iframeDoc = iframe.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(printHtml);
+        iframeDoc.close();
         
-        try {
-            await html2pdf().set(opt).from(pdfDiv).save();
-        } catch (err) {
-            console.error("PDF error:", err);
-            alert("PDF generation failed. Please try again.");
-        } finally {
-            document.body.removeChild(pdfDiv);
-        }
+        // Wait for content to load then print
+        setTimeout(() => {
+            try {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+            } catch (e) {
+                console.error("Print error:", e);
+                alert("PDF generation failed. Please try again.");
+            } finally {
+                // Remove iframe after print dialog closes (give it time)
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                }, 1000);
+            }
+        }, 500);
     }
     
     // Event bindings
