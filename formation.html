@@ -140,13 +140,11 @@
         .print-button-wrapper { margin-top: 1rem; text-align: center; }
         .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
+        /* Fixed margin for date input - same left/right */
         input[type="date"] { width: 100%; }
-        /* Fix phone date margin */
+        .form-group input, .form-group select { width: 100%; }
         @media (max-width: 768px) {
-            .form-group input, .form-group select {
-                width: 100%;
-                margin-right: 0;
-            }
+            .form-group { width: 100%; }
         }
     </style>
 </head>
@@ -278,7 +276,6 @@
     dateInput.value = today;
     liveDateSpan.innerText = today;
     
-    // Helper to get background color based on instrument
     function getInstrumentColor(instrument) {
         switch(instrument) {
             case 'Bagpipe': return '#e8f4e8';
@@ -640,7 +637,7 @@
         renderAll();
     }
     
-    // ========== PRINT / PDF with light colors, red separator, drum major border ==========
+    // ========== ROBUST PRINT FUNCTION (works on mobile, handles orientation changes) ==========
     function printFormation() {
         if (printingInProgress) return;
         printingInProgress = true;
@@ -656,9 +653,7 @@
         for (let i = 0; i < totalMain; i++) {
             const member = bandMembers[i];
             let bgColor = '#f9f5f0';
-            if (member && member !== null) {
-                bgColor = getInstrumentColor(member.instrument);
-            }
+            if (member && member !== null) bgColor = getInstrumentColor(member.instrument);
             if (member && member !== null) {
                 gridCells += `<div style="background:${bgColor}; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
                                 <div style="font-weight:600; font-size:12px;">${escapeHtml(member.name)}</div>
@@ -691,6 +686,7 @@
 <head>
     <meta charset="UTF-8">
     <title>${escapeHtml(titleText)} - Pipe Band Formation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         @page { size: landscape; margin: 0.3in; }
@@ -700,9 +696,9 @@
         .title { font-size: 26px; font-weight: 800; color: #9b1c31; }
         .date { font-size: 14px; color: #4a4a4a; margin-top: 4px; }
         .red-line { height: 2px; background: #9b1c31; width: 100%; margin: 12px 0 16px; }
-        .layout { display: flex; gap: 24px; align-items: flex-start; margin-top: 5px; }
-        .formation-area { flex: 3; }
-        .stats-area { flex: 1.2; background: #f5f3ef; border-radius: 10px; padding: 14px; font-size: 12px; border: 1px solid #d0c8bc; }
+        .layout { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+        .formation-area { flex: 3; min-width: 250px; }
+        .stats-area { flex: 1.2; min-width: 180px; background: #f5f3ef; border-radius: 10px; padding: 14px; font-size: 12px; border: 1px solid #d0c8bc; }
         .stats-area h4 { font-size: 14px; margin-bottom: 10px; color: #9b1c31; border-bottom: 1px solid #c0b8a8; padding-bottom: 5px; }
         .stat-line { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #ccc; }
         .total-line { margin-top: 10px; padding-top: 6px; border-top: 2px solid #9b1c31; font-weight: 700; display: flex; justify-content: space-between; }
@@ -713,9 +709,15 @@
         .drum-major-post { font-size: 10px; opacity: 0.9; }
         .helper-title { font-size: 11px; font-weight: 600; margin: 10px 0 6px; color: #5a4a3a; }
         .helper-grid { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        @media (max-width: 700px) {
+            .layout { flex-direction: column; }
+            .stats-area { width: 100%; }
+            .title { font-size: 22px; }
+        }
         @media print {
             body { margin: 0; padding: 0; }
             .grid { gap: 8px; }
+            .layout { flex-direction: row; }
         }
     </style>
 </head>
@@ -756,39 +758,26 @@
 </html>
         `;
         
-        const iframe = document.createElement('iframe');
-        iframe.style.position = 'fixed';
-        iframe.style.top = '-9999px';
-        iframe.style.left = '-9999px';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        document.body.appendChild(iframe);
-        
-        const iframeDoc = iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(printHtml);
-        iframeDoc.close();
-        
-        const printTrigger = () => {
-            try {
-                iframe.contentWindow.focus();
-                iframe.contentWindow.print();
-            } catch (e) {
-                console.error("Print error:", e);
-                alert("Print failed. Please try again.");
-            } finally {
-                setTimeout(() => {
-                    if (document.body.contains(iframe)) document.body.removeChild(iframe);
-                    printingInProgress = false;
-                }, 1500);
-            }
-        };
-        
-        if (iframe.contentWindow.document.readyState === 'complete') {
-            printTrigger();
-        } else {
-            iframe.onload = printTrigger;
+        // Open a new window/tab for printing (works on mobile and respects orientation)
+        const printWindow = window.open();
+        if (!printWindow) {
+            alert("Please allow pop-ups to print the formation.");
+            printingInProgress = false;
+            return;
         }
+        printWindow.document.write(printHtml);
+        printWindow.document.close();
+        printWindow.focus();
+        
+        // Use a small delay to ensure content is rendered before print
+        setTimeout(() => {
+            printWindow.print();
+            // Reset printing flag after print dialog closes (approximate)
+            setTimeout(() => {
+                printingInProgress = false;
+                printWindow.close();
+            }, 1000);
+        }, 300);
     }
     
     // Event bindings
