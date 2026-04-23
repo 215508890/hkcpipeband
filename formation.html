@@ -2,12 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Pipe Band Formation Designer | Highland Performance Planner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>City of Hong Kong Pipe Band | 香港城市風笛隊 – Formation Designer</title>
+    
+    <!-- SEO Meta Tags (English) -->
+    <meta name="description" content="City of Hong Kong Pipe Band – professional Scottish bagpipe performances for weddings, celebrations, funerals, corporate events, and cultural programs since 2013.">
+    <meta name="keywords" content="Scottish bagpipe, bagpipe performance Hong Kong, pipe band, wedding bagpiper, funeral bagpiper, corporate event, celebration music">
+    <meta name="author" content="City of Hong Kong Pipe Band">
+    <link rel="canonical" href="https://cityhkpipeband.com/formation.html">
+    <meta property="og:title" content="City of Hong Kong Pipe Band | Professional Bagpipe Performances & Formation Designer">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cityhkpipeband.com/formation.html">
+    <meta property="og:description" content="Authentic Scottish bagpipe music for weddings, funerals, celebrations & corporate events in Hong Kong. Also a powerful formation designer for pipe bands.">
+    <meta property="og:image" content="Images/citypb.icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Alternate language link -->
+    <link rel="alternate" hreflang="zh-HK" href="formation-zh.html">
+    <link rel="alternate" hreflang="en" href="formation.html">
+    
+    <link rel="icon" href="Images/citypb.icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="Images/citypb.icon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK7BMF7NJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XK7BMF7NJQ');
+    </script>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ========== BASE STYLES (from your template) ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #9b1c31;
             --primary-dark: #7a1628;
@@ -20,7 +61,10 @@
             --white: #ffffff;
             --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
             --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             --border-radius-card: 1.25rem;
+            /* Instrument colors for formation cells */
             --bagpipe-bg: #e8f4e8;
             --snare-bg: #ffe8e8;
             --bass-bg: #fff0e0;
@@ -28,9 +72,51 @@
             --helper-bg: #f0e6d0;
             --drum-major-bg: #9b1c31;
         }
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: var(--white); color: var(--dark-text); line-height: 1.5; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-        @media (max-width: 768px) { .container { padding: 0 1rem; } }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* loading spinner */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        body.loading #loading-spinner { display: flex; }
+        body:not(.loading) #loading-spinner { display: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        /* ===== NAVBAR ===== */
         .navbar {
             background: var(--white);
             box-shadow: var(--shadow-sm);
@@ -48,17 +134,145 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        @media (max-width: 768px) { .nav-container { padding: 0.7rem 1rem; } }
-        .logo-area { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-        .logo-text { font-weight: 700; font-size: 0.95rem; letter-spacing: -0.2px; color: var(--primary); }
-        .logo-text span { display: block; font-size: 0.7rem; font-weight: 500; color: var(--gray-mid); }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.7rem 1.5rem; }
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo-area:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        .logo-img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition);
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+        }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.8rem; }
+            .logo-img { height: 36px; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .lang-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.4rem 1.1rem;
+            border-radius: 2rem;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .lang-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .lang-btn::after { display: none; }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1.8rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .mobile-lang {
+            background: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* ===== HERO SECTION — SCOTTISH TARTAN STYLE ===== */
         .hero {
             background: linear-gradient(115deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 1.5rem 1rem;
+            padding: 2rem 1rem;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
+            isolation: isolate;
         }
         .hero .tartan-pattern {
             position: absolute;
@@ -66,617 +280,1166 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/></svg>');
-            background-repeat: repeat;
-            background-size: 180px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.2"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/><path d="M80 80 L100 100 M100 80 L80 100" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" opacity="0.12"><path d="M50 50 L110 110 M110 50 L50 110" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M20 20 L140 140 M140 20 L20 140" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" opacity="0.1"><path d="M30 30 L50 50 M50 30 L30 50" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 10 L70 70 M70 10 L10 70" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.6"/></svg>');
+            background-repeat: repeat, repeat, repeat;
+            background-size: 180px 180px, 220px 220px, 100px 100px;
+            background-position: 0 0, 90px 90px, 45px 45px;
+            animation: tartanDrift 70s linear infinite;
             pointer-events: none;
             z-index: 1;
         }
-        .hero-content { position: relative; z-index: 10; }
-        .hero h1 { font-size: 2rem; font-weight: 800; font-family: 'Cormorant Garamond', serif; }
-        @media (max-width: 768px) { .hero h1 { font-size: 1.6rem; } }
-        .designer-section { padding: 3rem 0; background: var(--light-bg); }
-        .designer-grid { display: flex; flex-wrap: wrap; gap: 2rem; }
-        @media (max-width: 768px) { .designer-grid { gap: 1.5rem; } }
-        .controls-panel { flex: 1.2; min-width: 280px; background: var(--white); border-radius: var(--border-radius-card); padding: 1.5rem; box-shadow: var(--shadow-sm); height: fit-content; }
-        @media (max-width: 768px) { .controls-panel { min-width: 100%; } }
-        .preview-panel { flex: 2.5; min-width: 320px; background: var(--white); border-radius: var(--border-radius-card); padding: 1.5rem; box-shadow: var(--shadow-md); margin: 0 0.5rem; }
-        @media (max-width: 768px) { .preview-panel { margin: 0; padding: 1rem; } }
-        .form-group { margin-bottom: 1.2rem; width: 100%; }
-        label { font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 0.4rem; color: var(--secondary); }
-        input, select { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--gray-light); border-radius: 1rem; transition: var(--transition); background: var(--white); font-size: 0.9rem; }
-        @media (max-width: 768px) { input, select { font-size: 0.85rem; padding: 0.6rem 0.8rem; } }
-        input:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(155,28,49,0.1); }
+        .hero .wave-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255,215,150,0.15) 0%, rgba(255,215,150,0.06) 20%, transparent 60%);
+            animation: elegantWave 28s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0;
+            animation: particleFloat 80s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero .edge-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.12) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes tartanDrift {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 100% 100%, 100% 100%, 100% 100%; }
+        }
+        @keyframes elegantWave {
+            0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, 3%) rotate(2deg) scale(1.03); opacity: 0.9; }
+            100% { transform: translate(-5%, -5%) rotate(0deg) scale(1); opacity: 0.5; }
+        }
+        @keyframes particleFloat {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: contentFadeIn 0.9s ease-out;
+        }
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 18px rgba(0,0,0,0.28);
+            line-height: 1.2;
+            animation: titleSoftBreathing 3.8s ease-in-out infinite;
+        }
+        .hero p {
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            opacity: 0.92;
+            font-weight: 400;
+        }
+        @keyframes titleSoftBreathing {
+            0% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+            50% { text-shadow: 0 5px 28px rgba(255,215,150,0.45); }
+            100% { text-shadow: 0 2px 18px rgba(0,0,0,0.28); }
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { font-size: 0.85rem; max-width: 90%; }
+            .hero .tartan-pattern {
+                background-size: 140px 140px, 170px 170px, 80px 80px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .hero { padding: 2.2rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tartan-pattern {
+                background-size: 200px 200px, 240px 240px, 110px 110px;
+            }
+        }
+
+        /* ========== FORMATION DESIGNER STYLES (added) ========== */
+        .designer-section {
+            padding: 3rem 0;
+            background: var(--light-bg);
+        }
+        .designer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .controls-panel {
+            flex: 1.2;
+            min-width: 280px;
+            background: var(--white);
+            border-radius: var(--border-radius-card);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+        @media (max-width: 768px) {
+            .controls-panel { min-width: 100%; }
+        }
+        .preview-panel {
+            flex: 2.5;
+            min-width: 320px;
+            background: var(--white);
+            border-radius: var(--border-radius-card);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            margin: 0 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .preview-panel { margin: 0; padding: 1rem; }
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+            width: 100%;
+        }
+        label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--secondary);
+        }
+        input, select {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 1rem;
+            transition: var(--transition);
+            background: var(--white);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            input, select { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(155,28,49,0.1);
+        }
+        /* Fix for date input on mobile: ensures same width and margins as other inputs */
+        input[type="date"] {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+        }
         .btn-primary, .btn-secondary, .btn-danger, .btn-print, .btn-sort {
-            background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem;
-            border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition);
-            display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
             white-space: nowrap;
         }
         @media (max-width: 480px) {
             .btn-primary, .btn-secondary, .btn-danger, .btn-print, .btn-sort {
-                padding: 0.5rem 1rem; font-size: 0.75rem; white-space: normal;
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                white-space: normal;
             }
         }
         .btn-secondary { background: var(--secondary); }
         .btn-danger { background: #b91c1c; }
         .btn-print { background: #1e5631; }
         .btn-sort { background: #2c5a2e; }
-        .btn-primary:hover, .btn-secondary:hover, .btn-print:hover, .btn-sort:hover { transform: translateY(-2px); filter: brightness(1.05); }
-        .inline-row { display: flex; gap: 0.8rem; align-items: flex-end; flex-wrap: wrap; }
-        @media (max-width: 480px) { .inline-row { gap: 0.5rem; } .inline-row .form-group { flex: 1; } }
-        .member-list { margin-top: 1.5rem; max-height: 380px; overflow-y: auto; border-top: 1px solid var(--gray-light); }
-        .member-item { display: flex; justify-content: space-between; align-items: center; background: var(--gray-light); margin: 0.5rem 0; padding: 0.6rem 0.8rem; border-radius: 1rem; flex-wrap: wrap; gap: 0.5rem; }
-        .member-info { flex: 2; font-size: 0.85rem; font-weight: 500; min-width: 120px; }
-        .member-info small { display: block; font-size: 0.7rem; color: var(--gray-mid); }
-        .member-actions button { background: none; border: none; margin-left: 0.4rem; cursor: pointer; font-size: 1rem; color: var(--gray-mid); }
+        .btn-primary:hover, .btn-secondary:hover, .btn-print:hover, .btn-sort:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .inline-row {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 480px) {
+            .inline-row { gap: 0.5rem; }
+            .inline-row .form-group { flex: 1; }
+        }
+        .member-list {
+            margin-top: 1.5rem;
+            max-height: 380px;
+            overflow-y: auto;
+            border-top: 1px solid var(--gray-light);
+        }
+        .member-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gray-light);
+            margin: 0.5rem 0;
+            padding: 0.6rem 0.8rem;
+            border-radius: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .member-info {
+            flex: 2;
+            font-size: 0.85rem;
+            font-weight: 500;
+            min-width: 120px;
+        }
+        .member-info small {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--gray-mid);
+        }
+        .member-actions button {
+            background: none;
+            border: none;
+            margin-left: 0.4rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--gray-mid);
+        }
         .member-actions button:hover { color: var(--primary); }
-        .grid-formation { display: grid; gap: 0.8rem; margin: 1rem 0; justify-content: center; overflow-x: auto; padding: 0.25rem; }
-        .grid-cell { border-radius: 0.8rem; padding: 0.6rem 0.3rem; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05); border: 1px solid #c0b8a8; transition: 0.1s; cursor: pointer; min-width: 85px; }
-        @media (max-width: 768px) { .grid-cell { min-width: 70px; padding: 0.4rem 0.1rem; } .member-name { font-size: 0.7rem; } .member-instrument { font-size: 0.6rem; } }
-        .grid-cell.selected { border: 2px solid var(--primary); transform: scale(0.98); }
+        .grid-formation {
+            display: grid;
+            gap: 0.8rem;
+            margin: 1rem 0;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 0.25rem;
+        }
+        .grid-cell {
+            border-radius: 0.8rem;
+            padding: 0.6rem 0.3rem;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border: 1px solid #c0b8a8;
+            transition: 0.1s;
+            cursor: pointer;
+            min-width: 85px;
+        }
+        @media (max-width: 768px) {
+            .grid-cell { min-width: 70px; padding: 0.4rem 0.1rem; }
+            .member-name { font-size: 0.7rem; }
+            .member-instrument { font-size: 0.6rem; }
+        }
+        .grid-cell.selected {
+            border: 2px solid var(--primary);
+            transform: scale(0.98);
+        }
         .member-name { font-weight: 700; font-size: 0.8rem; word-break: break-word; }
-        .member-instrument { font-size: 0.65rem; color: var(--gray-mid); margin-top: 0.2rem; }
-        .empty-cell { min-height: 68px; display: flex; align-items: center; justify-content: center; background: #f9f5f0; }
-        .drum-major-row { display: flex; justify-content: center; margin-bottom: 1.2rem; }
-        .drum-major-cell { background: var(--drum-major-bg); color: white; border-radius: 0.8rem; padding: 0.5rem 1.2rem; text-align: center; min-width: 130px; border: 1px solid #5a101c; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: default; }
-        .drum-major-cell .post { font-size: 0.65rem; opacity: 0.9; font-weight: normal; margin-top: 0.1rem; }
-        .helper-row { margin-top: 1rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
-        .helper-cell { background: var(--helper-bg); border-radius: 0.8rem; padding: 0.5rem 0.8rem; min-width: 85px; text-align: center; border: 1px solid #c0b8a8; cursor: pointer; transition: 0.1s; }
-        .helper-cell.selected { border: 2px solid var(--primary); background: #f5ecd9; }
-        .stats-panel { margin-top: 1.5rem; background: var(--gray-light); border-radius: 1rem; padding: 1rem; font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
-        .stat-line { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #ddd; padding: 0.2rem 0; }
+        .member-instrument {
+            font-size: 0.65rem;
+            color: var(--gray-mid);
+            margin-top: 0.2rem;
+        }
+        .empty-cell {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f5f0;
+        }
+        .drum-major-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+        .drum-major-cell {
+            background: var(--drum-major-bg);
+            color: white;
+            border-radius: 0.8rem;
+            padding: 0.5rem 1.2rem;
+            text-align: center;
+            min-width: 130px;
+            border: 1px solid #5a101c;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            cursor: default;
+        }
+        .drum-major-cell .post {
+            font-size: 0.65rem;
+            opacity: 0.9;
+            font-weight: normal;
+            margin-top: 0.1rem;
+        }
+        .helper-row {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .helper-cell {
+            background: var(--helper-bg);
+            border-radius: 0.8rem;
+            padding: 0.5rem 0.8rem;
+            min-width: 85px;
+            text-align: center;
+            border: 1px solid #c0b8a8;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .helper-cell.selected {
+            border: 2px solid var(--primary);
+            background: #f5ecd9;
+        }
+        .stats-panel {
+            margin-top: 1.5rem;
+            background: var(--gray-light);
+            border-radius: 1rem;
+            padding: 1rem;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #ddd;
+            padding: 0.2rem 0;
+        }
         .stat-label { font-weight: 600; }
         .stat-number { font-weight: 700; color: var(--primary); }
-        .stat-total { margin-top: 0.3rem; padding-top: 0.3rem; border-top: 2px solid var(--primary); font-weight: 800; }
-        .warning-badge { background: #fef3c7; color: #b45309; border-radius: 2rem; padding: 0.3rem 0.8rem; font-size: 0.7rem; margin-top: 0.8rem; }
-        .show-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 1rem; border-bottom: 1px dashed var(--gray-light); padding-bottom: 0.5rem; }
-        .show-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); font-family: 'Cormorant Garamond', serif; }
-        @media (max-width: 768px) { .show-title { font-size: 1.2rem; } }
-        .performance-date { font-size: 0.85rem; color: var(--gray-mid); background: #f0efed; padding: 0.2rem 0.8rem; border-radius: 2rem; white-space: nowrap; }
-        @media (max-width: 480px) { .performance-date { white-space: normal; font-size: 0.7rem; } }
-        footer { background: #111216; color: #aaa; text-align: center; padding: 2rem; font-size: 0.75rem; margin-top: 2rem; }
-        .print-button-wrapper { margin-top: 1rem; text-align: center; }
-        .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
-        .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
-        /* Ensure all form elements have proper width */
-        .form-group { width: 100%; }
-        input[type="date"] { width: 100%; }
+        .stat-total {
+            margin-top: 0.3rem;
+            padding-top: 0.3rem;
+            border-top: 2px solid var(--primary);
+            font-weight: 800;
+        }
+        .warning-badge {
+            background: #fef3c7;
+            color: #b45309;
+            border-radius: 2rem;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            margin-top: 0.8rem;
+        }
+        .show-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--gray-light);
+            padding-bottom: 0.5rem;
+        }
+        .show-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        @media (max-width: 768px) {
+            .show-title { font-size: 1.2rem; }
+        }
+        .performance-date {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            background: #f0efed;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            white-space: nowrap;
+        }
+        @media (max-width: 480px) {
+            .performance-date { white-space: normal; font-size: 0.7rem; }
+        }
+        .print-button-wrapper {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .no-print-tip {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 1rem;
+            background: #f0efed;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            color: var(--gray-mid);
+        }
+        .formation-scroll {
+            overflow-x: auto;
+            margin: 0 -0.5rem;
+            padding: 0 0.5rem;
+        }
+
+        /* Footer (from template) */
+        .site-footer {
+            background: #111216;
+            color: #d1d5db;
+            padding: 2.5rem 0 1.2rem;
+            opacity: 0;
+            animation: footerFade 0.6s ease-out 0.5s forwards;
+        }
+        @keyframes footerFade {
+            to { opacity: 1; }
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .footer-col {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .footer-col a {
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary-light); }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            word-break: break-word;
+            flex-wrap: wrap;
+        }
+        .contact-link i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-link:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #b9c3cf;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .social-links a i {
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #2a2c33;
+            font-size: 0.75rem;
+        }
+
+        /* Lightbox (for potential future use) */
+        #lightbox {
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        #lightbox-image {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            animation: zoomIn 0.2s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 38px;
+            font-weight: 300;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        @media (max-width: 768px) {
+            .lightbox-close { top: 15px; right: 20px; font-size: 30px; }
+        }
     </style>
 </head>
-<body>
+<body class="loading">
+    <div id="loading-spinner"><div class="spinner"></div></div>
 
-<div class="navbar">
-    <div class="nav-container">
-        <div class="logo-area"><div class="logo-text">🏴󠁧󠁢󠁳󠁣󠁴󠁿 PIPES & DRUMS<br><span>Highland Formation Designer</span></div></div>
-        <div class="nav-links"><a href="#" class="active">Formation Studio</a><a href="#" class="lang-btn"><i class="fas fa-thistle"></i> Band Hub</a></div>
-    </div>
-</div>
-
-<section class="hero">
-    <div class="tartan-pattern"></div>
-    <div class="hero-content"><h1>⚡ Pipe Band Formation Designer</h1><p>Rows, columns, drum major, helper row & instrument counters | Press Enter to add member</p></div>
-</section>
-
-<div class="designer-section">
-    <div class="container">
-        <div class="designer-grid">
-            <!-- Control Panel -->
-            <div class="controls-panel">
-                <h3 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-sliders-h"></i> Performance Config</h3>
-                <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Gathering" placeholder="Performance title"></div>
-                <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate"></div>
-                <div class="inline-row">
-                    <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="20" value="5"></div>
-                    <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="10" value="4"></div>
-                    <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div>
+    <div class="navbar">
+        <div class="nav-container">
+            <a href="#" id="logoLink" class="logo-area" style="text-decoration: none;">
+                <img src="Images/citypb.icon.png" alt="City of Hong Kong Pipe Band Logo" class="logo-img">
+                <div class="logo-text">
+                    City of Hong Kong<br><span>Pipe Band</span>
                 </div>
-                
-                <div class="form-group"><label><i class="fas fa-user-tie"></i> Drum Major (Front Center)</label>
-                    <input type="text" id="drumMajorName" placeholder="Name (optional)" value="">
-                </div>
-                
-                <div class="form-group"><label><i class="fas fa-user-plus"></i> Add Band Member</label>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <input type="text" id="memberName" placeholder="Name (Chinese/English/Numbers)" style="flex:2">
-                        <select id="memberInstrumentSelect" style="flex:1.5;">
-                            <option value="Bagpipe">Bagpipe</option>
-                            <option value="Snare Drum">Snare Drum</option>
-                            <option value="Bass Drum">Bass Drum</option>
-                            <option value="Tenor Drum">Tenor Drum</option>
-                            <option value="Helper">Helper</option>
-                        </select>
-                        <button id="addMemberBtn" class="btn-primary"><i class="fas fa-plus"></i> Add</button>
-                    </div>
-                </div>
-                
-                <div class="member-list" id="memberListContainer"><div style="text-align:center; padding:1rem;">— Band Roster —</div></div>
-                <div style="display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;">
-                    <button id="resetDemoBtn" class="btn-secondary"><i class="fas fa-drumstick-bite"></i> Demo Band</button>
-                    <button id="clearAllBtn" class="btn-danger"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    <button id="sortFormationBtn" class="btn-sort"><i class="fas fa-sort-amount-down"></i> Sort</button>
-                </div>
-                <div id="capacityWarning" class="warning-badge" style="display: none;"></div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">The Band</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="formation.html" class="active">Formation</a>
+                <a href="index-zh.html" class="lang-btn">中文版</a>
             </div>
-            
-            <!-- Preview Area -->
-            <div class="preview-panel" id="previewOnlyArea">
-                <div class="show-meta"><span class="show-title" id="liveShowTitleDisplay">Highland Gathering</span><span class="performance-date" id="liveDateDisplay"></span></div>
-                
-                <div class="drum-major-row">
-                    <div class="drum-major-cell">
-                        <div id="drumMajorNameDisplay">—</div>
-                        <div class="post">Drum Major</div>
+            <div class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">The Band</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="formation.html" class="mobile-lang">中文版</a>
+        </div>
+    </div>
+
+    <!-- HERO with Scottish tartan style -->
+    <section class="hero">
+        <div class="tartan-pattern"></div>
+        <div class="wave-glow"></div>
+        <div class="particles"></div>
+        <div class="edge-glow"></div>
+        <div class="hero-content">
+            <h1>Pipe Band Formation Designer</h1>
+            <p>Design your performance formation – arrange members, set rows/columns, and export as PDF</p>
+        </div>
+    </section>
+
+    <!-- FORMATION DESIGNER SECTION -->
+    <div class="designer-section">
+        <div class="container">
+            <div class="designer-grid">
+                <!-- Control Panel -->
+                <div class="controls-panel">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-sliders-h"></i> Performance Config</h3>
+                    <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Gathering" placeholder="Performance title"></div>
+                    <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate"></div>
+                    <div class="inline-row">
+                        <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="20" value="5"></div>
+                        <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="10" value="4"></div>
+                        <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div>
                     </div>
+                    
+                    <div class="form-group"><label><i class="fas fa-user-tie"></i> Drum Major (Front Center)</label>
+                        <input type="text" id="drumMajorName" placeholder="Name (optional)" value="">
+                    </div>
+                    
+                    <div class="form-group"><label><i class="fas fa-user-plus"></i> Add Band Member</label>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <input type="text" id="memberName" placeholder="Name (Chinese/English/Numbers)" style="flex:2">
+                            <select id="memberInstrumentSelect" style="flex:1.5;">
+                                <option value="Bagpipe">Bagpipe</option>
+                                <option value="Snare Drum">Snare Drum</option>
+                                <option value="Bass Drum">Bass Drum</option>
+                                <option value="Tenor Drum">Tenor Drum</option>
+                                <option value="Helper">Helper</option>
+                            </select>
+                            <button id="addMemberBtn" class="btn-primary"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    
+                    <div class="member-list" id="memberListContainer"><div style="text-align:center; padding:1rem;">— Band Roster —</div></div>
+                    <div style="display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;">
+                        <button id="resetDemoBtn" class="btn-secondary"><i class="fas fa-drumstick-bite"></i> Demo Band</button>
+                        <button id="clearAllBtn" class="btn-danger"><i class="fas fa-trash-alt"></i> Clear All</button>
+                        <button id="sortFormationBtn" class="btn-sort"><i class="fas fa-sort-amount-down"></i> Sort</button>
+                    </div>
+                    <div id="capacityWarning" class="warning-badge" style="display: none;"></div>
                 </div>
                 
-                <div class="formation-scroll">
-                    <div id="dynamicFormationGrid" class="grid-formation"></div>
+                <!-- Preview Panel -->
+                <div class="preview-panel" id="previewOnlyArea">
+                    <div class="show-meta"><span class="show-title" id="liveShowTitleDisplay">Highland Gathering</span><span class="performance-date" id="liveDateDisplay"></span></div>
+                    
+                    <div class="drum-major-row">
+                        <div class="drum-major-cell">
+                            <div id="drumMajorNameDisplay">—</div>
+                            <div class="post">Drum Major</div>
+                        </div>
+                    </div>
+                    
+                    <div class="formation-scroll">
+                        <div id="dynamicFormationGrid" class="grid-formation"></div>
+                    </div>
+                    
+                    <div id="helperRowContainer" style="margin-top: 1rem;">
+                        <div style="font-size:0.7rem; font-weight:600; margin-bottom:0.3rem; color:var(--gray-mid);">Helper Support</div>
+                        <div id="helperRowGrid" style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;"></div>
+                    </div>
+                    
+                    <div id="statsPanelPreview" class="stats-panel"></div>
+                    
+                    <div class="print-button-wrapper">
+                        <button id="printPdfBtn" class="btn-print"><i class="fas fa-print"></i> Print / Save as PDF</button>
+                    </div>
+                    
+                    <div class="no-print-tip"><i class="fas fa-info-circle"></i> Tip: Click any cell to swap positions. Helper row members are separate. Press Enter to add member. Use Print > Save as PDF for best results.</div>
                 </div>
-                
-                <div id="helperRowContainer" style="margin-top: 1rem;">
-                    <div style="font-size:0.7rem; font-weight:600; margin-bottom:0.3rem; color:var(--gray-mid);">Helper Support</div>
-                    <div id="helperRowGrid" style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;"></div>
-                </div>
-                
-                <div id="statsPanelPreview" class="stats-panel"></div>
-                
-                <div class="print-button-wrapper">
-                    <button id="printPdfBtn" class="btn-print"><i class="fas fa-print"></i> Print / Save as PDF</button>
-                </div>
-                
-                <div class="no-print-tip"><i class="fas fa-info-circle"></i> Tip: Click any cell to swap positions. Helper row members are separate. Press Enter to add member. Use Print > Save as PDF for best results.</div>
             </div>
         </div>
     </div>
-</div>
 
-<footer><p>© Pipe Band Formation Manager — Precision performances. <i class="fas fa-thistle"></i> Lead with pride</p></footer>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">The Band</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="formation.html">Formation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:cityofhongkongpipeband@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> cityofhongkongpipeband@gmail.com</a></p>
+                    <p><a href="https://wa.me/85296525128?text=Hello%21%20I%27m%20interested%20in%20your%20pipe%20band%20services" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p>Hong Kong based, worldwide</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/citypipeband?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/cityofhongkongpipeband" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 City of Hong Kong Pipe Band. All rights reserved. | Traditional Scottish spirit in the heart of Asia</p>
+            </div>
+        </div>
+    </footer>
 
-<script>
-    // STATE
-    let bandMembers = [];
-    let helpers = [];
-    let currentRows = 5;
-    let currentCols = 4;
-    let drumMajor = { name: "" };
-    let selectedMainIndex = null;
-    let selectedHelperIndex = null;
-    let printingInProgress = false;
-    
-    // DOM elements
-    const rowsInput = document.getElementById('rowsInput');
-    const colsInput = document.getElementById('colsInput');
-    const applyDimBtn = document.getElementById('applyDimBtn');
-    const showTitleInput = document.getElementById('showTitle');
-    const liveTitleSpan = document.getElementById('liveShowTitleDisplay');
-    const dateInput = document.getElementById('performanceDate');
-    const liveDateSpan = document.getElementById('liveDateDisplay');
-    const drumMajorNameInput = document.getElementById('drumMajorName');
-    const drumMajorNameDisplay = document.getElementById('drumMajorNameDisplay');
-    const memberNameInput = document.getElementById('memberName');
-    const memberInstrumentSelect = document.getElementById('memberInstrumentSelect');
-    const addMemberBtn = document.getElementById('addMemberBtn');
-    const memberListDiv = document.getElementById('memberListContainer');
-    const formationGridDiv = document.getElementById('dynamicFormationGrid');
-    const helperRowGridDiv = document.getElementById('helperRowGrid');
-    const resetDemoBtn = document.getElementById('resetDemoBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-    const sortFormationBtn = document.getElementById('sortFormationBtn');
-    const printPdfBtn = document.getElementById('printPdfBtn');
-    const capacityWarning = document.getElementById('capacityWarning');
-    const statsPanelPreview = document.getElementById('statsPanelPreview');
-    
-    // Set default date to today
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.value = today;
-    liveDateSpan.innerText = today;
-    
-    function getInstrumentColor(instrument) {
-        switch(instrument) {
-            case 'Bagpipe': return '#e8f4e8';
-            case 'Snare Drum': return '#ffe8e8';
-            case 'Bass Drum': return '#fff0e0';
-            case 'Tenor Drum': return '#e8e8ff';
-            case 'Helper': return '#f0e6d0';
-            default: return '#fefaf5';
-        }
-    }
-    
-    function getTotalMainCells() { return currentRows * currentCols; }
-    
-    function updateDrumMajorFromInput() {
-        let newName = drumMajorNameInput.value.trim();
-        drumMajor.name = newName;
-        drumMajorNameDisplay.innerText = drumMajor.name || "—";
-        updateStatsPreview();
-    }
-    
-    function updateMetaDisplay() {
-        let titleVal = showTitleInput.value.trim();
-        liveTitleSpan.innerText = titleVal || "Highland Gathering";
-        let dateVal = dateInput.value;
-        liveDateSpan.innerText = dateVal || "";
-    }
-    
-    function renderFormationGrid() {
-        const totalMain = getTotalMainCells();
-        formationGridDiv.style.gridTemplateColumns = `repeat(${currentCols}, minmax(85px, 130px))`;
-        let html = '';
-        for (let i = 0; i < totalMain; i++) {
-            const member = bandMembers[i];
-            const isSelected = (selectedMainIndex === i);
-            let bgColor = '#fefaf5';
-            if (member && member !== null) {
-                bgColor = getInstrumentColor(member.instrument);
-            } else {
-                bgColor = '#f9f5f0';
-            }
-            const borderStyle = isSelected ? '2px solid #9b1c31' : '1px solid #c0b8a8';
-            if (member && member !== null) {
-                html += `<div class="grid-cell" data-main-index="${i}" style="background:${bgColor}; border:${borderStyle};">
-                            <div class="member-name">${escapeHtml(member.name)}</div>
-                            <div class="member-instrument">${escapeHtml(member.instrument || '—')}</div>
-                        </div>`;
-            } else {
-                html += `<div class="grid-cell empty-cell" data-main-index="${i}" style="background:${bgColor}; border:${borderStyle};">
-                            <div style="opacity:0"> </div>
-                        </div>`;
+    <script>
+        // ========== FORMATION DESIGNER SCRIPT (ported from previous working version) ==========
+        // STATE
+        let bandMembers = [];
+        let helpers = [];
+        let currentRows = 5;
+        let currentCols = 4;
+        let drumMajor = { name: "" };
+        let selectedMainIndex = null;
+        let selectedHelperIndex = null;
+        let printingInProgress = false;
+        
+        // DOM elements
+        const rowsInput = document.getElementById('rowsInput');
+        const colsInput = document.getElementById('colsInput');
+        const applyDimBtn = document.getElementById('applyDimBtn');
+        const showTitleInput = document.getElementById('showTitle');
+        const liveTitleSpan = document.getElementById('liveShowTitleDisplay');
+        const dateInput = document.getElementById('performanceDate');
+        const liveDateSpan = document.getElementById('liveDateDisplay');
+        const drumMajorNameInput = document.getElementById('drumMajorName');
+        const drumMajorNameDisplay = document.getElementById('drumMajorNameDisplay');
+        const memberNameInput = document.getElementById('memberName');
+        const memberInstrumentSelect = document.getElementById('memberInstrumentSelect');
+        const addMemberBtn = document.getElementById('addMemberBtn');
+        const memberListDiv = document.getElementById('memberListContainer');
+        const formationGridDiv = document.getElementById('dynamicFormationGrid');
+        const helperRowGridDiv = document.getElementById('helperRowGrid');
+        const resetDemoBtn = document.getElementById('resetDemoBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const sortFormationBtn = document.getElementById('sortFormationBtn');
+        const printPdfBtn = document.getElementById('printPdfBtn');
+        const capacityWarning = document.getElementById('capacityWarning');
+        const statsPanelPreview = document.getElementById('statsPanelPreview');
+        
+        // Set default date to today
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+        liveDateSpan.innerText = today;
+        
+        function getInstrumentColor(instrument) {
+            switch(instrument) {
+                case 'Bagpipe': return '#e8f4e8';
+                case 'Snare Drum': return '#ffe8e8';
+                case 'Bass Drum': return '#fff0e0';
+                case 'Tenor Drum': return '#e8e8ff';
+                case 'Helper': return '#f0e6d0';
+                default: return '#fefaf5';
             }
         }
-        formationGridDiv.innerHTML = html;
         
-        document.querySelectorAll('[data-main-index]').forEach(cell => {
-            cell.addEventListener('click', (e) => {
-                const idx = parseInt(cell.dataset.mainIndex);
-                if (!isNaN(idx)) handleMainCellClick(idx);
-            });
-        });
+        function getTotalMainCells() { return currentRows * currentCols; }
         
-        const occupiedCount = bandMembers.filter(m => m !== null && m !== undefined).length;
-        if (occupiedCount > totalMain) {
-            capacityWarning.style.display = 'block';
-            capacityWarning.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: ${occupiedCount} members exceed main grid ${totalMain} positions.`;
-        } else {
-            capacityWarning.style.display = 'none';
+        function updateDrumMajorFromInput() {
+            let newName = drumMajorNameInput.value.trim();
+            drumMajor.name = newName;
+            drumMajorNameDisplay.innerText = drumMajor.name || "—";
+            updateStatsPreview();
         }
-    }
-    
-    function renderHelperRow() {
-        if (!helpers.length) {
-            helperRowGridDiv.innerHTML = '<div style="color:gray; font-size:0.7rem;">No helpers assigned</div>';
-            return;
-        }
-        let html = '';
-        helpers.forEach((helper, idx) => {
-            const isSelected = (selectedHelperIndex === idx);
-            html += `<div class="helper-cell ${isSelected ? 'selected' : ''}" data-helper-index="${idx}" style="background:${getInstrumentColor('Helper')}; border:${isSelected ? '2px solid #9b1c31' : '1px solid #c0b8a8'};">
-                        <div class="member-name">${escapeHtml(helper.name)}</div>
-                        <div class="member-instrument">Helper</div>
-                    </div>`;
-        });
-        helperRowGridDiv.innerHTML = html;
         
-        document.querySelectorAll('[data-helper-index]').forEach(cell => {
-            cell.addEventListener('click', (e) => {
-                const idx = parseInt(cell.dataset.helperIndex);
-                if (!isNaN(idx)) handleHelperCellClick(idx);
-            });
-        });
-    }
-    
-    function handleMainCellClick(clickedIdx) {
-        if (selectedMainIndex === null && selectedHelperIndex === null) {
-            selectedMainIndex = clickedIdx;
-            renderFormationGrid();
-            renderHelperRow();
-        } 
-        else if (selectedMainIndex !== null) {
-            if (selectedMainIndex !== clickedIdx) {
-                const memberA = bandMembers[selectedMainIndex];
-                const memberB = bandMembers[clickedIdx];
-                bandMembers[selectedMainIndex] = memberB || null;
-                bandMembers[clickedIdx] = memberA || null;
-            }
-            clearSelections();
-            renderAll();
+        function updateMetaDisplay() {
+            let titleVal = showTitleInput.value.trim();
+            liveTitleSpan.innerText = titleVal || "Highland Gathering";
+            let dateVal = dateInput.value;
+            liveDateSpan.innerText = dateVal || "";
         }
-        else if (selectedHelperIndex !== null) {
-            const helperMember = helpers[selectedHelperIndex];
-            const mainMember = bandMembers[clickedIdx];
-            if (helperMember) {
-                bandMembers[clickedIdx] = { ...helperMember, instrument: helperMember.instrument || "Helper" };
-                if (mainMember && mainMember !== null) {
-                    helpers[selectedHelperIndex] = { ...mainMember, instrument: mainMember.instrument || "Bagpipe" };
+        
+        function renderFormationGrid() {
+            const totalMain = getTotalMainCells();
+            formationGridDiv.style.gridTemplateColumns = `repeat(${currentCols}, minmax(85px, 130px))`;
+            let html = '';
+            for (let i = 0; i < totalMain; i++) {
+                const member = bandMembers[i];
+                const isSelected = (selectedMainIndex === i);
+                let bgColor = '#fefaf5';
+                if (member && member !== null) {
+                    bgColor = getInstrumentColor(member.instrument);
                 } else {
-                    helpers.splice(selectedHelperIndex, 1);
+                    bgColor = '#f9f5f0';
+                }
+                const borderStyle = isSelected ? '2px solid #9b1c31' : '1px solid #c0b8a8';
+                if (member && member !== null) {
+                    html += `<div class="grid-cell" data-main-index="${i}" style="background:${bgColor}; border:${borderStyle};">
+                                <div class="member-name">${escapeHtml(member.name)}</div>
+                                <div class="member-instrument">${escapeHtml(member.instrument || '—')}</div>
+                            </div>`;
+                } else {
+                    html += `<div class="grid-cell empty-cell" data-main-index="${i}" style="background:${bgColor}; border:${borderStyle};">
+                                <div style="opacity:0"> </div>
+                            </div>`;
+                }
+            }
+            formationGridDiv.innerHTML = html;
+            
+            document.querySelectorAll('[data-main-index]').forEach(cell => {
+                cell.addEventListener('click', (e) => {
+                    const idx = parseInt(cell.dataset.mainIndex);
+                    if (!isNaN(idx)) handleMainCellClick(idx);
+                });
+            });
+            
+            const occupiedCount = bandMembers.filter(m => m !== null && m !== undefined).length;
+            if (occupiedCount > totalMain) {
+                capacityWarning.style.display = 'block';
+                capacityWarning.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: ${occupiedCount} members exceed main grid ${totalMain} positions.`;
+            } else {
+                capacityWarning.style.display = 'none';
+            }
+        }
+        
+        function renderHelperRow() {
+            if (!helpers.length) {
+                helperRowGridDiv.innerHTML = '<div style="color:gray; font-size:0.7rem;">No helpers assigned</div>';
+                return;
+            }
+            let html = '';
+            helpers.forEach((helper, idx) => {
+                const isSelected = (selectedHelperIndex === idx);
+                html += `<div class="helper-cell ${isSelected ? 'selected' : ''}" data-helper-index="${idx}" style="background:${getInstrumentColor('Helper')}; border:${isSelected ? '2px solid #9b1c31' : '1px solid #c0b8a8'};">
+                            <div class="member-name">${escapeHtml(helper.name)}</div>
+                            <div class="member-instrument">Helper</div>
+                        </div>`;
+            });
+            helperRowGridDiv.innerHTML = html;
+            
+            document.querySelectorAll('[data-helper-index]').forEach(cell => {
+                cell.addEventListener('click', (e) => {
+                    const idx = parseInt(cell.dataset.helperIndex);
+                    if (!isNaN(idx)) handleHelperCellClick(idx);
+                });
+            });
+        }
+        
+        function handleMainCellClick(clickedIdx) {
+            if (selectedMainIndex === null && selectedHelperIndex === null) {
+                selectedMainIndex = clickedIdx;
+                renderFormationGrid();
+                renderHelperRow();
+            } 
+            else if (selectedMainIndex !== null) {
+                if (selectedMainIndex !== clickedIdx) {
+                    const memberA = bandMembers[selectedMainIndex];
+                    const memberB = bandMembers[clickedIdx];
+                    bandMembers[selectedMainIndex] = memberB || null;
+                    bandMembers[clickedIdx] = memberA || null;
                 }
                 clearSelections();
                 renderAll();
-            } else {
-                clearSelections();
             }
-        }
-    }
-    
-    function handleHelperCellClick(clickedIdx) {
-        if (selectedHelperIndex === null && selectedMainIndex === null) {
-            selectedHelperIndex = clickedIdx;
-            renderFormationGrid();
-            renderHelperRow();
-        }
-        else if (selectedHelperIndex !== null) {
-            if (selectedHelperIndex !== clickedIdx) {
-                const helperA = helpers[selectedHelperIndex];
-                const helperB = helpers[clickedIdx];
-                helpers[selectedHelperIndex] = helperB;
-                helpers[clickedIdx] = helperA;
-            }
-            clearSelections();
-            renderAll();
-        }
-        else if (selectedMainIndex !== null) {
-            const mainMember = bandMembers[selectedMainIndex];
-            const helperMember = helpers[clickedIdx];
-            if (helperMember) {
-                helpers[clickedIdx] = mainMember ? { ...mainMember, instrument: mainMember.instrument } : null;
-                bandMembers[selectedMainIndex] = helperMember ? { ...helperMember, instrument: helperMember.instrument } : null;
-            } else if (mainMember) {
-                helpers[clickedIdx] = { ...mainMember, instrument: mainMember.instrument };
-                bandMembers[selectedMainIndex] = null;
-            }
-            clearSelections();
-            renderAll();
-        }
-    }
-    
-    function clearSelections() { selectedMainIndex = null; selectedHelperIndex = null; }
-    
-    function renderAll() { 
-        renderFormationGrid(); 
-        renderHelperRow(); 
-        renderMemberList(); 
-        updateStatsPreview(); 
-    }
-    
-    function renderMemberList() {
-        const allMembers = [...bandMembers.filter(m => m !== null), ...helpers];
-        if (allMembers.length === 0) { 
-            memberListDiv.innerHTML = `<div style="text-align:center; padding:1rem;"><i class="fas fa-users-slash"></i> No band members.</div>`; 
-            return; 
-        }
-        let html = `<div style="font-weight:600; margin-bottom:0.5rem;">Band Roster (Main + Helpers)</div>`;
-        allMembers.forEach((member) => {
-            const isHelper = helpers.includes(member);
-            html += `<div class="member-item">
-                        <div class="member-info"><strong>${escapeHtml(member.name)}</strong><small>${escapeHtml(member.instrument)} ${isHelper ? '(Helper)' : ''}</small></div>
-                        <div class="member-actions">
-                            <button class="edit-member-btn" data-name="${escapeHtml(member.name)}" data-inst="${escapeHtml(member.instrument)}" data-helper="${isHelper}"><i class="fas fa-pen"></i></button>
-                            <button class="delete-member-btn" data-name="${escapeHtml(member.name)}" data-helper="${isHelper}"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>`;
-        });
-        memberListDiv.innerHTML = html;
-        
-        document.querySelectorAll('.edit-member-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const oldName = btn.dataset.name;
-                const oldInst = btn.dataset.inst;
-                const isHelperMem = btn.dataset.helper === 'true';
-                const newName = prompt("Edit name:", oldName);
-                if (newName && newName.trim()) {
-                    const instrumentOptions = ["Bagpipe", "Snare Drum", "Bass Drum", "Tenor Drum", "Helper"];
-                    const newInst = prompt("Edit instrument (Bagpipe, Snare Drum, Bass Drum, Tenor Drum, Helper):", oldInst);
-                    if (newInst && instrumentOptions.includes(newInst)) {
-                        if (isHelperMem) {
-                            const helper = helpers.find(h => h.name === oldName);
-                            if (helper) { helper.name = newName.trim(); helper.instrument = newInst; }
-                        } else {
-                            const member = bandMembers.find(m => m && m.name === oldName);
-                            if (member) { member.name = newName.trim(); member.instrument = newInst; }
-                        }
-                        renderAll();
-                    } else if (newInst === null || newInst === "") {
-                        if (isHelperMem) {
-                            const helper = helpers.find(h => h.name === oldName);
-                            if (helper) helper.name = newName.trim();
-                        } else {
-                            const member = bandMembers.find(m => m && m.name === oldName);
-                            if (member) member.name = newName.trim();
-                        }
-                        renderAll();
-                    } else { alert("Invalid instrument."); }
-                }
-            });
-        });
-        
-        document.querySelectorAll('.delete-member-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const name = btn.dataset.name;
-                const isHelperMem = btn.dataset.helper === 'true';
-                if (isHelperMem) {
-                    const idx = helpers.findIndex(h => h.name === name);
-                    if (idx !== -1) helpers.splice(idx, 1);
+            else if (selectedHelperIndex !== null) {
+                const helperMember = helpers[selectedHelperIndex];
+                const mainMember = bandMembers[clickedIdx];
+                if (helperMember) {
+                    bandMembers[clickedIdx] = { ...helperMember, instrument: helperMember.instrument || "Helper" };
+                    if (mainMember && mainMember !== null) {
+                        helpers[selectedHelperIndex] = { ...mainMember, instrument: mainMember.instrument || "Bagpipe" };
+                    } else {
+                        helpers.splice(selectedHelperIndex, 1);
+                    }
+                    clearSelections();
+                    renderAll();
                 } else {
-                    const idx = bandMembers.findIndex(m => m && m.name === name);
-                    if (idx !== -1) bandMembers[idx] = null;
+                    clearSelections();
                 }
+            }
+        }
+        
+        function handleHelperCellClick(clickedIdx) {
+            if (selectedHelperIndex === null && selectedMainIndex === null) {
+                selectedHelperIndex = clickedIdx;
+                renderFormationGrid();
+                renderHelperRow();
+            }
+            else if (selectedHelperIndex !== null) {
+                if (selectedHelperIndex !== clickedIdx) {
+                    const helperA = helpers[selectedHelperIndex];
+                    const helperB = helpers[clickedIdx];
+                    helpers[selectedHelperIndex] = helperB;
+                    helpers[clickedIdx] = helperA;
+                }
+                clearSelections();
                 renderAll();
-            });
-        });
-    }
-    
-    function getStatsData() {
-        const allMain = bandMembers.filter(m => m !== null);
-        const allHelpers = helpers;
-        const all = [...allMain, ...allHelpers];
-        let bagpipe = 0, snare = 0, bass = 0, tenor = 0, helper = 0;
-        all.forEach(m => {
-            const inst = m.instrument;
-            if (inst === 'Bagpipe') bagpipe++;
-            else if (inst === 'Snare Drum') snare++;
-            else if (inst === 'Bass Drum') bass++;
-            else if (inst === 'Tenor Drum') tenor++;
-            else if (inst === 'Helper') helper++;
-        });
-        const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
-        return { bagpipe, snare, bass, tenor, helper, total: all.length, drumMajorCount: hasDrumMajor ? 1 : 0 };
-    }
-    
-    function updateStatsPreview() {
-        const stats = getStatsData();
-        statsPanelPreview.innerHTML = `
-            <div class="stat-line"><span class="stat-label">Drum Major:</span><span class="stat-number">${stats.drumMajorCount}</span></div>
-            <div class="stat-line"><span class="stat-label">Bagpipers:</span><span class="stat-number">${stats.bagpipe}</span></div>
-            <div class="stat-line"><span class="stat-label">Tenor Drummers:</span><span class="stat-number">${stats.tenor}</span></div>
-            <div class="stat-line"><span class="stat-label">Snare Drummers:</span><span class="stat-number">${stats.snare}</span></div>
-            <div class="stat-line"><span class="stat-label">Bass Drummers:</span><span class="stat-number">${stats.bass}</span></div>
-            <div class="stat-line"><span class="stat-label">Helpers:</span><span class="stat-number">${stats.helper}</span></div>
-            <div class="stat-line stat-total"><span class="stat-label">Total Personnel:</span><span class="stat-number">${stats.total + stats.drumMajorCount}</span></div>
-        `;
-    }
-    
-    function applyDimensions() {
-        let newRows = parseInt(rowsInput.value), newCols = parseInt(colsInput.value);
-        if (isNaN(newRows)) newRows = 5;
-        if (isNaN(newCols)) newCols = 4;
-        newRows = Math.min(20, Math.max(1, newRows));
-        newCols = Math.min(10, Math.max(1, newCols));
-        currentRows = newRows;
-        currentCols = newCols;
-        rowsInput.value = currentRows;
-        colsInput.value = currentCols;
-        const newSize = currentRows * currentCols;
-        const oldOccupants = [...bandMembers];
-        const newOccupants = new Array(newSize).fill(null);
-        for (let i = 0; i < Math.min(oldOccupants.length, newSize); i++) {
-            if (oldOccupants[i] !== null) newOccupants[i] = oldOccupants[i];
-        }
-        bandMembers = newOccupants;
-        clearSelections();
-        renderAll();
-    }
-    
-    function sortFormation() {
-        const bagpipers = bandMembers.filter(m => m && m.instrument === 'Bagpipe');
-        const snare = bandMembers.filter(m => m && m.instrument === 'Snare Drum');
-        const tenor = bandMembers.filter(m => m && m.instrument === 'Tenor Drum');
-        let bass = bandMembers.filter(m => m && m.instrument === 'Bass Drum');
-        const others = bandMembers.filter(m => m && !['Bagpipe','Snare Drum','Tenor Drum','Bass Drum'].includes(m.instrument));
-        const total = currentRows * currentCols;
-        let sorted = [...bagpipers, ...snare, ...tenor, ...others];
-        let newArr = new Array(total).fill(null);
-        for (let i = 0; i < Math.min(sorted.length, total); i++) newArr[i] = sorted[i];
-        if (bass.length && total > 0) {
-            const midRow = Math.floor(currentRows / 2);
-            const midCol = Math.floor(currentCols / 2);
-            let bassIndex = midRow * currentCols + midCol;
-            if (bassIndex >= total) bassIndex = total - 1;
-            newArr[bassIndex] = bass[0];
-        }
-        bandMembers = newArr;
-        clearSelections();
-        renderAll();
-    }
-    
-    function addMember(name, instrument) {
-        if (!name || typeof name !== 'string' || !name.trim()) { 
-            alert("Please enter a valid member name (Chinese, English, or numbers allowed)"); 
-            return false; 
-        }
-        const newMember = { id: Date.now() + '-' + Math.random(), name: name.trim(), instrument: instrument };
-        if (instrument === 'Helper') {
-            helpers.push(newMember);
-        } else {
-            const emptyIndex = bandMembers.findIndex(m => m === null);
-            if (emptyIndex !== -1) {
-                bandMembers[emptyIndex] = newMember;
-            } else {
-                bandMembers.push(newMember);
             }
-        }
-        renderAll();
-        return true;
-    }
-    
-    function clearAllMembers() { 
-        bandMembers.fill(null); 
-        helpers = []; 
-        renderAll(); 
-    }
-    
-    function loadDemoBand() {
-        const total = currentRows * currentCols;
-        const newMain = new Array(total).fill(null);
-        newMain[0] = { id: Date.now()+1, name: "周Sir", instrument: "Bagpipe" };
-        newMain[1] = { id: Date.now()+2, name: "Andrew", instrument: "Bagpipe" };
-        newMain[2] = { id: Date.now()+3, name: "Kelven", instrument: "Bagpipe" };
-        newMain[3] = { id: Date.now()+4, name: "Ben", instrument: "Bagpipe" };
-        newMain[4] = { id: Date.now()+5, name: "良哥", instrument: "Bagpipe" };
-        newMain[5] = { id: Date.now()+6, name: "錢錢", instrument: "Bagpipe" };
-        newMain[6] = { id: Date.now()+7, name: "瑤", instrument: "Bagpipe" };
-        newMain[7] = { id: Date.now()+8, name: "Bosco", instrument: "Bagpipe" };
-        newMain[8] = { id: Date.now()+9, name: "健", instrument: "Bagpipe" };
-        newMain[11] = { id: Date.now()+10, name: "Howell", instrument: "Bagpipe" };
-        newMain[12] = { id: Date.now()+11, name: "Maggie", instrument: "Tenor Drum" };
-        newMain[13] = { id: Date.now()+12, name: "海哥", instrument: "Bass Drum" };
-        newMain[15] = { id: Date.now()+13, name: "Elaine", instrument: "Tenor Drum" };
-        newMain[16] = { id: Date.now()+14, name: "JOJO", instrument: "Snare Drum" };
-        newMain[17] = { id: Date.now()+15, name: "炒蛋", instrument: "Snare Drum" };
-        newMain[18] = { id: Date.now()+16, name: "松鼠", instrument: "Snare Drum" };
-        newMain[19] = { id: Date.now()+17, name: "輝哥", instrument: "Snare Drum" };
-        bandMembers = newMain;
-        helpers = [
-            { id: Date.now()+100, name: "大師兄", instrument: "Helper" },
-            { id: Date.now()+101, name: "Eric", instrument: "Helper" }
-        ];
-        renderAll();
-    }
-    
-    // ========== PORTRAIT PRINT FUNCTION (centered, preserves colors) ==========
-    function printFormation() {
-        if (printingInProgress) return;
-        printingInProgress = true;
-        
-        const stats = getStatsData();
-        const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
-        const drumMajorDisplayName = hasDrumMajor ? drumMajor.name : "—";
-        const titleText = showTitleInput.value.trim() || "Highland Gathering";
-        const dateText = dateInput.value || "";
-        
-        let gridCells = '';
-        const totalMain = currentRows * currentCols;
-        for (let i = 0; i < totalMain; i++) {
-            const member = bandMembers[i];
-            let bgColor = '#f9f5f0';
-            if (member && member !== null) bgColor = getInstrumentColor(member.instrument);
-            if (member && member !== null) {
-                gridCells += `<div style="background:${bgColor}; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
-                                <div style="font-weight:600; font-size:12px;">${escapeHtml(member.name)}</div>
-                                <div style="font-size:10px; color:#6c6a67; margin-top:2px;">${escapeHtml(member.instrument)}</div>
-                            </div>`;
-            } else {
-                gridCells += `<div style="background:${bgColor}; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
-                                <div style="opacity:0;">—</div>
-                            </div>`;
+            else if (selectedMainIndex !== null) {
+                const mainMember = bandMembers[selectedMainIndex];
+                const helperMember = helpers[clickedIdx];
+                if (helperMember) {
+                    helpers[clickedIdx] = mainMember ? { ...mainMember, instrument: mainMember.instrument } : null;
+                    bandMembers[selectedMainIndex] = helperMember ? { ...helperMember, instrument: helperMember.instrument } : null;
+                } else if (mainMember) {
+                    helpers[clickedIdx] = { ...mainMember, instrument: mainMember.instrument };
+                    bandMembers[selectedMainIndex] = null;
+                }
+                clearSelections();
+                renderAll();
             }
         }
         
-        let helperItems = '';
-        if (helpers.length) {
-            helpers.forEach(helper => {
-                helperItems += `<div style="background:${getInstrumentColor('Helper')}; border-radius:6px; padding:5px 10px; text-align:center; min-width:75px; border:1px solid #b0a088;">
-                                <div style="font-weight:600; font-size:11px;">${escapeHtml(helper.name)}</div>
-                                <div style="font-size:9px;">Helper</div>
-                            </div>`;
-            });
-        } else {
-            helperItems = '<div style="color:gray; font-size:12px;">No helpers assigned</div>';
+        function clearSelections() { selectedMainIndex = null; selectedHelperIndex = null; }
+        
+        function renderAll() { 
+            renderFormationGrid(); 
+            renderHelperRow(); 
+            renderMemberList(); 
+            updateStatsPreview(); 
         }
         
-        const cellWidth = Math.min(130, Math.max(90, Math.floor(750 / currentCols)));
+        function renderMemberList() {
+            const allMembers = [...bandMembers.filter(m => m !== null), ...helpers];
+            if (allMembers.length === 0) { 
+                memberListDiv.innerHTML = `<div style="text-align:center; padding:1rem;"><i class="fas fa-users-slash"></i> No band members.</div>`; 
+                return; 
+            }
+            let html = `<div style="font-weight:600; margin-bottom:0.5rem;">Band Roster (Main + Helpers)</div>`;
+            allMembers.forEach((member) => {
+                const isHelper = helpers.includes(member);
+                html += `<div class="member-item">
+                            <div class="member-info"><strong>${escapeHtml(member.name)}</strong><small>${escapeHtml(member.instrument)} ${isHelper ? '(Helper)' : ''}</small></div>
+                            <div class="member-actions">
+                                <button class="edit-member-btn" data-name="${escapeHtml(member.name)}" data-inst="${escapeHtml(member.instrument)}" data-helper="${isHelper}"><i class="fas fa-pen"></i></button>
+                                <button class="delete-member-btn" data-name="${escapeHtml(member.name)}" data-helper="${isHelper}"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>`;
+            });
+            memberListDiv.innerHTML = html;
+            
+            document.querySelectorAll('.edit-member-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const oldName = btn.dataset.name;
+                    const oldInst = btn.dataset.inst;
+                    const isHelperMem = btn.dataset.helper === 'true';
+                    const newName = prompt("Edit name:", oldName);
+                    if (newName && newName.trim()) {
+                        const instrumentOptions = ["Bagpipe", "Snare Drum", "Bass Drum", "Tenor Drum", "Helper"];
+                        const newInst = prompt("Edit instrument (Bagpipe, Snare Drum, Bass Drum, Tenor Drum, Helper):", oldInst);
+                        if (newInst && instrumentOptions.includes(newInst)) {
+                            if (isHelperMem) {
+                                const helper = helpers.find(h => h.name === oldName);
+                                if (helper) { helper.name = newName.trim(); helper.instrument = newInst; }
+                            } else {
+                                const member = bandMembers.find(m => m && m.name === oldName);
+                                if (member) { member.name = newName.trim(); member.instrument = newInst; }
+                            }
+                            renderAll();
+                        } else if (newInst === null || newInst === "") {
+                            if (isHelperMem) {
+                                const helper = helpers.find(h => h.name === oldName);
+                                if (helper) helper.name = newName.trim();
+                            } else {
+                                const member = bandMembers.find(m => m && m.name === oldName);
+                                if (member) member.name = newName.trim();
+                            }
+                            renderAll();
+                        } else { alert("Invalid instrument."); }
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.delete-member-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const name = btn.dataset.name;
+                    const isHelperMem = btn.dataset.helper === 'true';
+                    if (isHelperMem) {
+                        const idx = helpers.findIndex(h => h.name === name);
+                        if (idx !== -1) helpers.splice(idx, 1);
+                    } else {
+                        const idx = bandMembers.findIndex(m => m && m.name === name);
+                        if (idx !== -1) bandMembers[idx] = null;
+                    }
+                    renderAll();
+                });
+            });
+        }
         
-        const printHtml = `
+        function getStatsData() {
+            const allMain = bandMembers.filter(m => m !== null);
+            const allHelpers = helpers;
+            const all = [...allMain, ...allHelpers];
+            let bagpipe = 0, snare = 0, bass = 0, tenor = 0, helper = 0;
+            all.forEach(m => {
+                const inst = m.instrument;
+                if (inst === 'Bagpipe') bagpipe++;
+                else if (inst === 'Snare Drum') snare++;
+                else if (inst === 'Bass Drum') bass++;
+                else if (inst === 'Tenor Drum') tenor++;
+                else if (inst === 'Helper') helper++;
+            });
+            const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
+            return { bagpipe, snare, bass, tenor, helper, total: all.length, drumMajorCount: hasDrumMajor ? 1 : 0 };
+        }
+        
+        function updateStatsPreview() {
+            const stats = getStatsData();
+            statsPanelPreview.innerHTML = `
+                <div class="stat-line"><span class="stat-label">Drum Major:</span><span class="stat-number">${stats.drumMajorCount}</span></div>
+                <div class="stat-line"><span class="stat-label">Bagpipers:</span><span class="stat-number">${stats.bagpipe}</span></div>
+                <div class="stat-line"><span class="stat-label">Tenor Drummers:</span><span class="stat-number">${stats.tenor}</span></div>
+                <div class="stat-line"><span class="stat-label">Snare Drummers:</span><span class="stat-number">${stats.snare}</span></div>
+                <div class="stat-line"><span class="stat-label">Bass Drummers:</span><span class="stat-number">${stats.bass}</span></div>
+                <div class="stat-line"><span class="stat-label">Helpers:</span><span class="stat-number">${stats.helper}</span></div>
+                <div class="stat-line stat-total"><span class="stat-label">Total Personnel:</span><span class="stat-number">${stats.total + stats.drumMajorCount}</span></div>
+            `;
+        }
+        
+        function applyDimensions() {
+            let newRows = parseInt(rowsInput.value), newCols = parseInt(colsInput.value);
+            if (isNaN(newRows)) newRows = 5;
+            if (isNaN(newCols)) newCols = 4;
+            newRows = Math.min(20, Math.max(1, newRows));
+            newCols = Math.min(10, Math.max(1, newCols));
+            currentRows = newRows;
+            currentCols = newCols;
+            rowsInput.value = currentRows;
+            colsInput.value = currentCols;
+            const newSize = currentRows * currentCols;
+            const oldOccupants = [...bandMembers];
+            const newOccupants = new Array(newSize).fill(null);
+            for (let i = 0; i < Math.min(oldOccupants.length, newSize); i++) {
+                if (oldOccupants[i] !== null) newOccupants[i] = oldOccupants[i];
+            }
+            bandMembers = newOccupants;
+            clearSelections();
+            renderAll();
+        }
+        
+        function sortFormation() {
+            const bagpipers = bandMembers.filter(m => m && m.instrument === 'Bagpipe');
+            const snare = bandMembers.filter(m => m && m.instrument === 'Snare Drum');
+            const tenor = bandMembers.filter(m => m && m.instrument === 'Tenor Drum');
+            let bass = bandMembers.filter(m => m && m.instrument === 'Bass Drum');
+            const others = bandMembers.filter(m => m && !['Bagpipe','Snare Drum','Tenor Drum','Bass Drum'].includes(m.instrument));
+            const total = currentRows * currentCols;
+            let sorted = [...bagpipers, ...snare, ...tenor, ...others];
+            let newArr = new Array(total).fill(null);
+            for (let i = 0; i < Math.min(sorted.length, total); i++) newArr[i] = sorted[i];
+            if (bass.length && total > 0) {
+                const midRow = Math.floor(currentRows / 2);
+                const midCol = Math.floor(currentCols / 2);
+                let bassIndex = midRow * currentCols + midCol;
+                if (bassIndex >= total) bassIndex = total - 1;
+                newArr[bassIndex] = bass[0];
+            }
+            bandMembers = newArr;
+            clearSelections();
+            renderAll();
+        }
+        
+        function addMember(name, instrument) {
+            if (!name || typeof name !== 'string' || !name.trim()) { 
+                alert("Please enter a valid member name (Chinese, English, or numbers allowed)"); 
+                return false; 
+            }
+            const newMember = { id: Date.now() + '-' + Math.random(), name: name.trim(), instrument: instrument };
+            if (instrument === 'Helper') {
+                helpers.push(newMember);
+            } else {
+                const emptyIndex = bandMembers.findIndex(m => m === null);
+                if (emptyIndex !== -1) {
+                    bandMembers[emptyIndex] = newMember;
+                } else {
+                    bandMembers.push(newMember);
+                }
+            }
+            renderAll();
+            return true;
+        }
+        
+        function clearAllMembers() { 
+            bandMembers.fill(null); 
+            helpers = []; 
+            renderAll(); 
+        }
+        
+        function loadDemoBand() {
+            const total = currentRows * currentCols;
+            const newMain = new Array(total).fill(null);
+            newMain[0] = { id: Date.now()+1, name: "周Sir", instrument: "Bagpipe" };
+            newMain[1] = { id: Date.now()+2, name: "Andrew", instrument: "Bagpipe" };
+            newMain[2] = { id: Date.now()+3, name: "Kelven", instrument: "Bagpipe" };
+            newMain[3] = { id: Date.now()+4, name: "Ben", instrument: "Bagpipe" };
+            newMain[4] = { id: Date.now()+5, name: "良哥", instrument: "Bagpipe" };
+            newMain[5] = { id: Date.now()+6, name: "錢錢", instrument: "Bagpipe" };
+            newMain[6] = { id: Date.now()+7, name: "瑤", instrument: "Bagpipe" };
+            newMain[7] = { id: Date.now()+8, name: "Bosco", instrument: "Bagpipe" };
+            newMain[8] = { id: Date.now()+9, name: "健", instrument: "Bagpipe" };
+            newMain[11] = { id: Date.now()+10, name: "Howell", instrument: "Bagpipe" };
+            newMain[12] = { id: Date.now()+11, name: "Maggie", instrument: "Tenor Drum" };
+            newMain[13] = { id: Date.now()+12, name: "海哥", instrument: "Bass Drum" };
+            newMain[15] = { id: Date.now()+13, name: "Elaine", instrument: "Tenor Drum" };
+            newMain[16] = { id: Date.now()+14, name: "JOJO", instrument: "Snare Drum" };
+            newMain[17] = { id: Date.now()+15, name: "炒蛋", instrument: "Snare Drum" };
+            newMain[18] = { id: Date.now()+16, name: "松鼠", instrument: "Snare Drum" };
+            newMain[19] = { id: Date.now()+17, name: "輝哥", instrument: "Snare Drum" };
+            bandMembers = newMain;
+            helpers = [
+                { id: Date.now()+100, name: "大師兄", instrument: "Helper" },
+                { id: Date.now()+101, name: "Eric", instrument: "Helper" }
+            ];
+            renderAll();
+        }
+        
+        // Portrait-only print function with centered layout and forced colors
+        function printFormation() {
+            if (printingInProgress) return;
+            printingInProgress = true;
+            
+            const stats = getStatsData();
+            const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
+            const drumMajorDisplayName = hasDrumMajor ? drumMajor.name : "—";
+            const titleText = showTitleInput.value.trim() || "Highland Gathering";
+            const dateText = dateInput.value || "";
+            
+            let gridCells = '';
+            const totalMain = currentRows * currentCols;
+            for (let i = 0; i < totalMain; i++) {
+                const member = bandMembers[i];
+                let bgColor = '#f9f5f0';
+                if (member && member !== null) bgColor = getInstrumentColor(member.instrument);
+                if (member && member !== null) {
+                    gridCells += `<div style="background:${bgColor}; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
+                                    <div style="font-weight:600; font-size:12px;">${escapeHtml(member.name)}</div>
+                                    <div style="font-size:10px; color:#6c6a67; margin-top:2px;">${escapeHtml(member.instrument)}</div>
+                                </div>`;
+                } else {
+                    gridCells += `<div style="background:${bgColor}; border:1px solid #b0a088; border-radius:6px; padding:8px 4px; text-align:center;">
+                                    <div style="opacity:0;">—</div>
+                                </div>`;
+                }
+            }
+            
+            let helperItems = '';
+            if (helpers.length) {
+                helpers.forEach(helper => {
+                    helperItems += `<div style="background:${getInstrumentColor('Helper')}; border-radius:6px; padding:5px 10px; text-align:center; min-width:75px; border:1px solid #b0a088;">
+                                    <div style="font-weight:600; font-size:11px;">${escapeHtml(helper.name)}</div>
+                                    <div style="font-size:9px;">Helper</div>
+                                </div>`;
+                });
+            } else {
+                helperItems = '<div style="color:gray; font-size:12px;">No helpers assigned</div>';
+            }
+            
+            const cellWidth = Math.min(130, Math.max(90, Math.floor(750 / currentCols)));
+            
+            const printHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -705,12 +1468,8 @@
         .drum-major-post { font-size: 10px; opacity: 0.9; }
         .helper-title { font-size: 11px; font-weight: 600; margin: 10px 0 6px; color: #5a4a3a; text-align: center; }
         .helper-grid { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-        /* Force background colors to print */
         * { -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
-        @media print {
-            body { margin: 0; padding: 0; }
-            .grid { gap: 8px; }
-        }
+        @media print { body { margin: 0; padding: 0; } .grid { gap: 8px; } }
     </style>
 </head>
 <body>
@@ -748,74 +1507,95 @@
     </div>
 </body>
 </html>
-        `;
-        
-        const printWindow = window.open();
-        if (!printWindow) {
-            alert("Please allow pop-ups to print the formation.");
-            printingInProgress = false;
-            return;
-        }
-        printWindow.document.write(printHtml);
-        printWindow.document.close();
-        printWindow.focus();
-        
-        setTimeout(() => {
-            printWindow.print();
-            setTimeout(() => {
+            `;
+            
+            const printWindow = window.open();
+            if (!printWindow) {
+                alert("Please allow pop-ups to print the formation.");
                 printingInProgress = false;
-                printWindow.close();
-            }, 1000);
-        }, 300);
-    }
-    
-    // Event bindings
-    applyDimBtn.addEventListener('click', () => { applyDimensions(); });
-    
-    function handleAddMember() {
-        const name = memberNameInput.value;
-        const instrument = memberInstrumentSelect.value;
-        if (addMember(name, instrument)) {
-            memberNameInput.value = '';
-            memberNameInput.focus();
+                return;
+            }
+            printWindow.document.write(printHtml);
+            printWindow.document.close();
+            printWindow.focus();
+            
+            setTimeout(() => {
+                printWindow.print();
+                setTimeout(() => {
+                    printingInProgress = false;
+                    printWindow.close();
+                }, 1000);
+            }, 300);
         }
-    }
-    
-    addMemberBtn.addEventListener('click', handleAddMember);
-    memberNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { handleAddMember(); e.preventDefault(); } });
-    resetDemoBtn.addEventListener('click', () => { loadDemoBand(); });
-    clearAllBtn.addEventListener('click', () => { clearAllMembers(); });
-    sortFormationBtn.addEventListener('click', () => { sortFormation(); });
-    printPdfBtn.addEventListener('click', () => { printFormation(); });
-    
-    drumMajorNameInput.addEventListener('input', () => { updateDrumMajorFromInput(); });
-    showTitleInput.addEventListener('input', updateMetaDisplay);
-    dateInput.addEventListener('input', updateMetaDisplay);
-    
-    function initialize() {
-        currentRows = 5;
-        currentCols = 4;
-        rowsInput.value = 5;
-        colsInput.value = 4;
-        const total = currentRows * currentCols;
-        bandMembers = new Array(total).fill(null);
-        helpers = [];
-        loadDemoBand();
-        updateMetaDisplay();
-        updateDrumMajorFromInput();
-    }
-    
-    initialize();
-    
-    function escapeHtml(str) { 
-        if (!str) return ''; 
-        return String(str).replace(/[&<>]/g, function(m){
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
-</script>
+        
+        // Event bindings
+        applyDimBtn.addEventListener('click', () => { applyDimensions(); });
+        
+        function handleAddMember() {
+            const name = memberNameInput.value;
+            const instrument = memberInstrumentSelect.value;
+            if (addMember(name, instrument)) {
+                memberNameInput.value = '';
+                memberNameInput.focus();
+            }
+        }
+        
+        addMemberBtn.addEventListener('click', handleAddMember);
+        memberNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { handleAddMember(); e.preventDefault(); } });
+        resetDemoBtn.addEventListener('click', () => { loadDemoBand(); });
+        clearAllBtn.addEventListener('click', () => { clearAllMembers(); });
+        sortFormationBtn.addEventListener('click', () => { sortFormation(); });
+        printPdfBtn.addEventListener('click', () => { printFormation(); });
+        
+        drumMajorNameInput.addEventListener('input', () => { updateDrumMajorFromInput(); });
+        showTitleInput.addEventListener('input', updateMetaDisplay);
+        dateInput.addEventListener('input', updateMetaDisplay);
+        
+        function initialize() {
+            currentRows = 5;
+            currentCols = 4;
+            rowsInput.value = 5;
+            colsInput.value = 4;
+            const total = currentRows * currentCols;
+            bandMembers = new Array(total).fill(null);
+            helpers = [];
+            loadDemoBand();
+            updateMetaDisplay();
+            updateDrumMajorFromInput();
+            
+            // Remove loading spinner
+            document.body.classList.remove('loading');
+        }
+        
+        initialize();
+        
+        function escapeHtml(str) { 
+            if (!str) return ''; 
+            return String(str).replace(/[&<>]/g, function(m){
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+        
+        // Additional UI: mobile menu toggle, logo link, etc.
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if(hamburger) {
+            hamburger.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+            });
+        }
+        
+        const logoLink = document.getElementById('logoLink');
+        const currentPage = window.location.pathname.split('/').pop() || 'formation.html';
+        if(currentPage.includes('zh')) {
+            logoLink.href = 'formation-zh.html';
+        } else {
+            logoLink.href = 'formation.html';
+        }
+    </script>
 </body>
 </html>
