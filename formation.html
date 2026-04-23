@@ -133,6 +133,11 @@
         .print-button-wrapper { margin-top: 1rem; text-align: center; }
         .no-print-tip { display: block; font-size: 0.7rem; margin-top: 1rem; background: #f0efed; padding: 0.5rem; border-radius: 1rem; text-align: center; color: var(--gray-mid); }
         .formation-scroll { overflow-x: auto; margin: 0 -0.5rem; padding: 0 0.5rem; }
+        
+        /* Make date input same width as text inputs on mobile */
+        input[type="date"] {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +163,7 @@
                 <div class="form-group"><label><i class="fas fa-tag"></i> Show Title</label><input type="text" id="showTitle" value="Highland Champions Showcase" placeholder="Performance title"></div>
                 <div class="form-group"><label><i class="far fa-calendar-alt"></i> Performance Date</label><input type="date" id="performanceDate" value="2026-06-15"></div>
                 <div class="inline-row">
-                    <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="7" value="3"></div>
+                    <div class="form-group" style="flex:1"><label>Rows</label><input type="number" id="rowsInput" min="1" max="7" value="5"></div>
                     <div class="form-group" style="flex:1"><label>Columns</label><input type="number" id="colsInput" min="1" max="8" value="4"></div>
                     <div class="form-group"><button id="applyDimBtn" class="btn-secondary" style="margin-top: 1.5rem;"><i class="fas fa-arrows-alt"></i> Set Grid</button></div>
                 </div>
@@ -228,7 +233,7 @@
     // STATE
     let bandMembers = [];
     let helpers = [];
-    let currentRows = 3;
+    let currentRows = 5;
     let currentCols = 4;
     let drumMajor = { name: "" };
     let selectedMainIndex = null;
@@ -505,7 +510,7 @@
     
     function applyDimensions() {
         let newRows = parseInt(rowsInput.value), newCols = parseInt(colsInput.value);
-        if (isNaN(newRows)) newRows = 3;
+        if (isNaN(newRows)) newRows = 5;
         if (isNaN(newCols)) newCols = 4;
         newRows = Math.min(7, Math.max(1, newRows));
         newCols = Math.min(8, Math.max(1, newCols));
@@ -573,31 +578,40 @@
         renderAll(); 
     }
     
-    // ========== DEMO BAND (user specified) ==========
+    // ========== DEMO BAND (exact 5x4 arrangement) ==========
     function loadDemoBand() {
-        // Clear existing
-        const total = currentRows * currentCols;
+        const total = currentRows * currentCols; // 5*4=20
         const newMain = new Array(total).fill(null);
         
-        // Bagpipers (10)
-        const bagpipers = [
-            "錢錢", "健", "Howell", "周Sir", "Ben", "Kelven", "瑤", "Bosco", "良哥", "Andrew"
-        ];
-        // Snare Drum (4)
-        const snares = ["JOJO", "輝哥", "松鼠", "炒蛋"];
-        // Bass Drum (1)
-        const basses = ["海哥"];
-        // Tenor Drum (2)
-        const tenors = ["Maggie", "Elaine"];
+        // Row 0: 周Sir, Andrew, Kelven, Ben
+        newMain[0] = { id: Date.now()+1, name: "周Sir", instrument: "Bagpipe" };
+        newMain[1] = { id: Date.now()+2, name: "Andrew", instrument: "Bagpipe" };
+        newMain[2] = { id: Date.now()+3, name: "Kelven", instrument: "Bagpipe" };
+        newMain[3] = { id: Date.now()+4, name: "Ben", instrument: "Bagpipe" };
         
-        const allMain = [...bagpipers.map(n => ({ name: n, instrument: "Bagpipe" })),
-                        ...snares.map(n => ({ name: n, instrument: "Snare Drum" })),
-                        ...tenors.map(n => ({ name: n, instrument: "Tenor Drum" })),
-                        ...basses.map(n => ({ name: n, instrument: "Bass Drum" }))];
+        // Row 1: 良哥, 錢錢, 瑤, Bosco
+        newMain[4] = { id: Date.now()+5, name: "良哥", instrument: "Bagpipe" };
+        newMain[5] = { id: Date.now()+6, name: "錢錢", instrument: "Bagpipe" };
+        newMain[6] = { id: Date.now()+7, name: "瑤", instrument: "Bagpipe" };
+        newMain[7] = { id: Date.now()+8, name: "Bosco", instrument: "Bagpipe" };
         
-        for (let i = 0; i < Math.min(allMain.length, total); i++) {
-            newMain[i] = { id: Date.now()+i, name: allMain[i].name, instrument: allMain[i].instrument };
-        }
+        // Row 2: 健, empty, empty, Howell
+        newMain[8] = { id: Date.now()+9, name: "健", instrument: "Bagpipe" };
+        // index 9 = empty, index 10 = empty
+        newMain[11] = { id: Date.now()+10, name: "Howell", instrument: "Bagpipe" };
+        
+        // Row 3: Maggie, 海哥, empty, Elaine
+        newMain[12] = { id: Date.now()+11, name: "Maggie", instrument: "Tenor Drum" };
+        newMain[13] = { id: Date.now()+12, name: "海哥", instrument: "Bass Drum" };
+        // index 14 = empty
+        newMain[15] = { id: Date.now()+13, name: "Elaine", instrument: "Tenor Drum" };
+        
+        // Row 4: JOJO, 炒蛋, 松鼠, 輝哥
+        newMain[16] = { id: Date.now()+14, name: "JOJO", instrument: "Snare Drum" };
+        newMain[17] = { id: Date.now()+15, name: "炒蛋", instrument: "Snare Drum" };
+        newMain[18] = { id: Date.now()+16, name: "松鼠", instrument: "Snare Drum" };
+        newMain[19] = { id: Date.now()+17, name: "輝哥", instrument: "Snare Drum" };
+        
         bandMembers = newMain;
         
         // Helpers
@@ -609,7 +623,7 @@
         renderAll();
     }
     
-    // ========== PRINT / PDF (LANDSCAPE) using iframe print ==========
+    // ========== PRINT / PDF (LANDSCAPE) - Always landscape, works on mobile ==========
     function printFormation() {
         const stats = getStatsData();
         const hasDrumMajor = (drumMajor.name && drumMajor.name !== "" && drumMajor.name !== "—");
@@ -648,6 +662,7 @@
         
         const cellWidth = Math.min(140, Math.max(100, Math.floor(750 / currentCols)));
         
+        // Create print HTML with forced landscape and styles
         const printHtml = `
 <!DOCTYPE html>
 <html>
@@ -717,7 +732,7 @@
 </html>
         `;
         
-        // Create iframe and trigger print
+        // Create a new iframe and trigger print
         const iframe = document.createElement('iframe');
         iframe.style.position = 'fixed';
         iframe.style.top = '-9999px';
@@ -731,19 +746,28 @@
         iframeDoc.write(printHtml);
         iframeDoc.close();
         
-        setTimeout(() => {
-            try {
-                iframe.contentWindow.focus();
-                iframe.contentWindow.print();
-            } catch (e) {
-                console.error("Print error:", e);
-                alert("Print failed. Please try again.");
-            } finally {
-                setTimeout(() => {
-                    if (document.body.contains(iframe)) document.body.removeChild(iframe);
-                }, 1000);
-            }
-        }, 500);
+        // Ensure print is triggered after content loads
+        iframe.onload = function() {
+            setTimeout(() => {
+                try {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+                } catch (e) {
+                    console.error("Print error:", e);
+                    alert("Print failed. Please try again.");
+                } finally {
+                    // Remove iframe after print dialog is done (user may cancel)
+                    setTimeout(() => {
+                        if (document.body.contains(iframe)) document.body.removeChild(iframe);
+                    }, 2000);
+                }
+            }, 300);
+        };
+        
+        // If already loaded
+        if (iframe.contentWindow.document.readyState === 'complete') {
+            iframe.onload();
+        }
     }
     
     // Event bindings
@@ -770,12 +794,14 @@
     dateInput.addEventListener('input', updateMetaDisplay);
     
     function initialize() {
-        currentRows = 3; currentCols = 4;
-        rowsInput.value = 3; colsInput.value = 4;
+        currentRows = 5;
+        currentCols = 4;
+        rowsInput.value = 5;
+        colsInput.value = 4;
         const total = currentRows * currentCols;
         bandMembers = new Array(total).fill(null);
         helpers = [];
-        loadDemoBand();  // loads user's specified demo band
+        loadDemoBand();  // loads exact 5x4 arrangement
         updateMetaDisplay();
         updateDrumMajorFromInput();
     }
